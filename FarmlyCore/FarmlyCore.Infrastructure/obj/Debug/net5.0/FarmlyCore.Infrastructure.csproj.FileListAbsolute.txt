@@ -1,0 +1,4 @@
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Infrastructure\obj\Debug\net5.0\FarmlyCore.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Infrastructure\obj\Debug\net5.0\FarmlyCore.Infrastructure.AssemblyInfoInputs.cache
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Infrastructure\obj\Debug\net5.0\FarmlyCore.Infrastructure.AssemblyInfo.cs
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Infrastructure\obj\Debug\net5.0\FarmlyCore.Infrastructure.csproj.CoreCompileInputs.cache

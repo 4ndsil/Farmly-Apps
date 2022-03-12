@@ -1,0 +1,5 @@
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.csproj.AssemblyReference.cache
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.AssemblyInfoInputs.cache
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.AssemblyInfo.cs
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.csproj.CoreCompileInputs.cache

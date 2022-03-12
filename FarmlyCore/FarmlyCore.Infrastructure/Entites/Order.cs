@@ -1,0 +1,19 @@
+﻿namespace FarmlyCore.Infrastructure.Entities
+{
+    public class Order
+    {
+        public Order() { }
+
+        public int Id { get; set; }
+        public string OrderNumber { get; set; }
+        public double TotalPrice { get; set; }
+        public DateTime? PlacementDate { get; set; }
+        public DateTime? DeliveryDate { get; set; }
+        public bool? Delivered { get; set; }
+        public int BuyerId { get; set; }
+        public int DeliveryPointId { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }        
+        public Customer Buyer { get; set; }
+        public CustomerAddress DeliveryPoint { get; set; }
+    }
+}
