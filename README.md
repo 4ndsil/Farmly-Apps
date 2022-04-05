@@ -1,2 +1,2 @@
 # Farmly-Apps
-Repository for Farmly core API and Farmly notifications API
+Repository for Farmly Core API and Farmly Notifications API
