@@ -1,7 +1,7 @@
-﻿using FarmlyCore.Application.DTOs;
+﻿using FarmlyCore.Application.DTOs.Adverts;
 using Microsoft.AspNetCore.JsonPatch;
 
-namespace FarmlyCore.Application.Queries.Requests.Adverts
+namespace FarmlyCore.Application.Requests.Adverts
 {
     public class UpdateAdvertRequest
     {

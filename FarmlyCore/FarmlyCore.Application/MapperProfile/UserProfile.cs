@@ -9,7 +9,7 @@ namespace FarmlyCore.Application.MapperProfile
         public UserProfile()
         {
             CreateMap<User, UserDto>()
-                .ForMember(e => e.CustomerId, v => v.MapFrom(src => src.Customer.Id)).ReverseMap();
+                .ForMember(e => e.CustomerId, v => v.MapFrom(src => src.FkCustomerId)).ReverseMap();
         }
     }
 }

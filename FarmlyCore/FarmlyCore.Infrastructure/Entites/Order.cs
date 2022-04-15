@@ -6,14 +6,15 @@
 
         public int Id { get; set; }
         public string OrderNumber { get; set; }
-        public double TotalPrice { get; set; }
-        public DateTime? PlacementDate { get; set; }
-        public DateTime? DeliveryDate { get; set; }
+        public DateTime PlacementDate { get; set; }
+        public DateTime DeliveryDate { get; set; }
         public bool? Delivered { get; set; }
-        public int BuyerId { get; set; }
-        public int DeliveryPointId { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }        
+        public double TotalPrice { get; set; }
+        public double TotalQuantity { get; set; }                
+        public int FkBuyerId { get; set; }
+        public int FkDeliveryPointId { get; set; }        
         public Customer Buyer { get; set; }
         public CustomerAddress DeliveryPoint { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; } = Array.Empty<OrderItem>();
     }
 }

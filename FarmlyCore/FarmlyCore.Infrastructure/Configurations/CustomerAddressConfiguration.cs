@@ -13,7 +13,7 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Id)
-                .HasColumnName("ID")
+                .HasColumnName("Id")
                 .IsRequired();
 
             entity.Property(e => e.Street)
@@ -28,13 +28,8 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(e => e.Zip)
                 .HasColumnName("Zip");
 
-            entity.Property(e => e.CustomerId)                
-                .HasColumnName("FkCustomerId")
-                .IsRequired();
-
-            entity.HasOne(e => e.Customer)
-                .WithOne()
-                .HasForeignKey<Customer>(e => e.Id)
+            entity.Property(e => e.FkCustomerId)
+                .HasColumnName("FKCustomerId")
                 .IsRequired();
         }
     }

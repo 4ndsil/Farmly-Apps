@@ -1,4 +1,4 @@
-﻿namespace FarmlyCore.Application.Queries.Requests.Customer
+﻿namespace FarmlyCore.Application.Requests.Orders
 {
     public class FindOrdersRequest
     {

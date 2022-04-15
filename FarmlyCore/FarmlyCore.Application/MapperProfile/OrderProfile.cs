@@ -9,7 +9,9 @@ namespace FarmlyCore.Application.MapperProfile
     {
         public OrderProfile()
         {
-            CreateMap<Order, OrderDto>().ForMember(e => e.OrderItemsIds, v => v.MapFrom(src => src.OrderItems.Select(c => c.Id))).ReverseMap();
+            CreateMap<Order, OrderDto>().ForMember(e => e.OrderItems, v => v.MapFrom(src => src.OrderItems)).ReverseMap();            
+
+            CreateMap<OrderItem, OrderItemDto>().ForMember(e => e.PriceType, v => v.MapFrom(src => src.PriceType)).ReverseMap();
         }
     }
 }

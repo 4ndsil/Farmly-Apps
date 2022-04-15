@@ -4,10 +4,11 @@
     {
         public int Id { get; set; }
         public string CompanyName { get; set; }
+        public string Email { get; set; }
         public CustomerTypeDto CustomerType { get; set; }
         public string BankGiro { get; set; }
-        public string OrgNumber { get; set; }
-        public ICollection<CustomerAddressDto> AddressList { get; set; } = Array.Empty<CustomerAddressDto>();
+        public string OrgNumber { get; set; }        
+        public ICollection<CustomerAddressDto> CustomerAddresses { get; set; } = Array.Empty<CustomerAddressDto>();
     }
 
     public enum CustomerTypeDto

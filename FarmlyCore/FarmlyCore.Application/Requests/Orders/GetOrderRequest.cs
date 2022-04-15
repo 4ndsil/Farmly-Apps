@@ -1,12 +1,12 @@
-﻿namespace FarmlyCore.Application.Queries.Requests.Customer
+﻿namespace FarmlyCore.Application.Requests.Orders
 {
     public class GetOrderRequest
     {
-        public GetOrderRequest(int customerId)
+        public GetOrderRequest(int orderId)
         {
-            CustomerId = customerId;
+            OrderId = orderId;
         }
 
-        public int CustomerId { get; set; }
+        public int OrderId { get; set; }
     }
 }

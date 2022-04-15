@@ -27,11 +27,11 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(e => e.Delivered)
                 .HasColumnName("Delivered");
 
-            entity.Property(e => e.BuyerId)
-                .HasColumnName("FkBuyerCustomerId");
+            entity.Property(e => e.FkBuyerId)
+                .HasColumnName("FKBuyerCustomerId");
 
-            entity.Property(e => e.DeliveryPointId)
-                .HasColumnName("FkDeliveryPointId");
+            entity.Property(e => e.FkDeliveryPointId)
+                .HasColumnName("FKDeliveryPointId");
 
             entity.HasOne(e => e.Buyer)
                 .WithOne()

@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using FarmlyCore.Application.DTOs.Customer;
 using FarmlyCore.Application.DTOs.Order;
-using FarmlyCore.Application.Queries.Requests.Customers;
-using FarmlyCore.Application.Queries.Requests.Orders;
+using FarmlyCore.Application.Requests.Orders;
 using FarmlyCore.Infrastructure.Entities;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;
@@ -31,12 +30,30 @@ namespace FarmlyCore.Application.Queries.Orders
 
             var deliveryPoint = _farmlyEntityDataContext.CustomerAddresses.FirstOrDefault(e => e.Id == request.Order.DeliveryPoint.Id);
 
+            if (deliveryPoint == null)
+            {
+                return null;
+            }
+
+            var buyer = _farmlyEntityDataContext.Customers.FirstOrDefault(e => e.Id == request.Order.Buyer.Id);
+
+            if (buyer == null)
+            {
+                return null;
+            }
+
             var order = new Order
             {
                 OrderItems = orderItems,
                 OrderNumber = request.Order.OrderNumber,
                 PlacementDate = request.Order.PlacementDate,
-                
+                DeliveryDate = request.Order.DeliveryDate,
+                Delivered = request.Order.Delivered,
+                DeliveryPoint = deliveryPoint,
+                FkDeliveryPointId = deliveryPoint.Id,
+                TotalPrice = request.Order.TotalPrice,
+                Buyer = buyer,
+                FkBuyerId = buyer.Id,
             };
 
             await _farmlyEntityDataContext.AddAsync(order);

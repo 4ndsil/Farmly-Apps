@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FarmlyCore.Application.DTOs.Customer;
-using FarmlyCore.Application.Queries.Requests.Customer;
+using FarmlyCore.Application.Requests.Customers;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;
 using Microsoft.EntityFrameworkCore;

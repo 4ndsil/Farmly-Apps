@@ -1,6 +1,6 @@
-﻿using FarmlyCore.Application.DTOs;
+﻿using FarmlyCore.Application.DTOs.Adverts;
 
-namespace FarmlyCore.Application.Queries.Requests.Adverts
+namespace FarmlyCore.Application.Requests.Adverts
 {
     public class CreateAdvertRequest
     {

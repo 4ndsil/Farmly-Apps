@@ -10,13 +10,10 @@ namespace FarmlyCore.Infrastructure.Configurations
         {
             entity.ToTable("Categories", "dbo");
 
-            entity.HasKey(e => e.Id);
+            entity.HasKey(e => e.Id);        
 
             entity.Property(e => e.CategoryName)
                 .HasColumnName("CategoryName");
-
-            entity.Property(e => e.CategoryType)
-                .HasColumnName("CategoryType");
         }
     }
 }

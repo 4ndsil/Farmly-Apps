@@ -6,6 +6,8 @@
 
         public int[] AdvertIds { get; set; } = Array.Empty<int>();
 
-        public int CustomerId { get; set; }
+        public int? CustomerId { get; set; }
+
+        public int? CategoryId { get; set; }
     }
 }

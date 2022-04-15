@@ -1,7 +1,5 @@
-﻿using FarmlyCore.Application.DTOs;
-using FarmlyCore.Application.Queries.Requests.Advert;
-using FarmlyCore.Application.Queries.Requests.Customer;
-using FarmlyCore.Application.Requests.Advert;
+﻿using FarmlyCore.Application.DTOs.Adverts;
+using FarmlyCore.Application.Requests.Adverts;
 using FarmlyCore.Infrastructure.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
@@ -47,13 +45,14 @@ namespace FarmlyCore.Api.ControllerEndpoints
             return Ok(customer);
         }
 
-        [HttpGet("find")]
+        [HttpPost]
+        [Route("find")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(AdvertDto[]), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> FindAdverts(
-        [FromServices] IQueryHandler<FindAdvertRequest, AdvertDto[]> handler,
-        [FromBody] FindAdvertRequest request,
+        [FromServices] IQueryHandler<FindAdvertsRequest, AdvertDto[]> handler,
+        [FromBody] FindAdvertsRequest request,
         CancellationToken cancellationToken)
         {
             var response = await handler.HandleAsync(request, cancellationToken);
@@ -66,13 +65,13 @@ namespace FarmlyCore.Api.ControllerEndpoints
             return Ok(response);
         }
 
-        [HttpPost]
+        [HttpPost]        
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(AdvertDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateCustomers(
+        public async Task<IActionResult> CreateAdvert(
             [FromServices] IQueryHandler<CreateAdvertRequest, AdvertDto> handler,
             [FromBody] AdvertDto advert,
             CancellationToken cancellationToken)
@@ -87,7 +86,9 @@ namespace FarmlyCore.Api.ControllerEndpoints
             return Ok(response);
         }
 
-        [HttpGet("{customerId:int:min(1)}")]
+
+        [HttpPatch]
+        [Route("{advertId:int:min(1)}")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(AdvertDto), StatusCodes.Status200OK)]
         [Consumes("application/json-patch+json")]
@@ -95,7 +96,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status415UnsupportedMediaType)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
-        public async Task<IActionResult> UpdateCustomer(
+        public async Task<IActionResult> UpdateAdvert(
             [FromServices] IQueryHandler<UpdateAdvertRequest, AdvertDto> handler,
             [Range(1, int.MaxValue), FromRoute] int advertId,
             [FromBody] JsonPatchDocument<AdvertDto> patchDocument,

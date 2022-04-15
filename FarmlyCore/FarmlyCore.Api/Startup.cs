@@ -1,4 +1,5 @@
 using AutoMapper;
+using FarmlyCore.Application.Extensions;
 using FarmlyCore.Application.MapperProfile;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Linq;
 
 namespace FarmlyCore.Api
 {
@@ -23,22 +25,22 @@ namespace FarmlyCore.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FarmlyCore.Api", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
 
-            //services.RegisterApplicationQueryHandlers();            
+            services.RegisterApplicationQueryHandlers();
 
-            //var mssqlConnectionString = Configuration.GetConnectionString("EMG_MSSQL");
+            var mssqlConnectionString = Configuration.GetConnectionString("Farmly_MSSQL");
 
-            //services.AddDbContextPool<FarmlyEntityDbContext>(
-            //    dbContextOptions => dbContextOptions
-            //        .UseSqlServer(
-            //            mssqlConnectionString
-            //));
+            services.AddDbContextPool<FarmlyEntityDbContext>(
+                dbContextOptions => dbContextOptions
+                    .UseSqlServer(
+                        mssqlConnectionString
+            ));
 
             var mapperConfig = new MapperConfiguration(cfg =>
                   cfg.AddMaps(new[]
@@ -46,7 +48,8 @@ namespace FarmlyCore.Api
                       typeof(CustomerProfile),
                       typeof(OrderProfile),
                       typeof(AdvertProfile),
-                      typeof(UserProfile)
+                      typeof(UserProfile),
+                      typeof(CategoryProfile)
                   })
             );
 
@@ -67,9 +70,11 @@ namespace FarmlyCore.Api
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();            
+            app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseDeveloperExceptionPage();
 
             app.UseEndpoints(endpoints =>
             {

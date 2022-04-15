@@ -1,4 +1,4 @@
-﻿using FarmlyCore.Application.Queries.Requests.Customer;
+﻿using FarmlyCore.Application.Requests.Orders;
 using FarmlyCore.Infrastructure.Entities;
 
 namespace FarmlyCore.Application.Queries.Orders.QueryFilters

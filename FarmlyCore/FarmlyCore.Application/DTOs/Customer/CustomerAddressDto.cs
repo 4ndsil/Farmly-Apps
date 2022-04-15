@@ -7,6 +7,6 @@
         public string City { get; set; }
         public string State { get; set; }
         public int Zip { get; set; }
-        public int CustomerId { get; set; }
+        public int FKCustomerId { get; set; }
     }
 }

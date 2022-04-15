@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FarmlyCore.Application.DTOs;
+using FarmlyCore.Application.DTOs.Adverts;
 using FarmlyCore.Application.Requests.Adverts;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;

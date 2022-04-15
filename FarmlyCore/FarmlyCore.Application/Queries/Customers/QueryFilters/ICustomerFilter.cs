@@ -1,12 +1,12 @@
-﻿using FarmlyCore.Application.Queries.Requests.Customers;
+﻿using FarmlyCore.Application.Requests.Customers;
 using FarmlyCore.Infrastructure.Entities;
 
 namespace FarmlyCore.Application.Queries.Customers.QueryFilters
 {
     public interface ICustomerFilter
     {
-        bool CanFilter(FindCustomersRequest request);
+        bool CanFilter(FindCustomerUsersRequest request);
 
-        IQueryable<Customer> Filter(FindCustomersRequest request, IQueryable<Customer> customers);
+        IQueryable<User> Filter(FindCustomerUsersRequest request, IQueryable<User> users);
     }
 }

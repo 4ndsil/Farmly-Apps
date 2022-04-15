@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using FarmlyCore.Application.DTOs;
+using FarmlyCore.Application.DTOs.Adverts;
 using FarmlyCore.Application.Queries.Adverts.QueryFilters;
 using FarmlyCore.Application.Requests.Adverts;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
@@ -13,9 +13,9 @@ namespace FarmlyCore.Application.Queries.Adverts
     {
         private readonly FarmlyEntityDbContext _farmlyEntityDataContext;
         private readonly IMapper _mapper;
-        private readonly IReadOnlyList<IAdvertFilter> _advertFilters;
+        private readonly IEnumerable<IAdvertFilter> _advertFilters;
 
-        public FindAdvertsQueryHandler(IMapper mapper, FarmlyEntityDbContext farmlyEntityDbContext, IReadOnlyList<IAdvertFilter> advertFilters)
+        public FindAdvertsQueryHandler(IMapper mapper, FarmlyEntityDbContext farmlyEntityDbContext, IEnumerable<IAdvertFilter> advertFilters)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _farmlyEntityDataContext = farmlyEntityDbContext ?? throw new ArgumentNullException(nameof(farmlyEntityDbContext));

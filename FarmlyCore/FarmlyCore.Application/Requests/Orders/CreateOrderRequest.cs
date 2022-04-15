@@ -1,6 +1,6 @@
 ﻿using FarmlyCore.Application.DTOs.Order;
 
-namespace FarmlyCore.Application.Queries.Requests.Orders
+namespace FarmlyCore.Application.Requests.Orders
 {
     public class CreateOrderRequest
     {

@@ -1,4 +1,4 @@
-﻿using FarmlyCore.Application.Queries.Requests.Customer;
+﻿using FarmlyCore.Application.Requests.Orders;
 using FarmlyCore.Infrastructure.Entities;
 
 namespace FarmlyCore.Application.Queries.Orders.QueryFilters
@@ -9,7 +9,7 @@ namespace FarmlyCore.Application.Queries.Orders.QueryFilters
 
         public IQueryable<Order> Filter(FindOrdersRequest request, IQueryable<Order> orders)
         {
-            return orders.Where(e => e.BuyerId == request.CustomerId);
+            return orders.Where(e => e.FkBuyerId == request.CustomerId);
         }
     }
 }

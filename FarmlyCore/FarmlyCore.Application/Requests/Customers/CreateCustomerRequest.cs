@@ -1,6 +1,6 @@
 ﻿using FarmlyCore.Application.DTOs.Customer;
 
-namespace FarmlyCore.Application.Queries.Requests.Customers
+namespace FarmlyCore.Application.Requests.Customers
 {
     public class CreateCustomerRequest
     {

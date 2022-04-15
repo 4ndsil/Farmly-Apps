@@ -1,17 +1,17 @@
-﻿using FarmlyCore.Application.DTOs;
+﻿using FarmlyCore.Application.DTOs.Order;
 using Microsoft.AspNetCore.JsonPatch;
 
-namespace FarmlyCore.Application.Queries.Requests.Customer
+namespace FarmlyCore.Application.Requests.Orders
 {
-    public class UpdateAdvertRequest
+    public class UpdateOrderRequest
     {
-        public UpdateAdvertRequest(int customerId, JsonPatchDocument<AdvertDto> advert)
+        public UpdateOrderRequest(int orderId, JsonPatchDocument<OrderDto> order)
         {
-            AdvertId = customerId;
-            Advert = advert ?? throw new ArgumentNullException(nameof(advert));
+            OrderId = orderId;
+            Order = order ?? throw new ArgumentNullException(nameof(order));
         }
 
-        public int AdvertId { get; set; }
-        public JsonPatchDocument<AdvertDto> Advert { get; set; }
+        public int OrderId { get; set; }
+        public JsonPatchDocument<OrderDto> Order { get; set; }
     }
 }

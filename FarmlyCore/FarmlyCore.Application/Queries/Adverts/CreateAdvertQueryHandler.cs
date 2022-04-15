@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using FarmlyCore.Application.DTOs;
-using FarmlyCore.Application.Queries.Requests.Adverts;
+using FarmlyCore.Application.DTOs.Adverts;
+using FarmlyCore.Application.Requests.Adverts;
+using FarmlyCore.Infrastructure.Entites;
 using FarmlyCore.Infrastructure.Entities;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;
@@ -21,21 +22,28 @@ namespace FarmlyCore.Application.Queries.Adverts
 
         public async Task<AdvertDto> HandleAsync(CreateAdvertRequest request, CancellationToken cancellationToken = default)
         {
-            var category = await _farmlyEntityDataContext.Categories.Where(e => e.Id == request.Advert.CategoryId).FirstOrDefaultAsync();
+            List<AdvertItem> advertItems = null;
+
+            if (request.Advert.AdvertItems != null)
+            {
+                advertItems.AddRange(_mapper.Map<AdvertItem[]>(request.Advert.AdvertItems));
+            }
+
+            var category = await _farmlyEntityDataContext.Categories.Where(e => e.Id == request.Advert.Category.Id).FirstOrDefaultAsync();
 
             if (category == null)
             {
                 return null;
             }
 
-            var seller = await _farmlyEntityDataContext.Customers.Where(e => e.Id == request.Advert.SellerId).FirstOrDefaultAsync();
+            var seller = await _farmlyEntityDataContext.Customers.Where(e => e.Id == request.Advert.Seller.Id).FirstOrDefaultAsync();
 
             if (seller == null)
             {
                 return null;
             }
 
-            var pickupPoint = await _farmlyEntityDataContext.CustomerAddresses.Where(e => e.Id == request.Advert.PickupPointId).FirstOrDefaultAsync();
+            var pickupPoint = await _farmlyEntityDataContext.CustomerAddresses.Where(e => e.Id == request.Advert.PickupPoint.Id).FirstOrDefaultAsync();
 
             if (pickupPoint == null)
             {
@@ -45,15 +53,16 @@ namespace FarmlyCore.Application.Queries.Adverts
             var advert = new Advert
             {
                 Category = category,
-                CategoryId = request.Advert.CategoryId,
-                Description = request.Advert.Description,
-                Price = request.Advert.Price,
-                PriceType = (PriceType)request.Advert.PriceType,
+                Description = request.Advert.Description,                
+                PriceType = (AdvertPriceType)request.Advert.PriceType,
                 ProductName = request.Advert.ProductName,
-                Quantity = request.Advert.Quantity,
+                TotalQuantity = request.Advert.TotalQuantity,
                 Seller = seller,
+                FkSellerId = seller.Id,
+                FkCategoryId = category.Id,
                 PickupPoint = pickupPoint,
-                PickupPointId = request.Advert.PickupPointId,
+                FkPickupPointId = pickupPoint.Id,
+                AdvertItems = advertItems
             };
 
             await _farmlyEntityDataContext.AddAsync(advert);

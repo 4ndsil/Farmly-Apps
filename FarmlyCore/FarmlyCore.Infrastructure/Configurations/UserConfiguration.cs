@@ -21,14 +21,11 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(e => e.Email)
                .HasColumnName("Email");
 
-            entity.Property(e => e.UserName)
-                .HasColumnName("UserName");
-
             entity.Property(e => e.Password)
                 .HasColumnName("Password");
 
-            entity.Property(e => e.CustomerId)
-                .HasColumnName("FkCustomerId")
+            entity.Property(e => e.FkCustomerId)
+                .HasColumnName("FKCustomerId")
                 .IsRequired();
 
             entity.HasOne(e => e.Customer)

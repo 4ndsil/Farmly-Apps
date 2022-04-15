@@ -24,13 +24,23 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(e => e.PriceType)
                 .HasColumnName("PriceType");
 
-            entity.Property(e => e.AdvertId)
-                .HasColumnName("FkAdvertId")
+            entity.Property(e => e.FkAdvertId)
+                .HasColumnName("FKAdvertId")
                 .IsRequired();
 
-            entity.Property(e => e.OrderId)
-                .HasColumnName("FkOrderId")
+            entity.Property(e => e.FkOrderId)
+                .HasColumnName("FKOrderId")
                 .IsRequired();
+
+            entity.HasOne(e => e.Advert)
+                 .WithOne()
+                 .HasForeignKey<Advert>(e => e.Id)
+                 .IsRequired();
+
+            entity.HasOne(e => e.Order)
+                 .WithOne()
+                 .HasForeignKey<Order>(e => e.Id)
+                 .IsRequired();            
         }
     }
 }
