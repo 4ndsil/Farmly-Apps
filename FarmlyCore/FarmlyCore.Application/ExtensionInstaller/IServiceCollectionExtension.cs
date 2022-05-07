@@ -11,7 +11,6 @@ using FarmlyCore.Application.Requests.Adverts;
 using FarmlyCore.Application.Requests.Customers;
 using FarmlyCore.Application.Requests.Orders;
 using FarmlyCore.Infrastructure.Queries;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace FarmlyCore.Application.Extensions
 {

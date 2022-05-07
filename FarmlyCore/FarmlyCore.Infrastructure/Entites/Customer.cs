@@ -1,4 +1,6 @@
-﻿namespace FarmlyCore.Infrastructure.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace FarmlyCore.Infrastructure.Entities
 {
     public class Customer
     {

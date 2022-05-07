@@ -17,6 +17,8 @@ namespace FarmlyCore.Application.MapperProfile
                 .ReverseMap();
 
             CreateMap<AdvertItem, AdvertItemDto>().ReverseMap();
+
+            CreateMap<CreateAdvertDto, AdvertItem>().ReverseMap();
         }
     }
 }

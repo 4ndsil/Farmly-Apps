@@ -9,11 +9,9 @@ namespace FarmlyCore.Application.MapperProfile
         public CustomerAddressProfile()
         {
             CreateMap<CustomerAddress, CustomerAddressDto>()
-               .ForMember(e => e.FKCustomerId, v => v.MapFrom(src => src.FkCustomerId));
+                .ForMember(e => e.FKCustomerId, v => v.MapFrom(src => src.Customer.Id));
 
-            CreateMap<CustomerAddressDto, CustomerAddress>()
-                .ForMember(e => e.FkCustomerId, v => v.MapFrom(src => src.FKCustomerId))
-                .ForMember(e => e.Customer, v => v.Ignore());           
+            CreateMap<CustomerAddressDto, CustomerAddress>();                
         }
     }
 }

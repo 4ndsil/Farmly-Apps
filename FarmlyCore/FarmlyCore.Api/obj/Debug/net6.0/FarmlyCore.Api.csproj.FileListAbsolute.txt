@@ -10,7 +10,6 @@ C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\FarmlyCore
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\FarmlyCore.Api.deps.json
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\FarmlyCore.Api.runtimeconfig.json
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\FarmlyCore.Api.dll
-C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\ref\FarmlyCore.Api.dll
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\FarmlyCore.Api.pdb
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\AutoMapper.dll
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
@@ -67,3 +66,4 @@ C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\ref\Farmly
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.pdb
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.genruntimeconfig.cache
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\refint\FarmlyCore.Api.dll

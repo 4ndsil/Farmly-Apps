@@ -11,22 +11,23 @@ namespace FarmlyCore.Infrastructure.Configurations
         {
             entity.ToTable("AdvertItems", "dbo");
 
-            entity.HasKey(e => e.Id);
+            entity.HasKey(k => k.Id);
 
-            entity.Property(e => e.Price)
+            entity.Property(k => k.Id).ValueGeneratedOnAdd();
+
+            entity.Property(p => p.Price)
                 .HasColumnName("Price");
 
-            entity.Property(e => e.Quantity)
+            entity.Property(p => p.Quantity)
                 .HasColumnName("Quantity");
 
-            entity.Property(e => e.FkAdvertId)
+            entity.Property(p => p.FkAdvertId)
                 .HasColumnName("FKAdvertId")
                 .IsRequired();
 
-            entity.HasOne(e => e.Advert)
-              .WithOne()
-              .HasForeignKey<Advert>(e => e.Id)
-              .IsRequired();
+            entity.HasOne(p => p.Advert)
+              .WithMany(p => p.AdvertItems)
+              .HasForeignKey(p => p.FkAdvertId);              
         }
     }
 }

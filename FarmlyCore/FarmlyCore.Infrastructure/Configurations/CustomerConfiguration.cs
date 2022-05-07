@@ -10,27 +10,25 @@ namespace FarmlyCore.Infrastructure.Configurations
         {
             entity.ToTable("Customers", "dbo");
 
-            entity.HasKey(e => e.Id);
+            entity.HasKey(k => k.Id);
 
-            entity.Property(e => e.Id)
-             .HasColumnName("Id")
-                .IsRequired();
+            entity.Property(k => k.Id).ValueGeneratedOnAdd();            
 
-            entity.Property(e => e.CompanyName)
+            entity.Property(p => p.CompanyName)
                 .HasColumnName("CompanyName");
 
-            entity.Property(e => e.CustomerType)
+            entity.Property(p => p.CustomerType)
                 .HasColumnName("CustomerType");
 
-            entity.Property(e => e.BankGiro)
+            entity.Property(p => p.BankGiro)
                 .HasColumnName("BankGiro");
 
-            entity.Property(e => e.OrgNumber)
+            entity.Property(p => p.OrgNumber)
                 .HasColumnName("OrgNumber");
 
-            entity.HasMany(e => e.CustomerAddresses)
-                .WithOne(e => e.Customer)
-                .HasForeignKey(e => e.FkCustomerId);
+            entity.HasMany(p => p.CustomerAddresses)
+                .WithOne(p => p.Customer)
+                .HasForeignKey(p => p.FkCustomerId);                
         }
     }
 }

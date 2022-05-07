@@ -4,9 +4,9 @@ namespace FarmlyCore.Application.Requests.Adverts
 {
     public class CreateAdvertRequest
     {
-        public AdvertDto Advert { get; }
+        public CreateAdvertDto Advert { get; }
 
-        public CreateAdvertRequest(AdvertDto advert)
+        public CreateAdvertRequest(CreateAdvertDto advert)
         {
             Advert = advert ?? throw new ArgumentNullException(nameof(advert));
         }

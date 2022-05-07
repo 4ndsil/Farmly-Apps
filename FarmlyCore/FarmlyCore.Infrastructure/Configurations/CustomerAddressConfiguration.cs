@@ -8,13 +8,11 @@ namespace FarmlyCore.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<CustomerAddress> entity)
         {
-            entity.ToTable("Addresses", "dbo");
+            entity.ToTable("CustomerAddresses", "dbo");
 
             entity.HasKey(e => e.Id);
 
-            entity.Property(e => e.Id)
-                .HasColumnName("Id")
-                .IsRequired();
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
             entity.Property(e => e.Street)
                 .HasColumnName("Street");
@@ -28,9 +26,13 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(e => e.Zip)
                 .HasColumnName("Zip");
 
-            entity.Property(e => e.FkCustomerId)
-                .HasColumnName("FKCustomerId")
-                .IsRequired();
+            entity.Property(e => e.FkCustomerId)                
+                .HasColumnName("FKCustomerID");
+
+            entity.HasOne(e => e.Customer)
+              .WithMany(e => e.CustomerAddresses)
+              .HasForeignKey(e => e.FkCustomerId)
+              .IsRequired();
         }
     }
 }

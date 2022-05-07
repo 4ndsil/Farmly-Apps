@@ -1,10 +1,15 @@
-﻿namespace FarmlyCore.Infrastructure.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace FarmlyCore.Infrastructure.Entities
 {
     public class CustomerAddress
     {
         public CustomerAddress() { }
 
-        public CustomerAddress(Customer customer) { Customer = customer; }
+        public CustomerAddress(Customer customer) 
+        { 
+            Customer = customer;
+        }
 
         public int Id { get; set; }
 
@@ -16,8 +21,8 @@
 
         public int Zip { get; set; }
 
-        public int FkCustomerId { get; set; }
-        
         public Customer Customer { get; set; }
+
+        public int FkCustomerId { get; set; }                
     }
 }

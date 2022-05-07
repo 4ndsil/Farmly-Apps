@@ -4,6 +4,10 @@ using FarmlyCore.Application.Requests.Customers;
 using FarmlyCore.Infrastructure.Entities;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace FarmlyCore.Application.Queries.Customers
 {
@@ -21,20 +25,16 @@ namespace FarmlyCore.Application.Queries.Customers
 
         public async Task<CustomerDto> HandleAsync(CreateCustomerRequest request, CancellationToken cancellationToken = default)
         {
+            var addressList = new List<CustomerAddress>();
+
             var customer = new Customer
             {
                 BankGiro = request.Customer.BankGiro,
                 CompanyName = request.Customer.CompanyName,
                 Email = request.Customer.Email,
                 CustomerType = (CustomerType)request.Customer.CustomerType,
-                OrgNumber = request.Customer.OrgNumber,
+                OrgNumber = request.Customer.OrgNumber
             };
-
-            await _farmlyEntityDataContext.AddAsync(customer);
-
-            await _farmlyEntityDataContext.SaveChangesAsync();
-
-            var addressList = new List<CustomerAddress>();
 
             foreach (var address in request.Customer.CustomerAddresses)
             {
@@ -43,15 +43,15 @@ namespace FarmlyCore.Application.Queries.Customers
                     Street = address.Street,
                     City = address.City,
                     State = address.State,
-                    Zip = address.Zip,
+                    Zip = address.Zip
                 };
 
                 addressList.Add(customerAddress);
-
-                await _farmlyEntityDataContext.CustomerAddresses.AddAsync(customerAddress);
             }
 
-            customer.CustomerAddresses = addressList;        
+            customer.CustomerAddresses = addressList;
+
+            await _farmlyEntityDataContext.Customers.AddAsync(customer);
 
             await _farmlyEntityDataContext.SaveChangesAsync();
 

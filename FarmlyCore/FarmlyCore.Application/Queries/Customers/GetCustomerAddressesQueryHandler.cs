@@ -5,6 +5,10 @@ using FarmlyCore.Application.Requests.Customers;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace FarmlyCore.Application.Queries.Customers
 {

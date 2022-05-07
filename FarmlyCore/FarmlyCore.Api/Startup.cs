@@ -46,6 +46,7 @@ namespace FarmlyCore.Api
                   cfg.AddMaps(new[]
                   {
                       typeof(CustomerProfile),
+                      typeof(CustomerAddressProfile),
                       typeof(OrderProfile),
                       typeof(AdvertProfile),
                       typeof(UserProfile),

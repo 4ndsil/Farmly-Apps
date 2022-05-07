@@ -12,16 +12,15 @@ using System.Net.Mime;
 using System.Threading;
 using System.Threading.Tasks;
 
-
 namespace FarmlyCore.Api.ControllerEndpoints
 {
     [ApiController]
     [Route("advert-access/advert")]
     public class AdvertController : Controller
     {
-        private readonly ILogger<CustomerController> _logger;
+        private readonly ILogger<AdvertController> _logger;
 
-        public AdvertController(ILogger<CustomerController> logger)
+        public AdvertController(ILogger<AdvertController> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
@@ -73,7 +72,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateAdvert(
             [FromServices] IQueryHandler<CreateAdvertRequest, AdvertDto> handler,
-            [FromBody] AdvertDto advert,
+            [FromBody] CreateAdvertDto advert,
             CancellationToken cancellationToken)
         {
             var response = await handler.HandleAsync(new CreateAdvertRequest(advert), cancellationToken);
@@ -85,7 +84,6 @@ namespace FarmlyCore.Api.ControllerEndpoints
 
             return Ok(response);
         }
-
 
         [HttpPatch]
         [Route("{advertId:int:min(1)}")]

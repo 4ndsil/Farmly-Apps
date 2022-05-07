@@ -5,8 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FarmlyCore.Infrastructure.FarmlyDbContext
 {
     public class FarmlyEntityDbContext : DbContext
-    {
-        public FarmlyEntityDbContext(DbContextOptions<FarmlyEntityDbContext> options) : base(options) { }
+    {        
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
 
         public virtual DbSet<Advert> Adverts { get; set; }
@@ -22,10 +21,18 @@ namespace FarmlyCore.Infrastructure.FarmlyDbContext
         public virtual DbSet<OrderItem> OrderItems { get; set; }
 
         public virtual DbSet<User> Users { get; set; }
-        
+
+        public FarmlyEntityDbContext(DbContextOptions<FarmlyEntityDbContext> options) : base(options) { }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ModelBuilder).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(FarmlyEntityDbContext).Assembly);
+
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+                foreach (var key in entity.GetForeignKeys())
+                {
+                    Console.WriteLine(key.ToString());
+                }
         }
     }
 }

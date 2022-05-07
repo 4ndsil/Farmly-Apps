@@ -10,47 +10,47 @@ namespace FarmlyCore.Infrastructure.Configurations
         {
             entity.ToTable("Adverts", "dbo");
 
-            entity.HasKey(e => e.Id);
+            entity.HasKey(p => p.Id);
 
-            entity.Property(e => e.Description)
-                .HasColumnName("Description")
-                .IsRequired();
+            entity.Property(k => k.Id).ValueGeneratedOnAdd();
 
-            entity.Property(e => e.PriceType)
+            entity.Property(p => p.Description)
+                .HasColumnName("Description");                
+
+            entity.Property(p => p.PriceType)
                 .HasColumnName("PriceType");
 
-            entity.Property(e => e.TotalQuantity)
+            entity.Property(p => p.TotalQuantity)
                 .HasColumnName("TotalQuantity");
 
-            entity.Property(e => e.ProductName)
+            entity.Property(p => p.ProductName)
                 .HasColumnName("ProductName");
 
-            entity.Property(e => e.FkCategoryId)
+            entity.Property(p => p.FkCategoryId)
                 .HasColumnName("FKCategoryId")
                 .IsRequired();
 
-            entity.Property(e => e.FkPickupPointId)
+            entity.Property(p => p.FkPickupPointId)
                 .HasColumnName("FKCustomerAddressId")
                 .IsRequired();
 
-            entity.Property(e => e.FkSellerId)
+            entity.Property(p => p.FkSellerId)
                 .HasColumnName("FKSellerCustomerId")
                 .IsRequired();
 
-            entity.HasOne(e => e.Category)
+            entity.HasOne(p => p.Category)
                 .WithOne()
-                .HasForeignKey<Category>(e => e.Id)
+                .HasForeignKey<Category>(p => p.Id)
                 .IsRequired();
 
-            entity.HasOne(e => e.PickupPoint)
+             entity.HasOne(p => p.PickupPoint)
                 .WithOne()
-                .HasForeignKey<CustomerAddress>(e => e.Id)
-                .IsRequired();
+                .HasForeignKey<Advert>(p => p.FkPickupPointId);
 
-            entity.HasOne(e => e.Seller)
+            entity.HasOne(p => p.Seller)
                 .WithOne()
-                .HasForeignKey<Customer>(e => e.Id)
-                .IsRequired();          
+                .HasForeignKey<Customer>(p => p.Id)
+                .IsRequired();
         }
     }
 }

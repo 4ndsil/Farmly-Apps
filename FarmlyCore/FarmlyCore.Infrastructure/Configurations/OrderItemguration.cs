@@ -12,6 +12,10 @@ namespace FarmlyCore.Infrastructure.Configurations
 
             entity.HasKey(e => e.Id);
 
+            entity.Property(e => e.Id)
+            .HasColumnName("ID")
+               .IsRequired();
+
             entity.Property(e => e.ProductName)
                 .HasColumnName("ProductName");
 
@@ -38,9 +42,9 @@ namespace FarmlyCore.Infrastructure.Configurations
                  .IsRequired();
 
             entity.HasOne(e => e.Order)
-                 .WithOne()
-                 .HasForeignKey<Order>(e => e.Id)
-                 .IsRequired();            
+                 .WithMany(e => e.OrderItems)
+                 .HasForeignKey(e => e.FkOrderId)
+                 .IsRequired();
         }
     }
 }
