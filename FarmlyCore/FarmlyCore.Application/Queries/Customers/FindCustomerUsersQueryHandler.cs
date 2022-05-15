@@ -9,7 +9,7 @@ using FarmlyCore.Application.Requests.Customers;
 
 namespace FarmlyCore.Application.Queries.Customers
 {
-    public class FindCustomerUsersQueryHandler : IQueryHandler<FindCustomerUsersRequest, UserDto[]>
+    public class FindCustomerUsersQueryHandler : IQueryHandler<FindCustomersRequest, CustomerDto[]>
     {
         private readonly FarmlyEntityDbContext _farmlyEntityDataContext;
         private readonly IMapper _mapper;
@@ -22,9 +22,9 @@ namespace FarmlyCore.Application.Queries.Customers
             _customerFilters = customerFilters ?? throw new ArgumentNullException(nameof(customerFilters));
         }
 
-        public async Task<UserDto[]> HandleAsync(FindCustomerUsersRequest request, CancellationToken cancellationToken = default)
+        public async Task<CustomerDto[]> HandleAsync(FindCustomersRequest request, CancellationToken cancellationToken = default)
         {
-            var baseRequest = _farmlyEntityDataContext.Users.AsNoTracking().AsQueryable();
+            var baseRequest = _farmlyEntityDataContext.Customers.AsNoTracking().AsQueryable();
 
             foreach (var filter in _customerFilters.Where(e => e.CanFilter(request)))
             {
@@ -33,7 +33,7 @@ namespace FarmlyCore.Application.Queries.Customers
 
             var response = await baseRequest
                 .OrderByDescending(e => e.Id)
-                .ProjectTo<UserDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<CustomerDto>(_mapper.ConfigurationProvider)
                 .ToArrayAsync(cancellationToken);
 
             return response;

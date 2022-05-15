@@ -2,12 +2,12 @@
 {
     public class FindAdvertsRequest
     {
-        public FindAdvertsRequest() { }
-
-        public int[] AdvertIds { get; set; } = Array.Empty<int>();
+        public FindAdvertsRequest() { }        
 
         public int? CustomerId { get; set; }
 
         public int? CategoryId { get; set; }
+
+        public string? ProductName { get; set; }
     }
 }

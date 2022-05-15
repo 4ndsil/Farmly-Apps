@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FarmlyCore.Application.Queries.Adverts
 {
-    public class FindAdvertsQueryHandler : IQueryHandler<FindAdvertsRequest, AdvertDto[]>
+    public class FindAdvertsQueryHandler : IQueryHandler<FindAdvertsRequest, IReadOnlyList<AdvertDto>>
     {
         private readonly FarmlyEntityDbContext _farmlyEntityDataContext;
         private readonly IMapper _mapper;
@@ -22,7 +22,7 @@ namespace FarmlyCore.Application.Queries.Adverts
             _advertFilters = advertFilters ?? throw new ArgumentNullException(nameof(advertFilters));
         }
 
-        public async Task<AdvertDto[]> HandleAsync(FindAdvertsRequest request, CancellationToken cancellationToken = default)
+        public async Task<IReadOnlyList<AdvertDto>> HandleAsync(FindAdvertsRequest request, CancellationToken cancellationToken = default)
         {
             var baseRequest = _farmlyEntityDataContext.Adverts.AsNoTracking().AsQueryable();
 
@@ -31,12 +31,10 @@ namespace FarmlyCore.Application.Queries.Adverts
                 baseRequest = filter.Filter(request, baseRequest);
             }
 
-            var response = await baseRequest
+            return await baseRequest
                 .OrderByDescending(e => e.Id)
                 .ProjectTo<AdvertDto>(_mapper.ConfigurationProvider)
                 .ToArrayAsync(cancellationToken);
-
-            return response;
         }
     }
 }

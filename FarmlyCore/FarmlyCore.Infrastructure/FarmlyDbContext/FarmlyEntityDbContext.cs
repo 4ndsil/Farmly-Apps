@@ -1,5 +1,4 @@
-﻿using FarmlyCore.Infrastructure.Entites;
-using FarmlyCore.Infrastructure.Entities;
+﻿using FarmlyCore.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FarmlyCore.Infrastructure.FarmlyDbContext
@@ -27,12 +26,6 @@ namespace FarmlyCore.Infrastructure.FarmlyDbContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(FarmlyEntityDbContext).Assembly);
-
-            foreach (var entity in modelBuilder.Model.GetEntityTypes())
-                foreach (var key in entity.GetForeignKeys())
-                {
-                    Console.WriteLine(key.ToString());
-                }
         }
     }
 }

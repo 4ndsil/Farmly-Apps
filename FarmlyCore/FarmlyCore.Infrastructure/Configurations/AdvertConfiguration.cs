@@ -15,7 +15,11 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(k => k.Id).ValueGeneratedOnAdd();
 
             entity.Property(p => p.Description)
-                .HasColumnName("Description");                
+                .HasColumnName("Description");
+
+            entity.Property(p => p.Available)
+               .HasColumnName("Available")
+               .IsRequired();
 
             entity.Property(p => p.PriceType)
                 .HasColumnName("PriceType");
@@ -23,33 +27,36 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(p => p.TotalQuantity)
                 .HasColumnName("TotalQuantity");
 
+            entity.Property(p => p.Price)
+               .HasColumnName("TotalPrice");
+
             entity.Property(p => p.ProductName)
                 .HasColumnName("ProductName");
 
             entity.Property(p => p.FkCategoryId)
-                .HasColumnName("FKCategoryId")
+                .HasColumnName("FKCategoryID")
                 .IsRequired();
 
             entity.Property(p => p.FkPickupPointId)
-                .HasColumnName("FKCustomerAddressId")
+                .HasColumnName("FKPickupPointID")
                 .IsRequired();
 
             entity.Property(p => p.FkSellerId)
-                .HasColumnName("FKSellerCustomerId")
+                .HasColumnName("FKSellerID")
                 .IsRequired();
 
             entity.HasOne(p => p.Category)
                 .WithOne()
-                .HasForeignKey<Category>(p => p.Id)
+                .HasForeignKey<Advert>(p => p.FkCategoryId)
                 .IsRequired();
 
-             entity.HasOne(p => p.PickupPoint)
-                .WithOne()
-                .HasForeignKey<Advert>(p => p.FkPickupPointId);
+            entity.HasOne(p => p.PickupPoint)
+               .WithOne()
+               .HasForeignKey<Advert>(p => p.FkPickupPointId);
 
             entity.HasOne(p => p.Seller)
                 .WithOne()
-                .HasForeignKey<Customer>(p => p.Id)
+                .HasForeignKey<Advert>(p => p.FkSellerId)
                 .IsRequired();
         }
     }

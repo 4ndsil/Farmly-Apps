@@ -9,5 +9,4 @@ namespace FarmlyCore.Application.Queries.Orders.QueryFilters
 
         IQueryable<Order> Filter(FindOrdersRequest request, IQueryable<Order> Orders);
     }
-
 }

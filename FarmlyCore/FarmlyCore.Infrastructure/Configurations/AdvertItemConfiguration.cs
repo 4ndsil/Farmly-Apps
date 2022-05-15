@@ -1,5 +1,4 @@
-﻿using FarmlyCore.Infrastructure.Entites;
-using FarmlyCore.Infrastructure.Entities;
+﻿using FarmlyCore.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -21,9 +20,12 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(p => p.Quantity)
                 .HasColumnName("Quantity");
 
+            entity.Property(p => p.Amount)
+              .HasColumnName("Amount");
+
             entity.Property(p => p.FkAdvertId)
                 .HasColumnName("FKAdvertId")
-                .IsRequired();
+                .IsRequired();      
 
             entity.HasOne(p => p.Advert)
               .WithMany(p => p.AdvertItems)

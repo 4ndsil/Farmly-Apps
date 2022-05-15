@@ -4,10 +4,10 @@
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public double Quantity { get; set; }
-        public double Price { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal Price { get; set; }
         public OrderPriceTypeDto PriceType { get; set; }
-        public int AdvertId { get; set; }
+        public int AdvertItemId { get; set; }
         public int OrderId { get; set; }
     }
 

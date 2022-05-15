@@ -8,7 +8,9 @@ namespace FarmlyCore.Application.MapperProfile
     {
         public CategoryProfile()
         {
-            CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Category, CategoryDto>();
+
+            CreateMap<CategoryDto, Category>();
         }
     }
 }

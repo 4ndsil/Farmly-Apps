@@ -8,6 +8,7 @@ C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\bin\Debug\netcoreapp2
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\bin\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.runtimeconfig.dev.json
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\bin\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.dll
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\bin\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.pdb
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\obj\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.csproj.AssemblyReference.cache
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\obj\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\obj\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.AssemblyInfoInputs.cache
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\obj\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.AssemblyInfo.cs
@@ -15,4 +16,3 @@ C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\obj\Debug\netcoreapp2
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\obj\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.dll
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\obj\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.pdb
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\obj\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.genruntimeconfig.cache
-C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api.Tests\obj\Debug\netcoreapp2.1\FarmlyCore.Api.Tests.csproj.AssemblyReference.cache

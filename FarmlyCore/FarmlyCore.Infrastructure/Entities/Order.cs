@@ -9,8 +9,8 @@
         public DateTime PlacementDate { get; set; }
         public DateTime DeliveryDate { get; set; }
         public bool? Delivered { get; set; }
-        public double TotalPrice { get; set; }
-        public double TotalQuantity { get; set; }                
+        public decimal TotalPrice { get; set; }
+        public decimal TotalQuantity { get; set; }                
         public int FkBuyerId { get; set; }
         public int FkDeliveryPointId { get; set; }        
         public Customer Buyer { get; set; }

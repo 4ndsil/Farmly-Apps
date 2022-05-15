@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FarmlyCore.Application.DTOs.Adverts;
 using FarmlyCore.Application.Requests.Adverts;
-using FarmlyCore.Infrastructure.Entites;
 using FarmlyCore.Infrastructure.Entities;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;
@@ -46,7 +45,8 @@ namespace FarmlyCore.Application.Queries.Adverts
             var advert = new Advert
             {
                 Category = category,
-                Description = request.Advert.Description,                
+                Description = request.Advert.Description,
+                Available = true,
                 PriceType = (AdvertPriceType)request.Advert.PriceType,
                 ProductName = request.Advert.ProductName,
                 TotalQuantity = request.Advert.TotalQuantity,
@@ -54,7 +54,7 @@ namespace FarmlyCore.Application.Queries.Adverts
                 FkSellerId = seller.Id,
                 FkCategoryId = category.Id,
                 PickupPoint = pickupPoint,
-                FkPickupPointId = pickupPoint.Id                
+                FkPickupPointId = pickupPoint.Id
             };
 
             var advertItems = new List<AdvertItem>();
@@ -64,7 +64,8 @@ namespace FarmlyCore.Application.Queries.Adverts
                 advertItems.AddRange(request.Advert.AdvertItems.Select(e => new AdvertItem()
                 {
                     Price = e.Price,
-                    Quantity = e.Quantity
+                    Quantity = e.Quantity,
+                    Amount = e.Amount
                 }));
             }
 

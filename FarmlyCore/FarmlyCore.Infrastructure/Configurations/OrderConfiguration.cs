@@ -32,20 +32,20 @@ namespace FarmlyCore.Infrastructure.Configurations
                 .HasColumnName("Delivered");
 
             entity.Property(e => e.FkBuyerId)
-                .HasColumnName("FKBuyerCustomerID");
+                .HasColumnName("FKBuyerID");
 
             entity.Property(e => e.FkDeliveryPointId)
                 .HasColumnName("FKDeliveryPointID");
 
-            //entity.HasOne(e => e.Buyer)
-            //    .WithOne()
-            //    .HasForeignKey<Customer>(e => e.Id)
-            //    .IsRequired();
+            entity.HasOne(e => e.Buyer)
+                .WithOne()
+                .HasForeignKey<Order>(e => e.FkBuyerId)
+                .IsRequired();
 
-            //entity.HasOne(e => e.DeliveryPoint)
-            //    .WithOne()
-            //    .HasForeignKey<CustomerAddress>(e => e.Id)
-            //    .IsRequired();
+            entity.HasOne(e => e.DeliveryPoint)
+                .WithOne()
+                .HasForeignKey<Order>(e => e.FkDeliveryPointId)
+                .IsRequired();
         }
     }
 }

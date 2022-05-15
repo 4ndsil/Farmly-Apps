@@ -5,8 +5,8 @@ namespace FarmlyCore.Application.Queries.Customers.QueryFilters
 {
     public interface ICustomerFilter
     {
-        bool CanFilter(FindCustomerUsersRequest request);
+        bool CanFilter(FindCustomersRequest request);
 
-        IQueryable<User> Filter(FindCustomerUsersRequest request, IQueryable<User> users);
+        IQueryable<Customer> Filter(FindCustomersRequest request, IQueryable<Customer> users);
     }
 }

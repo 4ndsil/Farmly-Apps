@@ -32,13 +32,10 @@ namespace FarmlyCore.Infrastructure.Configurations
                 .HasColumnName("FKCustomerId")
                 .IsRequired();
 
-            // entity.HasOne(e => e.Customer)
-            //    .WithOne(ad => ad.Student)
-            //    .HasForeignKey<StudentAddress>(ad => ad.AddressOfStudentId);
-
-            //entity.HasOne(e => e.Customer)
-            //    .HasForeignKey(e => e.FkCustomerId)
-            //    .IsRequired();
+            entity.HasOne(e => e.Customer)
+                .WithOne()
+                .HasForeignKey<User>(e => e.FkCustomerId)
+                .IsRequired();
         }
     }
 }
