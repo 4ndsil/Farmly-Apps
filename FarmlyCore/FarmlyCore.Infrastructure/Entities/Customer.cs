@@ -12,7 +12,7 @@ namespace FarmlyCore.Infrastructure.Entities
         public CustomerType CustomerType { get; set; }
         public string BankGiro { get; set; }
         public string OrgNumber { get; set; }
-        public ICollection<CustomerAddress> CustomerAddresses { get; set; } = new List<CustomerAddress>();
+        public ICollection<CustomerAddress> CustomerAddresses { get; set; }
     }
 
     public enum CustomerType

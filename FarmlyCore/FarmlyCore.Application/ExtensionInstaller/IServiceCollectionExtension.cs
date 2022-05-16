@@ -35,6 +35,8 @@ namespace FarmlyCore.Application.Extensions
             services.AddTransient<IQueryHandler<FindAdvertsRequest, IReadOnlyList<AdvertDto>>, FindAdvertsQueryHandler>();
             services.AddTransient<IQueryHandler<CreateAdvertRequest, AdvertDto>, CreateAdvertQueryHandler>();
             services.AddTransient<IQueryHandler<UpdateAdvertRequest, AdvertDto>, UpdateAdvertQueryHandler>();
+            services.AddTransient<IQueryHandler<CreateAdvertItemRequest, AdvertItemDto>, CreateAdvertItemQueryHandler>();
+            services.AddTransient<IQueryHandler<DeleteAdvertItemRequest, DeleteAdvertItemResult>, DeleteAdvertItemQueryHandler>();
 
             services.AddTransient<IQueryHandler<GetOrderRequest, OrderDto>, GetOrderQueryHandler>();
             services.AddTransient<IQueryHandler<FindOrdersRequest, IReadOnlyList<OrderDto>>, FindOrdersQueryHandler>();

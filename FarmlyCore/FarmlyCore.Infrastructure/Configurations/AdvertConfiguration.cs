@@ -27,8 +27,8 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(p => p.TotalQuantity)
                 .HasColumnName("TotalQuantity");
 
-            entity.Property(p => p.Price)
-               .HasColumnName("TotalPrice");
+            //entity.Property(p => p.Price)
+            //   .HasColumnName("Price");
 
             entity.Property(p => p.ProductName)
                 .HasColumnName("ProductName");
