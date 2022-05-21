@@ -70,3 +70,13 @@ C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\refint\Far
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.pdb
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.genruntimeconfig.cache
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\ref\FarmlyCore.Api.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\Namotion.Reflection.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\NJsonSchema.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\NJsonSchema.Yaml.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\NSwag.Annotations.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\NSwag.AspNetCore.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\NSwag.Core.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\NSwag.Core.Yaml.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\NSwag.Generation.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\NSwag.Generation.AspNetCore.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\YamlDotNet.dll
