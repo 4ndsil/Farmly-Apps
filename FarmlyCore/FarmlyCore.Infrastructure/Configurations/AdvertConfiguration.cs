@@ -33,6 +33,9 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(p => p.ProductName)
                 .HasColumnName("ProductName");
 
+            entity.Property(p => p.InsertDate)
+                .HasColumnName("InsertDate");
+
             entity.Property(p => p.FkCategoryId)
                 .HasColumnName("FKCategoryID")
                 .IsRequired();

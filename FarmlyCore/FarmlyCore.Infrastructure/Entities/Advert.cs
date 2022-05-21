@@ -9,6 +9,7 @@ namespace FarmlyCore.Infrastructure.Entities
         public string ProductName { get; set; }
         public decimal TotalQuantity { get; set; }
         public decimal? Price { get; set; }
+        public DateTime InsertDate { get; set; }
         public AdvertPriceType PriceType { get; set; }
         public string Description { get; set; }
         public bool Available { get; set; }
@@ -23,8 +24,13 @@ namespace FarmlyCore.Infrastructure.Entities
 
     public enum AdvertPriceType
     {
-        Kg,
-        Gram,
-        Styck
+        kg,
+        hg,
+        g,
+        l,
+        dl,
+        cl,
+        ml,
+        st,
     }
 }

@@ -11,6 +11,7 @@ namespace FarmlyCore.Application.DTOs.Order
         public decimal TotalPrice { get; set; }
         public DateTime PlacementDate { get; set; }
         public DateTime DeliveryDate { get; set; }
+        public DateTime EstimatedDeliveryDate { get; set; }
         public bool? Delivered { get; set; }
         public CustomerAddressDto DeliveryPoint { get; set; }
         public int BuyerId { get; set; }

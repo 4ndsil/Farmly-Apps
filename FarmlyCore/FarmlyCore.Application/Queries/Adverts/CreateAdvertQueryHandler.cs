@@ -50,6 +50,8 @@ namespace FarmlyCore.Application.Queries.Adverts
                 PriceType = (AdvertPriceType)request.Advert.PriceType,
                 ProductName = request.Advert.ProductName,
                 TotalQuantity = request.Advert.TotalQuantity,
+                InsertDate = DateTime.Now,
+                Price = request.Advert.Price,
                 Seller = seller,
                 FkSellerId = seller.Id,
                 FkCategoryId = category.Id,

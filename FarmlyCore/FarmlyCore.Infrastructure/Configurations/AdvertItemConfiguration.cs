@@ -21,15 +21,18 @@ namespace FarmlyCore.Infrastructure.Configurations
                 .HasColumnName("Quantity");
 
             entity.Property(p => p.Amount)
-              .HasColumnName("Amount");
+                .HasColumnName("Amount");
+
+            entity.Property(p => p.InsertDate)
+                .HasColumnName("InsertDate");
 
             entity.Property(p => p.FkAdvertId)
                 .HasColumnName("FKAdvertId")
-                .IsRequired();      
+                .IsRequired();
 
             entity.HasOne(p => p.Advert)
               .WithMany(p => p.AdvertItems)
-              .HasForeignKey(p => p.FkAdvertId);              
+              .HasForeignKey(p => p.FkAdvertId);
         }
     }
 }

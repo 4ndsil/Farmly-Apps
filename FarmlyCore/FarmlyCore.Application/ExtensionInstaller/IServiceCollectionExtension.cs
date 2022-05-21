@@ -56,6 +56,8 @@ namespace FarmlyCore.Application.Extensions
             services.AddSingleton<IAdvertFilter, Queries.Adverts.QueryFilters.CustomerIdFilter>();
             services.AddSingleton<IAdvertFilter, CategoryIdFilter>();
             services.AddSingleton<IAdvertFilter, ProductNameFilter>();
+            services.AddSingleton<IAdvertFilter, PriceFilter>();
+            services.AddSingleton<IAdvertFilter, PriceTypeFilter>();
 
             services.AddSingleton<IOrderFilter, Queries.Orders.QueryFilters.CustomerIdFilter>();
 

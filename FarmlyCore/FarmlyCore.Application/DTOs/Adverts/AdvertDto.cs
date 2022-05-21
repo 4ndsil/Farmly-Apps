@@ -10,7 +10,7 @@ namespace FarmlyCore.Application.DTOs.Adverts
         public decimal? Price { get; set; }
         public AdvertPriceTypeDto PriceType { get; set; }
         public string Description { get; set; }
-        public bool Available { get; set; }        
+        public bool Available { get; set; }
         public int SellerId { get; set; }
         public ICollection<AdvertItemDto> AdvertItems { get; set; } = Array.Empty<AdvertItemDto>();
         public CustomerAddressDto PickupPoint { get; set; }
@@ -19,8 +19,13 @@ namespace FarmlyCore.Application.DTOs.Adverts
 
     public enum AdvertPriceTypeDto
     {
-        Kg,
-        Gram,
-        Styck
+        kg,
+        hg,
+        g,        
+        l,
+        dl,
+        cl,
+        ml,
+        st,
     }
 }

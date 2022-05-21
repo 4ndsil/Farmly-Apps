@@ -15,6 +15,7 @@ namespace FarmlyCore.Infrastructure.Entities
         public int? Amount { get; set; }
         public decimal Price { get; set; }
         public int FkAdvertId { get; set; }
+        public DateTime InsertDate { get; set; }
         public Advert Advert { get; set; }
     }
 }

@@ -33,6 +33,7 @@ namespace FarmlyCore.Application.Queries.Adverts
                 Amount = request.AdvertItem.Amount,
                 Quantity = request.AdvertItem.Quantity,
                 Price = request.AdvertItem.Price,
+                InsertDate = DateTime.Now,
                 FkAdvertId = advert.Id,
             };
 

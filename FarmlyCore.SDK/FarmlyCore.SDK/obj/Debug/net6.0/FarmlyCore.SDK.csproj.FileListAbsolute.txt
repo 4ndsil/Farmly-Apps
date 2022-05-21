@@ -1,0 +1,12 @@
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\bin\Debug\net6.0\FarmlyCore.SDK.deps.json
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\bin\Debug\net6.0\FarmlyCore.SDK.dll
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\bin\Debug\net6.0\FarmlyCore.SDK.pdb
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\obj\Debug\net6.0\FarmlyCore.SDK.csproj.AssemblyReference.cache
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\obj\Debug\net6.0\FarmlyCore.SDK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\obj\Debug\net6.0\FarmlyCore.SDK.AssemblyInfoInputs.cache
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\obj\Debug\net6.0\FarmlyCore.SDK.AssemblyInfo.cs
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\obj\Debug\net6.0\FarmlyCore.SDK.csproj.CoreCompileInputs.cache
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\obj\Debug\net6.0\FarmlyCore.SDK.dll
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\obj\Debug\net6.0\refint\FarmlyCore.SDK.dll
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\obj\Debug\net6.0\FarmlyCore.SDK.pdb
+C:\Development\Farmly-Apps\FarmlyCore.SDK\FarmlyCore.SDK\obj\Debug\net6.0\ref\FarmlyCore.SDK.dll
