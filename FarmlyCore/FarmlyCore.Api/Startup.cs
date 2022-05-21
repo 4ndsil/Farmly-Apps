@@ -67,7 +67,10 @@ namespace FarmlyCore.Api
 
             services.AddSingleton(mapper);
 
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(settings =>
+            {
+                settings.Title = "FarmlyCore";
+            });
 
             //Log invalid model state
             services.PostConfigure<ApiBehaviorOptions>(options =>
@@ -96,7 +99,7 @@ namespace FarmlyCore.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseOpenApi();                  
+                app.UseOpenApi();
                 app.UseSwaggerUi3();
             }
             else
