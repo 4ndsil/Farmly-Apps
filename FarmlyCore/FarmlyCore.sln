@@ -14,7 +14,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarmlyCore.Infrastructure", "FarmlyCore.Infrastructure\FarmlyCore.Infrastructure.csproj", "{A2EB841B-D7D4-4BDC-8ADE-C7168F2BFF6E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarmlyCore.Application", "FarmlyCore.Application\FarmlyCore.Application.csproj", "{E9D90681-495B-4D01-ACE4-4D100645A5E8}"
-EndProject
+EndProject 
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
