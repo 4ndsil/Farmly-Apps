@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace FarmlyCore.Api.ControllerEndpoints
 {
     [ApiController]
-    [Route("advert-access/advert")]
+    [Route("api/[controller]")]
     public class AdvertController : Controller
     {
         private readonly ILogger<AdvertController> _logger;
@@ -24,6 +24,11 @@ namespace FarmlyCore.Api.ControllerEndpoints
         public AdvertController(ILogger<AdvertController> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+        [HttpGet]
+           public string Get()
+        {
+           return "Hej Andreas";
         }
 
         [HttpGet("{advertId:int:min(1)}")]
