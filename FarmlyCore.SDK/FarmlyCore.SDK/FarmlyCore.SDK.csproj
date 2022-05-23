@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>FarmlyCore.SDK</PackageId>
+    <Company>Farmly</Company>
+    <Authors>Farmly</Authors>
   </PropertyGroup>
 
   <ItemGroup>
