@@ -5,6 +5,7 @@ using FarmlyCore.Infrastructure.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NSwag.Annotations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,6 +17,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
 {
     [ApiController]
     [Route("order-access/order")]
+    [OpenApiTag("order")]
     public class OrderController : Controller
     {
         private readonly ILogger<OrderController> _logger;
