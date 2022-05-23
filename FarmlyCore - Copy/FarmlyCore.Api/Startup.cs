@@ -140,7 +140,7 @@ namespace FarmlyCore.Api
                 settings.Path = "/docs";
                 settings.DocumentPath = "/docs/openapi.json";
             });
-            app.UseDeveloperExceptionPage();
+            app.UseDeveloperExceptionPage();         
 
             app.UseEndpoints(endpoints =>
             {
