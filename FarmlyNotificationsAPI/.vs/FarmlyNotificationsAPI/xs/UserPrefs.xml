@@ -1,0 +1,37 @@
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{8661CBD8-9B09-4ADC-9BB5-C3862D53723B}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="FarmlyNotificationsAPI/Authentication/ApiKeyAuthOptions.cs" Line="12" Column="8" />
+      <File FileName="FarmlyNotificationsAPI/Authentication/ApiKeyAuthHandler.cs" />
+      <File FileName="FarmlyNotificationsAPI/Authentication/ApiKeyAuthenticationBuilderExtensions.cs" Line="16" Column="1" />
+      <File FileName="FarmlyNotificationsAPI/Startup.cs" Line="31" Column="1" />
+      <File FileName="FarmlyNotificationsAPI/Models/PushTemplates.cs" />
+      <File FileName="FarmlyNotificationsAPI/Models/DeviceInstallation.cs" />
+      <File FileName="FarmlyNotificationsAPI/Models/NotificationRequest.cs" />
+      <File FileName="FarmlyNotificationsAPI/Services/INotificationService.cs" Line="1" Column="1" />
+      <File FileName="FarmlyNotificationsAPI/Services/NotificationHubsService.cs" Line="1" Column="1" />
+      <File FileName="FarmlyNotificationsAPI/Controllers/NotificationsController.cs" Line="29" Column="18" />
+      <File FileName="FarmlyNotificationsAPI/Properties/launchSettings.json" Line="20" Column="32" />
+      <File FileName="FarmlyNotificationsAPI/Program.cs" Line="16" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FarmlyNotificationsAPI" expanded="True">
+            <Node name="FarmlyNotificationsAPI" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/Controllers/NotificationsController.cs" relfile="FarmlyNotificationsAPI/Controllers/NotificationsController.cs" line="22" column="1" />
+      <Breakpoint file="/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/Controllers/NotificationsController.cs" relfile="FarmlyNotificationsAPI/Controllers/NotificationsController.cs" line="24" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.FarmlyNotificationsAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

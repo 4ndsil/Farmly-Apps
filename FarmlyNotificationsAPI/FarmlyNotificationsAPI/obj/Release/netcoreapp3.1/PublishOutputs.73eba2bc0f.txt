@@ -1,0 +1,15 @@
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\FarmlyNotificationsAPI.exe
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\FarmlyNotificationsAPI.dll
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\FarmlyNotificationsAPI.deps.json
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\FarmlyNotificationsAPI.runtimeconfig.json
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\FarmlyNotificationsAPI.pdb
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Azure.NotificationHubs.dll
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Extensions.Options.dll
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Extensions.Primitives.dll
+C:\Development\Farmly-Apps\FarmlyNotificationsAPI\FarmlyNotificationsAPI\obj\Release\netcoreapp3.1\PubTmp\Out\Newtonsoft.Json.dll

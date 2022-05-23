@@ -1,0 +1,14 @@
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/appsettings.Development.json
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/appsettings.json
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/FarmlyNotificationsAPI.dll
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/FarmlyNotificationsAPI.deps.json
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/FarmlyNotificationsAPI.runtimeconfig.json
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/FarmlyNotificationsAPI.pdb
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/Microsoft.Azure.NotificationHubs.dll
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/Microsoft.Extensions.Caching.Abstractions.dll
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/Microsoft.Extensions.Caching.Memory.dll
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/Microsoft.Extensions.Options.dll
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/Microsoft.Extensions.Primitives.dll
+/Users/fredrikbirgersson/FarmlyNotificationsAPI/FarmlyNotificationsAPI/obj/Release/netcoreapp3.1/PubTmp/Out/Newtonsoft.Json.dll
