@@ -3,7 +3,7 @@ using FarmlyCore.Infrastructure.Entities;
 
 namespace FarmlyCore.Application.Queries.Customers.QueryFilters
 {
-    public class CustomerNameFilter : ICustomerFilter
+    public class CompanyNameFilter : ICustomerFilter
     {
         public bool CanFilter(FindCustomersRequest request) => !string.IsNullOrEmpty(request.CompanyName);
 

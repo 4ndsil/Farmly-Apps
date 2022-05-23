@@ -131,12 +131,15 @@ namespace FarmlyCore.Api
                 }));
             }
 
-            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
+            app.UseSwaggerUi3(settings =>
+            {
+                settings.Path = "/docs";
+                settings.DocumentPath = "/docs/openapi.json";
+            });
             app.UseDeveloperExceptionPage();
 
             app.UseEndpoints(endpoints =>
