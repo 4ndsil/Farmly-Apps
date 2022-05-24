@@ -1,112 +1,142 @@
 ﻿{
   "x-generator": "NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))",
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "title": "FarmlyCore",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "https://localhost:5001"
+    }
+  ],
   "paths": {
     "/advert-access/advert/{advertId}": {
       "get": {
         "tags": [
-          "Advert"
+          "advert"
         ],
         "operationId": "Advert_GetAdvert",
         "parameters": [
           {
-            "type": "integer",
             "name": "advertId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
           }
         ],
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/AdvertDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvertDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
       },
       "patch": {
         "tags": [
-          "Advert"
+          "advert"
         ],
         "operationId": "Advert_UpdateAdvert",
-        "consumes": [
-          "application/json-patch+json"
-        ],
         "parameters": [
           {
-            "type": "integer",
             "name": "advertId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
-          },
-          {
-            "name": "patchDocument",
-            "in": "body",
-            "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Operation"
-              }
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
             },
-            "x-nullable": false
+            "x-position": 1
           }
         ],
+        "requestBody": {
+          "x-name": "patchDocument",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/AdvertDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvertDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "400": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "415": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "422": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -115,42 +145,43 @@
     "/advert-access/advert/find": {
       "post": {
         "tags": [
-          "Advert"
+          "advert"
         ],
         "operationId": "Advert_FindAdverts",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FindAdvertsRequest"
-            },
-            "x-nullable": false
-          }
-        ],
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FindAdvertsRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AdvertDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AdvertDto"
+                  }
+                }
               }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -159,51 +190,50 @@
     "/advert-access/advert": {
       "post": {
         "tags": [
-          "Advert"
+          "advert"
         ],
         "operationId": "Advert_CreateAdvert",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "advert",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CreateAdvertDto"
-            },
-            "x-nullable": false
-          }
-        ],
+        "requestBody": {
+          "x-name": "advert",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdvertDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
         "responses": {
           "201": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/AdvertDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvertDto"
+                }
+              }
             }
           },
           "400": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "403": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "500": {
@@ -215,61 +245,64 @@
     "/advert-access/advert/{advertId}/advertItems": {
       "post": {
         "tags": [
-          "Advert"
+          "advert"
         ],
         "operationId": "Advert_CreateAdvertItem",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
         "parameters": [
           {
-            "type": "integer",
             "name": "advertId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
-          },
-          {
-            "name": "advertItem",
-            "in": "body",
-            "required": true,
             "schema": {
-              "$ref": "#/definitions/CreateAdvertItemDto"
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
             },
-            "x-nullable": false
+            "x-position": 1
           }
         ],
+        "requestBody": {
+          "x-name": "advertItem",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdvertItemDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
         "responses": {
           "201": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/AdvertItemDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvertItemDto"
+                }
+              }
             }
           },
           "400": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "403": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "500": {
@@ -281,26 +314,30 @@
     "/advert-access/advert/{advertId}/advertItems/{advertItemId}": {
       "delete": {
         "tags": [
-          "Advert"
+          "advert"
         ],
         "operationId": "Advert_DeleteAdvertItem",
         "parameters": [
           {
-            "type": "integer",
             "name": "advertItemId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
           },
           {
-            "type": "string",
             "name": "advertId",
             "in": "path",
             "required": true,
-            "x-nullable": false
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
           }
         ],
         "responses": {
@@ -308,10 +345,13 @@
             "description": ""
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -320,34 +360,42 @@
     "/category-access/category/{categoryId}": {
       "get": {
         "tags": [
-          "Category"
+          "category"
         ],
         "operationId": "Category_GetCategory",
         "parameters": [
           {
-            "type": "integer",
             "name": "categoryId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
           }
         ],
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/CategoryDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -356,25 +404,31 @@
     "/category-access/category": {
       "get": {
         "tags": [
-          "Category"
+          "category"
         ],
         "operationId": "Category_GetCategories",
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/CategoryDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
               }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -383,104 +437,129 @@
     "/customer-access/customer/{customerId}": {
       "get": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_GetCustomer",
         "parameters": [
           {
-            "type": "integer",
             "name": "customerId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
           }
         ],
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/CustomerDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
       },
       "patch": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_UpdateCustomer",
-        "consumes": [
-          "application/json-patch+json"
-        ],
         "parameters": [
           {
-            "type": "integer",
             "name": "customerId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
-          },
-          {
-            "name": "patchDocument",
-            "in": "body",
-            "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Operation"
-              }
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
             },
-            "x-nullable": false
+            "x-position": 1
           }
         ],
+        "requestBody": {
+          "x-name": "patchDocument",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/CustomerDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "400": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "415": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "422": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -489,42 +568,43 @@
     "/customer-access/customer/find": {
       "post": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_FindCustomers",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FindCustomersRequest"
-            },
-            "x-nullable": false
-          }
-        ],
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FindCustomersRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/CustomerDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomerDto"
+                  }
+                }
               }
             }
           },
           "400": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -533,46 +613,50 @@
     "/customer-access/customer": {
       "post": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_CreateCustomer",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "parameters": [
-          {
-            "name": "customer",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CustomerDto"
-            },
-            "x-nullable": false
-          }
-        ],
+        "requestBody": {
+          "x-name": "customer",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
         "responses": {
           "201": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/CustomerDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerDto"
+                }
+              }
             }
           },
           "400": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "403": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "500": {
@@ -584,90 +668,106 @@
     "/customer-access/customer/{customerId}/addresses": {
       "get": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_GetCustomerAddresses",
         "parameters": [
           {
-            "type": "integer",
             "name": "customerId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
           }
         ],
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/CustomerDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
       },
       "post": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_CreateCustomerAddress",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
         "parameters": [
           {
-            "name": "customerAddress",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CustomerAddressDto"
-            },
-            "x-nullable": false
-          },
-          {
-            "type": "integer",
             "name": "customerId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
+            },
+            "x-position": 2
           }
         ],
+        "requestBody": {
+          "x-name": "customerAddress",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerAddressDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
         "responses": {
           "201": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/CustomerAddressDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerAddressDto"
+                }
+              }
             }
           },
           "400": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "403": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "500": {
@@ -679,80 +779,99 @@
     "/customer-access/customer/{customerId}/addresses/{customerAddressId}": {
       "patch": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_UpdateCustomerAddress",
-        "consumes": [
-          "application/json-patch+json"
-        ],
         "parameters": [
           {
-            "type": "integer",
             "name": "customerId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
           },
           {
-            "type": "integer",
             "name": "customerAddressId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
-          },
-          {
-            "name": "patchDocument",
-            "in": "body",
-            "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Operation"
-              }
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
             },
-            "x-nullable": false
+            "x-position": 2
           }
         ],
+        "requestBody": {
+          "x-name": "patchDocument",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          },
+          "required": true,
+          "x-position": 3
+        },
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/CustomerAddressDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerAddressDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "400": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "415": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "422": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -761,37 +880,48 @@
     "/customer-access/customer/{customerId}/users": {
       "get": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_GetUser",
         "parameters": [
           {
-            "type": "string",
             "name": "password",
             "in": "query",
-            "x-nullable": true
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
           },
           {
-            "type": "string",
             "name": "customerId",
             "in": "path",
             "required": true,
-            "x-nullable": false
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
           }
         ],
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/UserDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -800,42 +930,43 @@
     "/customer-access/customer/find-users": {
       "post": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_FindOrder",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FindUsersRequest"
-            },
-            "x-nullable": false
-          }
-        ],
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FindUsersRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/UserDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDto"
+                  }
+                }
               }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -844,87 +975,108 @@
     "/customer-access/customer/{customerId}/users/{userId}": {
       "patch": {
         "tags": [
-          "Customer"
+          "customer"
         ],
         "operationId": "Customer_UpdateUser",
-        "consumes": [
-          "application/json-patch+json"
-        ],
         "parameters": [
           {
-            "type": "integer",
             "name": "customerId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
           },
           {
-            "type": "integer",
             "name": "customerAddressId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
-          },
-          {
-            "name": "patchDocument",
-            "in": "body",
-            "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Operation"
-              }
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
             },
-            "x-nullable": false
+            "x-position": 2
           },
           {
-            "type": "string",
             "name": "userId",
             "in": "path",
             "required": true,
-            "x-nullable": false
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 4
           }
         ],
+        "requestBody": {
+          "x-name": "patchDocument",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          },
+          "required": true,
+          "x-position": 3
+        },
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/UserDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "400": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "415": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           },
           "422": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -933,34 +1085,42 @@
     "/order-access/order/{orderId}": {
       "get": {
         "tags": [
-          "Order"
+          "order"
         ],
         "operationId": "Order_GetOrder",
         "parameters": [
           {
-            "type": "integer",
             "name": "orderId",
             "in": "path",
             "required": true,
-            "format": "int32",
-            "maximum": 2147483647.0,
-            "minimum": 1.0,
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 2147483647.0,
+              "minimum": 1.0
+            },
+            "x-position": 1
           }
         ],
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/OrderDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDto"
+                }
+              }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
@@ -969,601 +1129,590 @@
     "/order-access/order/find": {
       "post": {
         "tags": [
-          "Order"
+          "order"
         ],
         "operationId": "Order_FindOrders",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FindOrdersRequest"
-            },
-            "x-nullable": false
-          }
-        ],
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FindOrdersRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/OrderDto"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrderDto"
+                  }
+                }
               }
             }
           },
           "404": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
             }
           }
         }
       }
     }
   },
-  "definitions": {
-    "AdvertDto": {
-      "type": "object",
-      "required": [
-        "id",
-        "productName",
-        "totalQuantity",
-        "priceType",
-        "description",
-        "available",
-        "sellerId",
-        "advertItems",
-        "pickupPoint",
-        "category"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "productName": {
-          "type": "string"
-        },
-        "totalQuantity": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "price": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "priceType": {
-          "$ref": "#/definitions/AdvertPriceTypeDto"
-        },
-        "description": {
-          "type": "string"
-        },
-        "available": {
-          "type": "boolean"
-        },
-        "sellerId": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "advertItems": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AdvertItemDto"
-          }
-        },
-        "pickupPoint": {
-          "$ref": "#/definitions/CustomerAddressDto"
-        },
-        "category": {
-          "$ref": "#/definitions/CategoryDto"
-        }
-      }
-    },
-    "AdvertPriceTypeDto": {
-      "type": "string",
-      "description": "",
-      "x-enumNames": [
-        "kg",
-        "hg",
-        "g",
-        "l",
-        "dl",
-        "cl",
-        "ml",
-        "st"
-      ],
-      "enum": [
-        "kg",
-        "hg",
-        "g",
-        "l",
-        "dl",
-        "cl",
-        "ml",
-        "st"
-      ]
-    },
-    "AdvertItemDto": {
-      "type": "object",
-      "required": [
-        "id",
-        "quantity",
-        "price",
-        "advertId"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "quantity": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "amount": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "price": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "advertId": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "CustomerAddressDto": {
-      "type": "object",
-      "required": [
-        "id",
-        "street",
-        "city",
-        "state",
-        "zip",
-        "fkCustomerId"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "street": {
-          "type": "string"
-        },
-        "city": {
-          "type": "string"
-        },
-        "state": {
-          "type": "string"
-        },
-        "zip": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "fkCustomerId": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "CategoryDto": {
-      "type": "object",
-      "required": [
-        "id",
-        "categoryName"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "categoryName": {
-          "type": "string"
-        }
-      }
-    },
-    "ProblemDetails": {
-      "type": "object",
-      "additionalProperties": {},
-      "required": [
-        "extensions"
-      ],
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "status": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "detail": {
-          "type": "string"
-        },
-        "instance": {
-          "type": "string"
-        },
-        "extensions": {
-          "type": "object",
-          "additionalProperties": {}
-        }
-      }
-    },
-    "FindAdvertsRequest": {
-      "type": "object",
-      "properties": {
-        "customerId": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "categoryId": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "productName": {
-          "type": "string"
-        },
-        "priceType": {
-          "$ref": "#/definitions/AdvertPriceTypeDto"
-        },
-        "price": {
-          "type": "number",
-          "format": "decimal"
-        }
-      }
-    },
-    "CreateAdvertDto": {
-      "type": "object",
-      "required": [
-        "productName",
-        "totalQuantity",
-        "price",
-        "priceType",
-        "description",
-        "available",
-        "categoryId",
-        "sellerId",
-        "pickupPointId",
-        "advertItems"
-      ],
-      "properties": {
-        "productName": {
-          "type": "string"
-        },
-        "totalQuantity": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "price": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "priceType": {
-          "$ref": "#/definitions/AdvertPriceTypeDto"
-        },
-        "description": {
-          "type": "string"
-        },
-        "available": {
-          "type": "boolean"
-        },
-        "categoryId": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "sellerId": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "pickupPointId": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "advertItems": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CreateAdvertItemDto"
+  "components": {
+    "schemas": {
+      "AdvertDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productName": {
+            "type": "string"
+          },
+          "totalQuantity": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "price": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          },
+          "priceType": {
+            "$ref": "#/components/schemas/AdvertPriceTypeDto"
+          },
+          "description": {
+            "type": "string"
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "advertItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdvertItemDto"
+            }
+          },
+          "pickupPoint": {
+            "$ref": "#/components/schemas/CustomerAddressDto"
+          },
+          "category": {
+            "$ref": "#/components/schemas/CategoryDto"
           }
         }
-      }
-    },
-    "CreateAdvertItemDto": {
-      "type": "object",
-      "required": [
-        "quantity",
-        "price",
-        "amount"
-      ],
-      "properties": {
-        "quantity": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "price": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "amount": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "Operation": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/OperationBase"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "value": {}
+      },
+      "AdvertPriceTypeDto": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "kg",
+          "hg",
+          "g",
+          "l",
+          "dl",
+          "cl",
+          "ml",
+          "st"
+        ],
+        "enum": [
+          "kg",
+          "hg",
+          "g",
+          "l",
+          "dl",
+          "cl",
+          "ml",
+          "st"
+        ]
+      },
+      "AdvertItemDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "advertId": {
+            "type": "integer",
+            "format": "int32"
           }
         }
-      ]
-    },
-    "OperationBase": {
-      "type": "object",
-      "properties": {
-        "path": {
-          "type": "string"
-        },
-        "op": {
-          "type": "string"
-        },
-        "from": {
-          "type": "string"
-        }
-      }
-    },
-    "CustomerDto": {
-      "type": "object",
-      "required": [
-        "id",
-        "companyName",
-        "email",
-        "customerType",
-        "bankGiro",
-        "orgNumber",
-        "customerAddresses"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "companyName": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "customerType": {
-          "$ref": "#/definitions/CustomerTypeDto"
-        },
-        "bankGiro": {
-          "type": "string"
-        },
-        "orgNumber": {
-          "type": "string"
-        },
-        "customerAddresses": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CustomerAddressDto"
+      },
+      "CustomerAddressDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "street": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fkCustomerId": {
+            "type": "integer",
+            "format": "int32"
           }
         }
-      }
-    },
-    "CustomerTypeDto": {
-      "type": "string",
-      "description": "",
-      "x-enumNames": [
-        "Farmer",
-        "Restaurant"
-      ],
-      "enum": [
-        "Farmer",
-        "Restaurant"
-      ]
-    },
-    "FindCustomersRequest": {
-      "type": "object",
-      "properties": {
-        "customerType": {
-          "$ref": "#/definitions/CustomerTypeDto"
-        },
-        "companyName": {
-          "type": "string"
-        }
-      }
-    },
-    "UserDto": {
-      "type": "object",
-      "required": [
-        "id",
-        "password",
-        "customerId"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "customerId": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "FindUsersRequest": {
-      "type": "object",
-      "properties": {
-        "credentials": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "customerId": {
-          "type": "string"
-        }
-      }
-    },
-    "OrderDto": {
-      "type": "object",
-      "required": [
-        "id",
-        "orderNumber",
-        "totalPrice",
-        "placementDate",
-        "deliveryDate",
-        "estimatedDeliveryDate",
-        "deliveryPoint",
-        "buyerId",
-        "orderItems"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "orderNumber": {
-          "type": "string"
-        },
-        "totalPrice": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "placementDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "deliveryDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "estimatedDeliveryDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "delivered": {
-          "type": "boolean"
-        },
-        "deliveryPoint": {
-          "$ref": "#/definitions/CustomerAddressDto"
-        },
-        "buyerId": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "orderItems": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrderItemDto"
+      },
+      "CategoryDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "categoryName": {
+            "type": "string"
           }
         }
-      }
-    },
-    "OrderItemDto": {
-      "type": "object",
-      "required": [
-        "id",
-        "productName",
-        "quantity",
-        "price",
-        "priceType",
-        "advertItemId",
-        "orderId"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32"
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "additionalProperties": {
+          "nullable": true
         },
-        "productName": {
-          "type": "string"
-        },
-        "quantity": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "price": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "priceType": {
-          "$ref": "#/definitions/OrderPriceTypeDto"
-        },
-        "advertItemId": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "orderId": {
-          "type": "integer",
-          "format": "int32"
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": {}
+          }
         }
-      }
-    },
-    "OrderPriceTypeDto": {
-      "type": "string",
-      "description": "",
-      "x-enumNames": [
-        "Kg",
-        "Gram",
-        "Styck"
-      ],
-      "enum": [
-        "Kg",
-        "Gram",
-        "Styck"
-      ]
-    },
-    "FindOrdersRequest": {
-      "type": "object",
-      "properties": {
-        "customerId": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "delivered": {
-          "type": "boolean"
-        },
-        "placementDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "estimatedDeliveryDate": {
-          "type": "string",
-          "format": "date-time"
+      },
+      "FindAdvertsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "customerId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceType": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AdvertPriceTypeDto"
+              }
+            ]
+          },
+          "price": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          }
+        }
+      },
+      "CreateAdvertDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "productName": {
+            "type": "string"
+          },
+          "totalQuantity": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "price": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "priceType": {
+            "$ref": "#/components/schemas/AdvertPriceTypeDto"
+          },
+          "description": {
+            "type": "string"
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sellerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pickupPointId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "advertItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateAdvertItemDto"
+            }
+          }
+        }
+      },
+      "CreateAdvertItemDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "quantity": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "price": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Operation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/OperationBase"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "OperationBase": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "nullable": true
+          },
+          "op": {
+            "type": "string",
+            "nullable": true
+          },
+          "from": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CustomerDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "companyName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "customerType": {
+            "$ref": "#/components/schemas/CustomerTypeDto"
+          },
+          "bankGiro": {
+            "type": "string"
+          },
+          "orgNumber": {
+            "type": "string"
+          },
+          "customerAddresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerAddressDto"
+            }
+          }
+        }
+      },
+      "CustomerTypeDto": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Farmer",
+          "Restaurant"
+        ],
+        "enum": [
+          "Farmer",
+          "Restaurant"
+        ]
+      },
+      "FindCustomersRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "customerType": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CustomerTypeDto"
+              }
+            ]
+          },
+          "companyName": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UserDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string"
+          },
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "FindUsersRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "credentials": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "OrderDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderNumber": {
+            "type": "string"
+          },
+          "totalPrice": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "placementDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deliveryDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "estimatedDeliveryDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delivered": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "deliveryPoint": {
+            "$ref": "#/components/schemas/CustomerAddressDto"
+          },
+          "buyerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItemDto"
+            }
+          }
+        }
+      },
+      "OrderItemDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productName": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "price": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "priceType": {
+            "$ref": "#/components/schemas/OrderPriceTypeDto"
+          },
+          "advertItemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "OrderPriceTypeDto": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Kg",
+          "Gram",
+          "Styck"
+        ],
+        "enum": [
+          "Kg",
+          "Gram",
+          "Styck"
+        ]
+      },
+      "FindOrdersRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "customerId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "delivered": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "placementDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "estimatedDeliveryDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
         }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "advert"
+    },
+    {
+      "name": "category"
+    },
+    {
+      "name": "customer"
+    },
+    {
+      "name": "order"
+    }
+  ]
 }

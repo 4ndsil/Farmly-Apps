@@ -41,7 +41,7 @@ namespace FarmlyCore.Api
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
 
-            services.RegisterApplicationQueryHandlers();
+            services.RegisterApplicationQueryHandlers();            
 
             var mssqlConnectionString = Configuration.GetConnectionString("Farmly_MSSQL");
 
@@ -67,9 +67,10 @@ namespace FarmlyCore.Api
 
             services.AddSingleton(mapper);
 
-            services.AddSwaggerDocument(settings =>
+            services.AddOpenApiDocument(options =>
             {
-                settings.Title = "FarmlyCore";
+                options.Version = "1.0.0";
+                options.Title = "FarmlyCore";
             });
 
             //Log invalid model state
