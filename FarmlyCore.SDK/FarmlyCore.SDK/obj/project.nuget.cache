@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hGIk9UI7PtPGMJxC+mT6Y0uINqk++xn9OZh2Aq4o3wB6HdLK/V8iH6pNmZm5LR7X78U46EirStX2a1amuoNDQw==",
+  "dgSpecHash": "KsrnL/WDJpSYtGwnl5ZIOhGEVmdI5RzpAnnp7wLZBndqCS0TFJACrC+pYigEjBwMQzfMCGza1WoEYzLsr9KUhA==",
   "success": true,
   "projectFilePath": "C:\\Development\\Farmly-Apps\\FarmlyCore.SDK\\FarmlyCore.SDK\\FarmlyCore.SDK.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\andre\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
