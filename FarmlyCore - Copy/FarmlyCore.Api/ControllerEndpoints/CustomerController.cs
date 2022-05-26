@@ -211,7 +211,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(UserDto[]), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> FindOrder(
+        public async Task<IActionResult> FindUsers(
         [FromServices] IQueryHandler<FindUsersRequest, UserDto[]> handler,
         [FromBody] FindUsersRequest request,
         CancellationToken cancellationToken)
