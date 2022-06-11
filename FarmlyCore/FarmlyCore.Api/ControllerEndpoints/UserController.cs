@@ -1,4 +1,5 @@
 ﻿using FarmlyCore.Application.DTOs.Customer;
+using FarmlyCore.Application.Queries.Users;
 using FarmlyCore.Application.Requests.Users;
 using FarmlyCore.Infrastructure.Queries;
 using Microsoft.AspNetCore.Http;
@@ -26,16 +27,36 @@ namespace FarmlyCore.Api.ControllerEndpoints
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        [HttpGet("{customerId:int:min(1)}/users")]
+        [HttpGet("{userId:int:min(1)}")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetUser(
         [FromServices] IQueryHandler<GetUserRequest, UserDto> handler,
-        string password,
+        int userId,
         CancellationToken cancellationToken)
         {
-            var response = await handler.HandleAsync(new GetUserRequest(password), cancellationToken);
+            var response = await handler.HandleAsync(new GetUserRequest(userId), cancellationToken);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(response);
+        }
+
+
+        [HttpPost]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(UserAuthenticationResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UserAuthentication(
+        [FromServices] IQueryHandler<UserAuthenticationRequest, UserAuthenticationResponse> handler,
+        [FromBody] UserAuthenticationRequest request,
+        CancellationToken cancellationToken)
+        {
+            var response = await handler.HandleAsync(request, cancellationToken);
 
             if (response == null)
             {
@@ -76,7 +97,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         public async Task<IActionResult> UpdateUser(
         [FromServices] IQueryHandler<UpdateUserRequest, UserDto> handler,
-        [Range(1, int.MaxValue), FromRoute] int userId,        
+        [Range(1, int.MaxValue), FromRoute] int userId,
         [FromBody] JsonPatchDocument<UserDto> patchDocument,
         CancellationToken cancellationToken)
         {

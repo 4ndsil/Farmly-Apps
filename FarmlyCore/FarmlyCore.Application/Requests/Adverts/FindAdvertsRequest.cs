@@ -1,10 +1,21 @@
 ﻿using FarmlyCore.Application.DTOs.Adverts;
+using System.ComponentModel.DataAnnotations;
 
 namespace FarmlyCore.Application.Requests.Adverts
 {
     public class FindAdvertsRequest
     {
-        public FindAdvertsRequest() { }
+        public FindAdvertsRequest(int pageNumber, int pageSize)
+        {
+            PageNumber = pageNumber < 1 ? 1 : pageNumber;
+            PageSize = pageSize > 10 ? 10 : pageSize;
+        }
+
+        [Range(1, int.MaxValue / 1000)]
+        public int PageNumber { get; set; }
+
+        [Range(1, 1000)]
+        public int PageSize { get; set; }
 
         public int? CustomerId { get; set; }
 

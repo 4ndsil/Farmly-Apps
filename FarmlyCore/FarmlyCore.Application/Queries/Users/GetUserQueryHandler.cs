@@ -22,7 +22,7 @@ namespace FarmlyCore.Application.Queries.Users
         {
             var user = await _farmlyEntityDataContext.Users
                 .AsNoTracking()
-                .FirstOrDefaultAsync(e => e.Password.Equals(request.Password), cancellationToken);
+                .FirstOrDefaultAsync(e => e.Id == request.UserId, cancellationToken);
 
             if (user == null)
             {

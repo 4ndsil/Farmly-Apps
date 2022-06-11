@@ -47,6 +47,24 @@ namespace FarmlyCore.Api.ControllerEndpoints
             return Ok(response);
         }
 
+        [HttpGet]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(AdvertDto[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetAllAdverts(
+        [FromServices] IQueryHandler<AdvertDto[]> handler,
+        CancellationToken cancellationToken)
+        {
+            var response = await handler.HandleAsync(cancellationToken);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(response);
+        }
+
         [HttpPost]
         [Route("find")]
         [Produces(MediaTypeNames.Application.Json)]

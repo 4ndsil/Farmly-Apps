@@ -36,11 +36,13 @@ namespace FarmlyCore.Application.Extensions
             services.AddTransient<IQueryHandler<UpdateCustomerAddressRequest, CustomerAddressDto>, UpdateCustomerAddressQueryHandler>();
             services.AddTransient<IQueryHandler<FindCustomersRequest, CustomerDto[]>, FindCustomersQueryHandler>();
 
+            services.AddTransient<IQueryHandler<FindUsersRequest, UserDto[]>, FindUsersQueryHandler>();
             services.AddTransient<IQueryHandler<GetUserRequest, UserDto>, GetUserQueryHandler>();
             services.AddTransient<IQueryHandler<UpdateUserRequest, UserDto>, UpdateUserQueryHandler>();
-            services.AddTransient<IQueryHandler<FindUsersRequest, UserDto[]>, FindUsersQueryHandler>();
+            services.AddTransient<IQueryHandler<UserAuthenticationRequest, UserAuthenticationResponse>, UserAuthenticationQueryHandler>();
 
             services.AddTransient<IQueryHandler<GetAdvertRequest, AdvertDto>, GetAdvertQueryHandler>();
+            services.AddTransient<IQueryHandler<AdvertDto[]>, GetAllAdvertsQueryHandler>();
             services.AddTransient<IQueryHandler<FindAdvertsRequest, IReadOnlyList<AdvertDto>>, FindAdvertsQueryHandler>();
             services.AddTransient<IQueryHandler<CreateAdvertRequest, AdvertDto>, CreateAdvertQueryHandler>();
             services.AddTransient<IQueryHandler<UpdateAdvertRequest, AdvertDto>, UpdateAdvertQueryHandler>();
@@ -75,13 +77,13 @@ namespace FarmlyCore.Application.Extensions
             services.AddSingleton<ICustomerFilter, CustomerTypeFilter>();
             services.AddSingleton<ICustomerFilter, CompanyNameFilter>();
 
-            services.AddSingleton<IUserFilter, UserCredentialsFilter>();
             services.AddSingleton<IUserFilter, UserEmailFilter>();
             services.AddSingleton<IUserFilter, UserCustomerIdFilter>();
 
             services.AddSingleton<IOrderFilter, Queries.Orders.QueryFilters.CustomerIdFilter>();
 
             services.AddSingleton<IOrderItemFilter, SellerIdFilter>();
+            services.AddSingleton<IOrderItemFilter, ResponseStatusFilter>();
 
             return services;
         }

@@ -8,7 +8,7 @@
         public CustomerTypeDto CustomerType { get; set; }
         public string BankGiro { get; set; }
         public string OrgNumber { get; set; }        
-        public ICollection<CustomerAddressDto> CustomerAddresses { get; set; } = Array.Empty<CustomerAddressDto>();
+        public IEnumerable<CustomerAddressDto> CustomerAddresses { get; set; } = Array.Empty<CustomerAddressDto>();
     }
 
     public enum CustomerTypeDto

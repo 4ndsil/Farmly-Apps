@@ -5,7 +5,7 @@ namespace FarmlyCore.Application.Queries.Users.QueryFilters
 {
     public class UserCustomerIdFilter : IUserFilter
     {
-        public bool CanFilter(FindUsersRequest request) => string.IsNullOrEmpty(request.Credentials);
+        public bool CanFilter(FindUsersRequest request) => request.CustomerId.HasValue;
 
         public IQueryable<User> Filter(FindUsersRequest request, IQueryable<User> users)
         {

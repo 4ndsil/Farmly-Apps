@@ -11,7 +11,7 @@
         public int CategoryId { get; set; }
         public int SellerId { get; set; }
         public int PickupPointId { get; set; }
-        public ICollection<CreateAdvertItemDto> AdvertItems { get; set; } = Array.Empty<CreateAdvertItemDto>();
+        public IEnumerable<CreateAdvertItemDto> AdvertItems { get; set; } = Array.Empty<CreateAdvertItemDto>();
     }
 
     public class CreateAdvertItemDto

@@ -8,6 +8,7 @@ namespace FarmlyCore.Application.Requests.Users
         public UpdateUserRequest(int userId, JsonPatchDocument<UserDto> user)
         {
             UserId = userId;
+
             User = user ?? throw new ArgumentNullException(nameof(user));
         }
 

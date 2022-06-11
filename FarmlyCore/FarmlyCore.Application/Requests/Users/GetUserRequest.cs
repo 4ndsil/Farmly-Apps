@@ -2,11 +2,11 @@
 {
     public class GetUserRequest
     {
-        public GetUserRequest(string password)
+        public GetUserRequest(int userId)
         {
-            Password = password;
+            UserId = userId;
         }
 
-        public string Password { get; set; }
+        public int UserId { get; set; }
     }
 }
