@@ -12,9 +12,7 @@ namespace FarmlyCore.Infrastructure.Configurations
 
             entity.HasKey(e => e.Id);
 
-            entity.Property(e => e.Id)
-            .HasColumnName("ID")
-               .IsRequired();
+            entity.Property(k => k.Id).ValueGeneratedOnAdd();
 
             entity.Property(e => e.FirstName)
                 .HasColumnName("FirstName");

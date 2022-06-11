@@ -23,6 +23,7 @@ namespace FarmlyCore.Application.Queries.Customers
         {
             return await _farmlyEntityDataContext.CustomerAddresses
                 .Where(e => e.FkCustomerId == request.CustomerId)
+                .AsNoTracking()
                 .ProjectTo<CustomerAddressDto>(_mapper.ConfigurationProvider)
                 .ToArrayAsync(cancellationToken);                
         }

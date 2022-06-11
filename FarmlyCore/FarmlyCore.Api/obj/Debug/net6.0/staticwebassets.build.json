@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "DjEyLbGlrzrrsJa6J+A7vFqlUAVny2tOA36D1on+YJM=",
+  "Hash": "vMNDOgL/C8VQlxLzOUJuokyzCwdLod8CBAXsWAmeWAw=",
   "Source": "FarmlyCore.Api",
   "BasePath": "_content/FarmlyCore.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "FarmlyCore.Api\\wwwroot",
+      "Source": "FarmlyCore.Api",
+      "ContentRoot": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Api\\wwwroot\\",
+      "BasePath": "_content/FarmlyCore.Api",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Api\\wwwroot\\docs\\openapi.json",
+      "SourceId": "FarmlyCore.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Api\\wwwroot\\",
+      "BasePath": "_content/FarmlyCore.Api",
+      "RelativePath": "docs/openapi.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\docs\\openapi.json"
+    }
+  ]
 }

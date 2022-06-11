@@ -15,6 +15,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+	<ItemGroup>
+		<Folder Include="wwwroot\docs\" />
+	</ItemGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\FarmlyCore.Application\FarmlyCore.Application.csproj" />
     <ProjectReference Include="..\FarmlyCore.Infrastructure\FarmlyCore.Infrastructure.csproj" />

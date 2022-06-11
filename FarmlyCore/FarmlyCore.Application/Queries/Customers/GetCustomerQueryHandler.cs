@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace FarmlyCore.Application.Queries.Customers
 {
-    public class GetCustomersQueryHandler : IQueryHandler<GetCustomerRequest, CustomerDto>
+    public class GetCustomerQueryHandler : IQueryHandler<GetCustomerRequest, CustomerDto>
     {
         private readonly FarmlyEntityDbContext _farmlyEntityDataContext;
         private readonly IMapper _mapper;
 
-        public GetCustomersQueryHandler(IMapper mapper, FarmlyEntityDbContext farmlyEntityDbContext)
+        public GetCustomerQueryHandler(IMapper mapper, FarmlyEntityDbContext farmlyEntityDbContext)
         {            
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _farmlyEntityDataContext = farmlyEntityDbContext ?? throw new ArgumentNullException(nameof(farmlyEntityDbContext));

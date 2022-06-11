@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NSwag.Annotations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,7 +17,8 @@ using System.Threading.Tasks;
 namespace FarmlyCore.Api.ControllerEndpoints
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("advert-access/advert")]
+    [OpenApiTag("advert")]
     public class AdvertController : Controller
     {
         private readonly ILogger<AdvertController> _logger;
@@ -24,11 +26,6 @@ namespace FarmlyCore.Api.ControllerEndpoints
         public AdvertController(ILogger<AdvertController> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        }
-        [HttpGet]
-           public string Get()
-        {
-           return "Hej Andreas";
         }
 
         [HttpGet("{advertId:int:min(1)}")]

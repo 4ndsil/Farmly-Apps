@@ -23,10 +23,13 @@ namespace FarmlyCore.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
+
+        private readonly IWebHostEnvironment _env;
 
         public IConfiguration Configuration { get; }
 
@@ -35,6 +38,7 @@ namespace FarmlyCore.Api
         {
             services.AddControllers(opt => opt.Filters.Add<OperationCancelledExceptionFilter>())
                .AddNewtonsoftJson(opt => opt.SerializerSettings.Converters.Add(new StringEnumConverter()));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FarmlyCore.Api", Version = "v1" });
@@ -44,12 +48,15 @@ namespace FarmlyCore.Api
             services.RegisterApplicationQueryHandlers();
 
             var mssqlConnectionString = Configuration.GetConnectionString("Farmly_MSSQL");
+            
+            services.AddDbContext<FarmlyEntityDbContext>(
+                options => options.UseSqlServer(mssqlConnectionString));
 
-            services.AddDbContextPool<FarmlyEntityDbContext>(
-                dbContextOptions => dbContextOptions
-                    .UseSqlServer(
-                        mssqlConnectionString
-            ));
+            //services.AddDbContextPool<FarmlyEntityDbContext>(
+            //    dbContextOptions => dbContextOptions
+            //        .UseSqlServer(
+            //            mssqlConnectionString
+            //));
 
             var mapperConfig = new MapperConfiguration(cfg =>
                   cfg.AddMaps(new[]
@@ -67,9 +74,10 @@ namespace FarmlyCore.Api
 
             services.AddSingleton(mapper);
 
-            services.AddSwaggerDocument(settings =>
+            services.AddOpenApiDocument(options =>
             {
-                settings.Title = "FarmlyCore";
+                options.Version = "1.0.0";
+                options.Title = "FarmlyCore";
             });
 
             //Log invalid model state
@@ -132,10 +140,17 @@ namespace FarmlyCore.Api
             }
 
             app.UseHttpsRedirection();
+            //app.UseStaticFiles();
+
+            app.UseAuthorization();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseSwaggerUi3(settings =>
+            //{
+            //    settings.Path = "/docs";
+            //    settings.DocumentPath = "/docs/openapi.json";
+            //});
 
             app.UseDeveloperExceptionPage();
 

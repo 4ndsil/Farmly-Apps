@@ -12,13 +12,22 @@ namespace FarmlyCore.Infrastructure.Entities
 
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public decimal Quantity { get; set; }
+        public decimal? Quantity { get; set; }
+        public int? Amount { get; set; }
         public decimal Price { get; set; }
+        public decimal? AdvertItemPrice { get; set; }
         public OrderPriceType PriceType { get; set; }
+        public bool HasResponse { get; set; }
         public int FkAdvertItemId { get; set; }
         public int FkOrderId { get; set; }
+        public int FkPickupPointId { get; set; }
+        public int FkCategoryId { get; set; }
+        public int FkSellerId { get; set; }
         public AdvertItem AdvertItem { get; set; }
         public Order Order { get; set; }
+        public CustomerAddress PickupPoint { get; set; }
+        public Category Category { get; set; }
+        public Customer Seller { get; set; }
     }
 
     public enum OrderPriceType

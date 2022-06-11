@@ -3,6 +3,7 @@ using FarmlyCore.Application.Requests.Categories;
 using FarmlyCore.Infrastructure.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
@@ -14,6 +15,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
 
     [ApiController]
     [Route("category-access/category")]
+    [OpenApiTag("category")]
     public class CategoryController : Controller
     {
         [HttpGet("{categoryId:int:min(1)}")]

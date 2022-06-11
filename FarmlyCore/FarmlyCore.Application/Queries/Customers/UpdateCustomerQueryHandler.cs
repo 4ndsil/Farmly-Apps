@@ -7,12 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FarmlyCore.Application.Queries.Customers
 {
-    public class UpdateCustomerQueryHandler : IQueryHandler<UpdateCustomerRequest, CustomerDto>
+    public class UpdateOrderQueryHandler : IQueryHandler<UpdateCustomerRequest, CustomerDto>
     {
         private readonly FarmlyEntityDbContext _farmlyEntityDataContext;
         private readonly IMapper _mapper;
 
-        public UpdateCustomerQueryHandler(IMapper mapper, FarmlyEntityDbContext farmlyEntityDbContext)
+        public UpdateOrderQueryHandler(IMapper mapper, FarmlyEntityDbContext farmlyEntityDbContext)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _farmlyEntityDataContext = farmlyEntityDbContext ?? throw new ArgumentNullException(nameof(farmlyEntityDbContext));

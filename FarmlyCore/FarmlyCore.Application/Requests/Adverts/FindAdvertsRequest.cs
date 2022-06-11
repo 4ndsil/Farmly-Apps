@@ -12,7 +12,7 @@ namespace FarmlyCore.Application.Requests.Adverts
 
         public string? ProductName { get; set; }
 
-        public AdvertPriceTypeDto PriceType { get; set; }
+        public AdvertPriceTypeDto? PriceType { get; set; }
 
         public decimal? Price { get; set; }
     }

@@ -4,13 +4,16 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>FarmlyCore.SDK</PackageId>
-    <Company>Farmly</Company>
-    <Authors>Farmly</Authors>
   </PropertyGroup>
 
-  <ItemGroup>
+	<PropertyGroup>
+		<PackageId>FarmlyCore</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Farmly</Authors>
+		<Company>Farmly</Company>
+	</PropertyGroup>
+
+	<ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 

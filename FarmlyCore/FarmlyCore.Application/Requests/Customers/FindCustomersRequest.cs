@@ -7,5 +7,7 @@ namespace FarmlyCore.Application.Requests.Customers
         public FindCustomersRequest() { }
 
         public CustomerTypeDto? CustomerType { get; set; }
+
+        public string? CompanyName { get; set; }
     }
 }

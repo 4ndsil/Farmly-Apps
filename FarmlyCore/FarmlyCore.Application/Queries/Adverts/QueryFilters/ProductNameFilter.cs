@@ -9,7 +9,7 @@ namespace FarmlyCore.Application.Queries.Adverts.QueryFilters
 
         public IQueryable<Advert> Filter(FindAdvertsRequest request, IQueryable<Advert> adverts)
         {
-            return adverts.Where(e => e.ProductName.Equals(request.ProductName) || e.ProductName.Contains(request.ProductName));
+            return adverts.Where(e => e.ProductName.ToLower().Contains(request.ProductName.ToLower()));
         }
     }
 }

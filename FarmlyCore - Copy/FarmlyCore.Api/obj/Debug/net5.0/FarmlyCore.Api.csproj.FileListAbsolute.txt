@@ -1,6 +1,0 @@
-C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net5.0\FarmlyCore.Api.csproj.AssemblyReference.cache
-C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net5.0\FarmlyCore.Api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net5.0\FarmlyCore.Api.AssemblyInfoInputs.cache
-C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net5.0\FarmlyCore.Api.AssemblyInfo.cs
-C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net5.0\FarmlyCore.Api.csproj.CoreCompileInputs.cache
-C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net5.0\FarmlyCore.Api.MvcApplicationPartsAssemblyInfo.cache
