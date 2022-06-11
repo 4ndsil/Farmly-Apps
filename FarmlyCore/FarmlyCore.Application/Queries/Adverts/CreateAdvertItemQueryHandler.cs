@@ -30,7 +30,7 @@ namespace FarmlyCore.Application.Queries.Adverts
 
             var advertItem = new AdvertItem(advert)
             {
-                Amount = request.AdvertItem.Amount,
+                Weight = request.AdvertItem.Weight,
                 Quantity = request.AdvertItem.Quantity,
                 Price = request.AdvertItem.Price,
                 InsertDate = DateTime.Now,

@@ -20,8 +20,8 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(p => p.Quantity)
                 .HasColumnName("Quantity");
 
-            entity.Property(p => p.Amount)
-                .HasColumnName("Amount")
+            entity.Property(p => p.Weight)
+                .HasColumnName("Weight")
                 .IsConcurrencyToken();
 
             entity.Property(p => p.InsertDate)

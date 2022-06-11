@@ -60,7 +60,7 @@ namespace FarmlyCore.Application.Queries.Orders
             var orderItems = request.Order.CreateOrderItems.Select(e => new
             {
                 e.ProductName,
-                e.Amount,
+                e.Weight,
                 e.Price,
                 e.AdvertItemPrice,
                 e.AdvertItemId,
@@ -71,8 +71,9 @@ namespace FarmlyCore.Application.Queries.Orders
             }).Select(item => new OrderItem
             {
                 ProductName = item.ProductName,
-                Amount = item.Amount,
+                Weight = item.Weight,
                 Price = item.Price,
+                ResponseStatus = ResponseStatus.Pending,
                 AdvertItemPrice = item.AdvertItemPrice,
                 FkAdvertItemId = item.AdvertItemId,
                 FkPickupPointId = item.PickupPointId,
@@ -88,8 +89,7 @@ namespace FarmlyCore.Application.Queries.Orders
                 DeliveryDate = request.Order.DeliveryDate,
                 OrderNumber = OrderNumberGenerator(request.Order.BuyerId),
                 FkBuyerId = request.Order.BuyerId,
-                FkDeliveryPointId = request.Order.DeliveryPointId,
-                Delivered = false,
+                FkDeliveryPointId = request.Order.DeliveryPointId,                
                 TotalPrice = orderItems.Select(e => e.Price).Sum(),
                 TotalQuantity = orderItems.Select(e => e.Quantity).Sum(),
                 OrderItems = orderItems
@@ -113,12 +113,12 @@ namespace FarmlyCore.Application.Queries.Orders
                             {
                                 currentAdvert = advertItem;
 
-                                if (orderItem.Amount > advertItem.Amount)
+                                if (orderItem.Quantity > advertItem.Quantity)
                                 {
                                     return CreateOrderResponse.WithProblem(CreateOrderProblemDetail.ConcurrencyConflict, new int[] { currentAdvert.Id });
                                 }
 
-                                advertItem.Amount -= orderItem.Amount;
+                                advertItem.Quantity -= orderItem.Quantity;
                             }
                         }
                     }

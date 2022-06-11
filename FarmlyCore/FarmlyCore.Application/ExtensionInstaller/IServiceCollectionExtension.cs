@@ -80,7 +80,6 @@ namespace FarmlyCore.Application.Extensions
             services.AddSingleton<IUserFilter, UserCustomerIdFilter>();
 
             services.AddSingleton<IOrderFilter, Queries.Orders.QueryFilters.CustomerIdFilter>();
-            services.AddSingleton<IOrderFilter, OrderDeliveredFilter>();
 
             services.AddSingleton<IOrderItemFilter, SellerIdFilter>();
 

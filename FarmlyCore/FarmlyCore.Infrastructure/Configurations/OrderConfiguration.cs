@@ -26,9 +26,6 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(e => e.DeliveryDate)
                 .HasColumnName("DeliveryDate");
 
-            entity.Property(e => e.Delivered)
-                .HasColumnName("Delivered");
-
             entity.Property(e => e.EstimatedDeliveryDate)
                 .HasColumnName("EstimatedDeliveryDate");
 

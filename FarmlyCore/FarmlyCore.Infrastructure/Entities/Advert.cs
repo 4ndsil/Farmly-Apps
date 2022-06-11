@@ -7,11 +7,11 @@ namespace FarmlyCore.Infrastructure.Entities
 
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public decimal TotalQuantity { get; set; }
         public decimal? Price { get; set; }
         public DateTime InsertDate { get; set; }
         public AdvertPriceType PriceType { get; set; }
         public string Description { get; set; }
+        public bool? IsBulk { get; set; }
         public bool Available { get; set; }
         public int FkSellerId { get; set; }
         public int FkCategoryId { get; set; }

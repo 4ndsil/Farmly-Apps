@@ -13,7 +13,7 @@
 #pragma warning disable 3016 // Disable "CS3016 Arrays as attribute arguments is not CLS-compliant"
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 
-namespace MyNamespace
+namespace FarmlyCore
 {
     using System = global::System;
 
@@ -3324,6 +3324,9 @@ namespace MyNamespace
         [Newtonsoft.Json.JsonProperty("available", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Available { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("isBulk", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsBulk { get; set; }
+
         [Newtonsoft.Json.JsonProperty("sellerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int SellerId { get; set; }
 
@@ -3497,6 +3500,9 @@ namespace MyNamespace
         [Newtonsoft.Json.JsonProperty("available", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Available { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("isBulk", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsBulk { get; set; }
+
         [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int CategoryId { get; set; }
 
@@ -3619,9 +3625,6 @@ namespace MyNamespace
         [Newtonsoft.Json.JsonProperty("estimatedDeliveryDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTimeOffset EstimatedDeliveryDate { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("delivered", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Delivered { get; set; }
-
         [Newtonsoft.Json.JsonProperty("deliveryPoint", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public CustomerAddressDto DeliveryPoint { get; set; }
 
@@ -3670,8 +3673,9 @@ namespace MyNamespace
         [Newtonsoft.Json.JsonProperty("pickupPointId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int PickupPointId { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("hasResponse", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool HasResponse { get; set; }
+        [Newtonsoft.Json.JsonProperty("responseStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public ResponseStatusDto ResponseStatus { get; set; }
 
         [Newtonsoft.Json.JsonProperty("orderId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int OrderId { get; set; }
@@ -3690,6 +3694,21 @@ namespace MyNamespace
 
         [System.Runtime.Serialization.EnumMember(Value = @"Styck")]
         Styck = 2,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public enum ResponseStatusDto
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"Pending")]
+        Pending = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"IsAccepted")]
+        IsAccepted = 1,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"Delivered")]
+        Delivered = 2,
 
     }
 

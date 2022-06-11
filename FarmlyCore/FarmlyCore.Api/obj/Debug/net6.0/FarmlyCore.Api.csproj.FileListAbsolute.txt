@@ -163,3 +163,4 @@ C:\Development\Farmly-Apps\FarmlyCore - Copy\FarmlyCore.Api\obj\Debug\net6.0\Far
 C:\Development\Farmly-Apps\FarmlyCore - Copy\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.genruntimeconfig.cache
 C:\Development\Farmly-Apps\FarmlyCore - Copy\FarmlyCore.Api\obj\Debug\net6.0\ref\FarmlyCore.Api.dll
 C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\bin\Debug\net6.0\FarmlyCore.Api.staticwebassets.runtime.json
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.MvcApplicationPartsAssemblyInfo.cs

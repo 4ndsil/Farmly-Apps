@@ -28,8 +28,7 @@ namespace FarmlyCore.Application.Queries.Orders
                     e.Id,
                     e.OrderNumber,
                     e.PlacementDate,
-                    e.DeliveryDate,
-                    e.Delivered,
+                    e.DeliveryDate,                    
                     e.FkBuyerId,
                     DeliveryPoint = new
                     {
@@ -64,8 +63,7 @@ namespace FarmlyCore.Application.Queries.Orders
                 Id = data.Id,
                 OrderNumber = data.OrderNumber,
                 PlacementDate = data.PlacementDate,
-                DeliveryDate = data.DeliveryDate,
-                Delivered = data.Delivered,
+                DeliveryDate = data.DeliveryDate,                
                 BuyerId = data.FkBuyerId,                
                 DeliveryPoint = new CustomerAddressDto
                 {

@@ -48,15 +48,15 @@ namespace FarmlyCore.Application.Queries.Adverts
                 Description = request.Advert.Description,
                 Available = true,
                 PriceType = (AdvertPriceType)request.Advert.PriceType,
-                ProductName = request.Advert.ProductName,
-                TotalQuantity = request.Advert.TotalQuantity,
+                ProductName = request.Advert.ProductName,                
                 InsertDate = DateTime.Now,
                 Price = request.Advert.Price,
                 Seller = seller,
+                IsBulk = request.Advert.IsBulk ?? null,
                 FkSellerId = seller.Id,
                 FkCategoryId = category.Id,
                 PickupPoint = pickupPoint,
-                FkPickupPointId = pickupPoint.Id
+                FkPickupPointId = pickupPoint.Id,                
             };
 
             var advertItems = new List<AdvertItem>();
@@ -67,7 +67,7 @@ namespace FarmlyCore.Application.Queries.Adverts
                 {
                     Price = e.Price,
                     Quantity = e.Quantity,
-                    Amount = e.Amount
+                    Weight = e.Weight
                 }));
             }
 

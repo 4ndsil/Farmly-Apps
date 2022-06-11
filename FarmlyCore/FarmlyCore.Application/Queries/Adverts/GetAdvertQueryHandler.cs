@@ -31,8 +31,7 @@ namespace FarmlyCore.Application.Queries.Adverts
                     e.Description,
                     e.Available,
                     e.FkSellerId,
-                    e.PriceType,
-                    e.TotalQuantity,
+                    e.PriceType,                    
                     Category = new
                     {
                         e.Category.Id,
@@ -50,8 +49,8 @@ namespace FarmlyCore.Application.Queries.Adverts
                     AdvertItems = e.AdvertItems.Select(f => new
                     {
                         f.Id,
+                        f.Weight,
                         f.Quantity,
-                        f.Amount,
                         f.Price,
                         f.FkAdvertId
                     })
@@ -70,8 +69,7 @@ namespace FarmlyCore.Application.Queries.Adverts
                 ProductName = data.ProductName,
                 Description = data.Description,
                 Available = data.Available,
-                SellerId = data.FkSellerId,
-                TotalQuantity = data.TotalQuantity,
+                SellerId = data.FkSellerId,                
                 PriceType = (AdvertPriceTypeDto)data.PriceType,
                 Category = new CategoryDto
                 {
@@ -92,7 +90,7 @@ namespace FarmlyCore.Application.Queries.Adverts
                     Id = d.Id,
                     Price = d.Price,
                     Quantity = d.Quantity,
-                    Amount = d.Amount,
+                    Weight = d.Weight,
                     AdvertId = d.FkAdvertId
                 }).ToArray()
             };
