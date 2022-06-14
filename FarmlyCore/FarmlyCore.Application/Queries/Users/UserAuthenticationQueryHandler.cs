@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using FarmlyCore.Application.DTOs.Customer;
-using FarmlyCore.Application.Queries.Users.QueryFilters;
 using FarmlyCore.Application.Requests.Users;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace FarmlyCore.Application.Queries.Users
 {
@@ -25,7 +26,7 @@ namespace FarmlyCore.Application.Queries.Users
 
     public enum AuthenticationProblemDetail
     {
-       InvalidCredentials
+        InvalidCredentials
     }
 
     public class UserAuthenticationQueryHandler : IQueryHandler<UserAuthenticationRequest, UserAuthenticationResponse>
@@ -43,14 +44,18 @@ namespace FarmlyCore.Application.Queries.Users
         {
             var user = await _farmlyEntityDataContext.Users
                  .AsNoTracking()
-                 .FirstOrDefaultAsync(e => e.Email != null && e.Email.Equals(request.Email), cancellationToken);            
+                 .FirstOrDefaultAsync(e => e.Email != null && e.Email.Equals(request.Email), cancellationToken);
 
             if (user == null)
             {
                 return null;
             }
 
-            if(!CompareByteArrays(Convert.FromBase64String(user.Password), Convert.FromBase64String(request.Credentials)))
+            var userPassword = GetHashString(user.Password);
+
+            var inputPassword = GetHashString(request.InputCredentials);
+
+            if (!userPassword.Equals(inputPassword))
             {
                 return UserAuthenticationResponse.WithProblem(AuthenticationProblemDetail.InvalidCredentials);
             }
@@ -60,22 +65,24 @@ namespace FarmlyCore.Application.Queries.Users
             return UserAuthenticationResponse.WithSuccess(userDto);
         }
 
-        public static bool CompareByteArrays(byte[] array1, byte[] array2)
+        private static byte[] GetHash(string credentials)
         {
-            if (array1.Length != array2.Length)
+            using (HashAlgorithm algorithm = SHA256.Create())
             {
-                return false;
-            }
+                return algorithm.ComputeHash(Encoding.UTF8.GetBytes(credentials));
+            }             
+        }
 
-            for (int i = 0; i < array1.Length; i++)
+        private static string GetHashString(string credentials)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (byte b in GetHash(credentials))
             {
-                if (array1[i] != array2[i])
-                {
-                    return false;
-                }
-            }
+                sb.Append(b.ToString("X2"));
+            }                
 
-            return true;
+            return sb.ToString();
         }
     }
 }

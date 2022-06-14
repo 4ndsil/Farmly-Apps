@@ -12,8 +12,11 @@ namespace FarmlyCore.Application.DTOs.Adverts
         public bool Available { get; set; }
         public bool? IsBulk { get; set; }
         public int SellerId { get; set; }
+        public CustomerDto Seller { get; set; }
         public IEnumerable<AdvertItemDto> AdvertItems { get; set; } = Array.Empty<AdvertItemDto>();
+        public int PickupPointId { get; set; }
         public CustomerAddressDto PickupPoint { get; set; }
+        public int CategoryId { get; set; }
         public CategoryDto Category { get; set; }
     }
 

@@ -169,17 +169,13 @@ namespace FarmlyCore.Application.Queries.Orders
         {
             var orderNumber = $"C{customerId}";
 
-            var first = string.Empty;
-
-            var second = string.Empty;
-
             var rnd1 = new Random();
 
             var rnd2 = new Random();
 
-            first = rnd1.Next().ToString();
+            var first = rnd1.Next().ToString();
 
-            second = rnd2.Next().ToString();
+            var second = rnd2.Next().ToString();
 
             int i = 0;
 

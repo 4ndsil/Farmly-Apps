@@ -9,15 +9,15 @@ namespace FarmlyCore.Application.MapperProfile
         public AdvertProfile()
         {
             CreateMap<Advert, AdvertDto>()
-                .ForMember(e => e.SellerId, v => v.MapFrom(src => src.Seller.Id))
+                .ForMember(e => e.Seller, v => v.MapFrom(src => src.Seller))
                 .ForMember(e => e.Category, v => v.MapFrom(src => src.Category))
-                .ForMember(e => e.PickupPoint, v => v.MapFrom(src => src.PickupPoint))
+                .ForMember(e => e.PickupPointId, v => v.MapFrom(src => src.FkPickupPointId))
                 .ForMember(e => e.AdvertItems, v => v.MapFrom(src => src.AdvertItems));
 
             CreateMap<AdvertDto, Advert>()
                .ForMember(e => e.Seller, v => v.Ignore())
-               .ForMember(e => e.Category, v => v.MapFrom(src => src.Category))
-               .ForMember(e => e.PickupPoint, v => v.MapFrom(src => src.PickupPoint))
+               .ForMember(e => e.PickupPoint, v => v.Ignore())
+               .ForMember(e => e.Category, v => v.MapFrom(src => src.Category))               
                .ForMember(e => e.AdvertItems, v => v.MapFrom(src => src.AdvertItems));
 
             CreateMap<AdvertItem, AdvertItemDto>().ReverseMap();

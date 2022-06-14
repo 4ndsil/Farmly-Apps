@@ -6,11 +6,11 @@
         {
             Email = email;
 
-            Credentials = credentials;
+            InputCredentials = credentials;
         }
 
         public string Email { get; set; }
 
-        public string Credentials { get; set; }
+        public string InputCredentials { get; set; }
     }
 }
