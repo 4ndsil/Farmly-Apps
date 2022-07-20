@@ -7,7 +7,8 @@
         public AdvertPriceTypeDto PriceType { get; set; }
         public string Description { get; set; }
         public bool Available { get; set; }
-        public bool? IsBulk { get; set; }
+        public bool IsBulk { get; set; }
+        public string ImageUrl { get; set; }
         public int CategoryId { get; set; }
         public int SellerId { get; set; }
         public int PickupPointId { get; set; }

@@ -11,9 +11,10 @@ namespace FarmlyCore.Infrastructure.Entities
         public DateTime InsertDate { get; set; }
         public AdvertPriceType PriceType { get; set; }
         public string Description { get; set; }
-        public bool? IsBulk { get; set; }
+        public bool IsBulk { get; set; }
         public bool Available { get; set; }
         public int FkSellerId { get; set; }
+        public string ImageUrl { get; set; }
         public int FkCategoryId { get; set; }
         public int FkPickupPointId { get; set; }
         public Category Category { get; set; }

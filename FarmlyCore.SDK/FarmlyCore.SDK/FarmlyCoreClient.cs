@@ -1238,11 +1238,11 @@ namespace FarmlyCore
         System.Threading.Tasks.Task<CustomerDto> CreateCustomerAsync(CustomerDto customer, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomerDto> GetCustomerAddressesAsync(int customerId);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CustomerAddressDto>> GetCustomerAddressesAsync(int customerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomerDto> GetCustomerAddressesAsync(int customerId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CustomerAddressDto>> GetCustomerAddressesAsync(int customerId, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<CustomerAddressDto> CreateCustomerAddressAsync(int customerId, CustomerAddressDto customerAddress);
@@ -1695,14 +1695,14 @@ namespace FarmlyCore
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomerDto> GetCustomerAddressesAsync(int customerId)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CustomerAddressDto>> GetCustomerAddressesAsync(int customerId)
         {
             return GetCustomerAddressesAsync(customerId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomerDto> GetCustomerAddressesAsync(int customerId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CustomerAddressDto>> GetCustomerAddressesAsync(int customerId, System.Threading.CancellationToken cancellationToken)
         {
             if (customerId == null)
                 throw new System.ArgumentNullException("customerId");
@@ -1743,7 +1743,7 @@ namespace FarmlyCore
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<CustomerDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<CustomerAddressDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -3500,8 +3500,11 @@ namespace FarmlyCore
         [Newtonsoft.Json.JsonProperty("available", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Available { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("isBulk", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsBulk { get; set; }
+        [Newtonsoft.Json.JsonProperty("isBulk", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsBulk { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ImageUrl { get; set; }
 
         [Newtonsoft.Json.JsonProperty("sellerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int SellerId { get; set; }
@@ -3729,8 +3732,11 @@ namespace FarmlyCore
         [Newtonsoft.Json.JsonProperty("available", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Available { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("isBulk", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsBulk { get; set; }
+        [Newtonsoft.Json.JsonProperty("isBulk", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsBulk { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ImageUrl { get; set; }
 
         [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int CategoryId { get; set; }

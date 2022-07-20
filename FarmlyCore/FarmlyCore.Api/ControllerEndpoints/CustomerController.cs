@@ -120,7 +120,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
 
         [HttpGet("{customerId:int:min(1)}/addresses")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(CustomerDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CustomerAddressDto[]), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCustomerAddresses(
             [FromServices] IQueryHandler<GetCustomerAddressesRequest, IReadOnlyList<CustomerAddressDto>> handler,

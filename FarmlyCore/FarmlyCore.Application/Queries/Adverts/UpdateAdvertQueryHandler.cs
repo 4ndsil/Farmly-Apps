@@ -23,6 +23,8 @@ namespace FarmlyCore.Application.Queries.Adverts
             var advert = await _farmlyEntityDataContext.Adverts
                 .Include(e => e.PickupPoint)
                 .Include(e => e.Seller)
+                .Include(e => e.Category)
+                .Include(e => e.AdvertItems)
                 .Where(e => e.Id == request.AdvertId)
                 .FirstOrDefaultAsync();
 

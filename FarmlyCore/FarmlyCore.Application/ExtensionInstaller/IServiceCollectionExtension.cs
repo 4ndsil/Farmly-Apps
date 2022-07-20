@@ -31,8 +31,8 @@ namespace FarmlyCore.Application.Extensions
             services.AddTransient<IQueryHandler<GetCustomerRequest, CustomerDto>, GetCustomerQueryHandler>();
             services.AddTransient<IQueryHandler<CreateCustomerRequest, CustomerDto>, CreateCustomerQueryHandler>();
             services.AddTransient<IQueryHandler<CreateCustomerAddressRequest, CustomerAddressDto>, CreateCustomerAddressQueryHandler>();
-            services.AddTransient<IQueryHandler<GetCustomerAddressesRequest, IReadOnlyList<CustomerAddressDto>>, GetCustomerAddressesQueryHandler>();
-            services.AddTransient<IQueryHandler<UpdateCustomerRequest, CustomerDto>, UpdateOrderQueryHandler>();
+            services.AddTransient<IQueryHandler<GetCustomerAddressesRequest, CustomerAddressDto[]>, GetCustomerAddressesQueryHandler>();
+            services.AddTransient<IQueryHandler<UpdateCustomerRequest, CustomerDto>, UpdateCustomerQueryHandler>();
             services.AddTransient<IQueryHandler<UpdateCustomerAddressRequest, CustomerAddressDto>, UpdateCustomerAddressQueryHandler>();
             services.AddTransient<IQueryHandler<FindCustomersRequest, CustomerDto[]>, FindCustomersQueryHandler>();
 
@@ -52,6 +52,7 @@ namespace FarmlyCore.Application.Extensions
             services.AddTransient<IQueryHandler<GetOrderRequest, OrderDto>, GetOrderQueryHandler>();
             services.AddTransient<IQueryHandler<CreateOrderRequest, CreateOrderResponse>, CreateOrderQueryHandler>();
             services.AddTransient<IQueryHandler<FindOrdersRequest, IReadOnlyList<OrderDto>>, FindOrdersQueryHandler>();
+            services.AddTransient<IQueryHandler<UpdateOrderItemRequest, OrderItemDto>, UpdateOrderItemQueryHandler>();
 
             services.AddTransient<IQueryHandler<FindOrderItemsRequest, IReadOnlyList<OrderItemDto>>, FindOrderItemsQueryHandler>();
             services.AddTransient<IQueryHandler<RespondToOrderItemRequest, OrderItemDto>, RespondToOrderItemQueryHandler>();

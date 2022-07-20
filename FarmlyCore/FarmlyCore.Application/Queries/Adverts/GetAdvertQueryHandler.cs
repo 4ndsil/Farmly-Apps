@@ -31,7 +31,8 @@ namespace FarmlyCore.Application.Queries.Adverts
                     e.Description,
                     e.Available,
                     e.FkSellerId,
-                    e.PriceType,                    
+                    e.PriceType,
+                    e.ImageUrl,
                     Category = new
                     {
                         e.Category.Id,
@@ -69,7 +70,8 @@ namespace FarmlyCore.Application.Queries.Adverts
                 ProductName = data.ProductName,
                 Description = data.Description,
                 Available = data.Available,
-                SellerId = data.FkSellerId,                
+                SellerId = data.FkSellerId,
+                ImageUrl = data.ImageUrl,
                 PriceType = (AdvertPriceTypeDto)data.PriceType,
                 Category = new CategoryDto
                 {

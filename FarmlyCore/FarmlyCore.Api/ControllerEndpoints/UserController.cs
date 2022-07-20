@@ -46,7 +46,6 @@ namespace FarmlyCore.Api.ControllerEndpoints
             return Ok(response);
         }
 
-
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(UserAuthenticationResponse), StatusCodes.Status200OK)]

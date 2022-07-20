@@ -29,7 +29,9 @@ namespace FarmlyCore.Application.Queries.Users
                 return null;
             }
 
-            return _mapper.Map<UserDto>(user);
+            var userDto = _mapper.Map<UserDto>(user);
+
+            return userDto;
         }
     }
 }
