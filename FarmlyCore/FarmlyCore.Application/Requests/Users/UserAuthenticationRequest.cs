@@ -2,15 +2,15 @@
 {
     public class UserAuthenticationRequest
     {
-        public UserAuthenticationRequest(string email, string credentials)
+        public UserAuthenticationRequest(string email, string password)
         {
             Email = email;
 
-            InputCredentials = credentials;
+            Password = password;
         }
 
         public string Email { get; set; }
 
-        public string InputCredentials { get; set; }
+        public string Password { get; set; }
     }
 }

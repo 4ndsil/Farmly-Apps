@@ -53,7 +53,7 @@ namespace FarmlyCore.Application.Queries.Users
 
             var userPassword = GetHashString(user.Password);
 
-            var inputPassword = GetHashString(request.InputCredentials);
+            var inputPassword = GetHashString(request.Password);
 
             if (!userPassword.Equals(inputPassword))
             {
