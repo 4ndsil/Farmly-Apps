@@ -21,7 +21,7 @@ namespace FarmlyCore.Application.Queries.Users
 
         public UserDto? User { get; set; }
 
-        public AuthenticationProblemDetail Detail { get; set; }
+        public AuthenticationProblemDetail? Detail { get; set; } = null;
     }
 
     public enum AuthenticationProblemDetail
