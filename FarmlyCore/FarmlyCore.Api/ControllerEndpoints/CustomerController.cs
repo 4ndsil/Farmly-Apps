@@ -123,7 +123,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(typeof(CustomerAddressDto[]), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCustomerAddresses(
-            [FromServices] IQueryHandler<GetCustomerAddressesRequest, IReadOnlyList<CustomerAddressDto>> handler,
+            [FromServices] IQueryHandler<GetCustomerAddressesRequest, CustomerAddressDto[]> handler,
             [Range(1, int.MaxValue), FromRoute] int customerId,
             CancellationToken cancellationToken)
         {
