@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{5C4EA4F3-960E-4662-BF5F-37879F25B150}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FarmlyCore.Application/ExtensionInstaller/IServiceCollectionExtension.cs">
+    <Files>
+      <File FileName="FarmlyCore.Api/ControllerEndpoints/CustomerController.cs" Line="46" Column="1" />
+      <File FileName="FarmlyCore.Application/ExtensionInstaller/IServiceCollectionExtension.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FarmlyCore" expanded="True">
+            <Node name="src" expanded="True">
+              <Node name="FarmlyCore.Api" expanded="True" />
+              <Node name="FarmlyCore.Application" expanded="True">
+                <Node name="ExtensionInstaller" expanded="True">
+                  <Node name="IServiceCollectionExtension.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+            <Node name="tests" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.src.FarmlyCore.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
