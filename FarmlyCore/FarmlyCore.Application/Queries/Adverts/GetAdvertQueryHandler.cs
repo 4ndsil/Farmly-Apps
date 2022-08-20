@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using FarmlyCore.Application.DTOs;
+using AutoMapper.QueryableExtensions;
 using FarmlyCore.Application.DTOs.Adverts;
-using FarmlyCore.Application.DTOs.Customer;
 using FarmlyCore.Application.Requests.Adverts;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;
@@ -22,80 +21,18 @@ namespace FarmlyCore.Application.Queries.Adverts
 
         public async Task<AdvertDto> HandleAsync(GetAdvertRequest request, CancellationToken cancellationToken = default)
         {
-            var data = await _farmlyEntityDataContext.Adverts
+            var advertDto =  await _farmlyEntityDataContext.Adverts
                 .Where(e => e.Id.Equals(request.AdvertId))
-                .Select(e => new
-                {
-                    e.Id,
-                    e.ProductName,
-                    e.Description,
-                    e.Available,
-                    e.FkSellerId,
-                    e.PriceType,
-                    e.ImageUrl,
-                    Category = new
-                    {
-                        e.Category.Id,
-                        e.Category.CategoryName
-                    },
-                    PickupPoint = new
-                    {
-                        e.PickupPoint.Id,
-                        e.PickupPoint.State,
-                        e.PickupPoint.City,
-                        e.PickupPoint.Street,
-                        e.PickupPoint.Zip,
-                        e.PickupPoint.FkCustomerId
-                    },
-                    AdvertItems = e.AdvertItems.Select(f => new
-                    {
-                        f.Id,
-                        f.Weight,
-                        f.Quantity,
-                        f.Price,
-                        f.FkAdvertId
-                    })
-                })
+                .ProjectTo<AdvertDto>(_mapper.ConfigurationProvider)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (data == null)
+            if (advertDto == null)
             {
                 return null;
             }
 
-            return new AdvertDto
-            {
-                Id = data.Id,
-                ProductName = data.ProductName,
-                Description = data.Description,
-                Available = data.Available,
-                SellerId = data.FkSellerId,
-                ImageUrl = data.ImageUrl,
-                PriceType = (AdvertPriceTypeDto)data.PriceType,
-                Category = new CategoryDto
-                {
-                    Id = data.Id,
-                    CategoryName = data.Category.CategoryName
-                },
-                PickupPoint = new CustomerAddressDto
-                {
-                    Id = data.PickupPoint.Id,
-                    Street = data.PickupPoint.Street,
-                    Zip = data.PickupPoint.Zip,
-                    City = data.PickupPoint.City,
-                    State = data.PickupPoint.State,
-                    FKCustomerId = data.PickupPoint.FkCustomerId
-                },
-                AdvertItems = data.AdvertItems.Select(d => new AdvertItemDto
-                {
-                    Id = d.Id,
-                    Price = d.Price,
-                    Quantity = d.Quantity,
-                    Weight = d.Weight,
-                    AdvertId = d.FkAdvertId
-                }).ToArray()
-            };
+            return advertDto;
         }
     }
 }

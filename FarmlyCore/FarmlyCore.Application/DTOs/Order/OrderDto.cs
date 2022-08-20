@@ -13,7 +13,8 @@ namespace FarmlyCore.Application.DTOs.Order
         public DateTime DeliveryDate { get; set; }
         public DateTime EstimatedDeliveryDate { get; set; }       
         public int DeliveryPointId { get; set; }
-        public CustomerDto Buyer { get; set; }
+        public int BuyerId { get; set; }
+        public int BuyerName { get; set; }
         public IEnumerable<OrderItemDto> OrderItems { get; set; } = Array.Empty<OrderItemDto>();
     }
 }

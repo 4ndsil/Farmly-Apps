@@ -24,7 +24,10 @@ namespace FarmlyCore.Application.Queries.Adverts
 
         public async Task<IReadOnlyList<AdvertDto>> HandleAsync(FindAdvertsRequest request, CancellationToken cancellationToken = default)
         {
-            var baseRequest = _farmlyEntityDataContext.Adverts.AsNoTracking().AsQueryable();
+            var baseRequest = _farmlyEntityDataContext.Adverts
+                .Where(e => e.Available == true)
+                .AsNoTracking()
+                .AsQueryable();
 
             foreach (var filter in _advertFilters.Where(e => e.CanFilter(request)))
             {

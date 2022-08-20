@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using FarmlyCore.Application.DTOs.Customer;
 using FarmlyCore.Application.Requests.Users;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
@@ -20,16 +21,16 @@ namespace FarmlyCore.Application.Queries.Users
 
         public async Task<UserDto> HandleAsync(GetUserRequest request, CancellationToken cancellationToken = default)
         {
-            var user = await _farmlyEntityDataContext.Users
+            var userDto = await _farmlyEntityDataContext.Users
+                .AsNoTracking()
+                .ProjectTo<UserDto>(_mapper.ConfigurationProvider)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(e => e.Id == request.UserId, cancellationToken);
 
-            if (user == null)
+            if (userDto == null)
             {
                 return null;
             }
-
-            var userDto = _mapper.Map<UserDto>(user);
 
             return userDto;
         }

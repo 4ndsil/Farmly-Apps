@@ -13,11 +13,10 @@ namespace FarmlyCore.Application.DTOs.Order
         public decimal? AdvertItemPrice { get; set; }
         public OrderPriceTypeDto PriceType { get; set; }
         public  int AdvertItemId { get; set; }
-        public AdvertItemDto AdvertItem { get; set; }
         public int CategoryId { get; set; }
         public CategoryDto Category { get; set; }
         public int SellerId { get; set; }
-        public CustomerDto Seller { get; set; }
+        public string SellerName { get; set; }
         public int PickupPointId { get; set; }
         public ResponseStatusDto ResponseStatus { get; set; }
         public int OrderId { get; set; }
