@@ -9,7 +9,7 @@ namespace FarmlyCore.Application.MapperProfile
         public AdvertProfile()
         {
             CreateMap<Advert, AdvertDto>()
-                .ForMember(e => e.Seller, v => v.MapFrom(src => src.Seller))
+                .ForMember(e => e.SellerId, v => v.MapFrom(src => src.Seller.Id))
                 .ForMember(e => e.Category, v => v.MapFrom(src => src.Category))
                 .ForMember(e => e.PickupPointId, v => v.MapFrom(src => src.FkPickupPointId))
                 .ForMember(e => e.AdvertItems, v => v.MapFrom(src => src.AdvertItems));

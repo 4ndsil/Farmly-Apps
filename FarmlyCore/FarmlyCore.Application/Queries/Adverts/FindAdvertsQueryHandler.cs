@@ -31,10 +31,18 @@ namespace FarmlyCore.Application.Queries.Adverts
                 baseRequest = filter.Filter(request, baseRequest);
             }
 
-            return await baseRequest
+            var totalRecords = baseRequest.Count();
+
+            var totalPages = totalRecords / (double)request.PageSize;
+
+            var requestResult = await baseRequest
                 .OrderByDescending(e => e.Id)
                 .ProjectTo<AdvertDto>(_mapper.ConfigurationProvider)
+                .Skip((request.PageNumber - 1) * request.PageSize)
+                .Take(request.PageSize)
                 .ToArrayAsync(cancellationToken);
+
+            return requestResult;
         }
     }
 }

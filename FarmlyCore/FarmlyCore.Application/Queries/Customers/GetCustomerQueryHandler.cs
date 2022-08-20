@@ -25,6 +25,7 @@ namespace FarmlyCore.Application.Queries.Customers
         {
             var customer = await _farmlyEntityDataContext.Customers
                 .AsNoTracking()
+                .Include(e => e.CustomerAddresses)
                 .FirstOrDefaultAsync(e => e.Id == request.CustomerId, cancellationToken);
 
             if (customer == null)

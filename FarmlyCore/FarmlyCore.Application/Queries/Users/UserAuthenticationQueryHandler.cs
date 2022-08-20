@@ -11,21 +11,22 @@ namespace FarmlyCore.Application.Queries.Users
 {
     public class UserAuthenticationResponse
     {
-        private UserAuthenticationResponse(UserDto user) { User = user; }
+        private UserAuthenticationResponse(UserDto user, AuthenticationDetail detail) { User = user; Detail = detail; }
 
-        private UserAuthenticationResponse(AuthenticationProblemDetail detail) { Detail = detail; }
+        private UserAuthenticationResponse(AuthenticationDetail detail) { Detail = detail; }
 
-        public static UserAuthenticationResponse WithSuccess(UserDto user) => new UserAuthenticationResponse(user);
+        public static UserAuthenticationResponse WithSuccess(UserDto user, AuthenticationDetail detail) => new UserAuthenticationResponse(user, detail);
 
-        public static UserAuthenticationResponse WithProblem(AuthenticationProblemDetail detail) => new UserAuthenticationResponse(detail);
+        public static UserAuthenticationResponse WithProblem(AuthenticationDetail detail) => new UserAuthenticationResponse(detail);
 
         public UserDto? User { get; set; }
 
-        public AuthenticationProblemDetail Detail { get; set; }
+        public AuthenticationDetail Detail { get; set; }
     }
 
-    public enum AuthenticationProblemDetail
+    public enum AuthenticationDetail
     {
+        ValidCredentials,
         InvalidCredentials
     }
 
@@ -51,18 +52,18 @@ namespace FarmlyCore.Application.Queries.Users
                 return null;
             }
 
-            var userPassword = GetHashString(user.Password);
+            var userPassword = user.Password;
 
             var inputPassword = GetHashString(request.Password);
 
             if (!userPassword.Equals(inputPassword))
             {
-                return UserAuthenticationResponse.WithProblem(AuthenticationProblemDetail.InvalidCredentials);
+                return UserAuthenticationResponse.WithProblem(AuthenticationDetail.InvalidCredentials);
             }
 
             var userDto = _mapper.Map<UserDto>(user);
 
-            return UserAuthenticationResponse.WithSuccess(userDto);
+            return UserAuthenticationResponse.WithSuccess(userDto, AuthenticationDetail.ValidCredentials);
         }
 
         private static byte[] GetHash(string credentials)
