@@ -69,7 +69,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [HttpPost]
         [Route("find")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(AdvertDto[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(PagedResponse<IReadOnlyList<AdvertDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> FindAdverts(
         [FromServices] IQueryHandler<FindAdvertsRequest, PagedResponse<IReadOnlyList<AdvertDto>>> handler,
