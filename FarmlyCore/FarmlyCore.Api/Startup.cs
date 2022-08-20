@@ -140,11 +140,11 @@ namespace FarmlyCore.Api
             }
 
             app.UseHttpsRedirection();
-            //app.UseStaticFiles();
-
-            app.UseAuthorization();
+            //app.UseStaticFiles();            
 
             app.UseRouting();
+
+            app.UseAuthorization();
 
             //app.UseSwaggerUi3(settings =>
             //{

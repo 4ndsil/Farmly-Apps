@@ -1,4 +1,5 @@
 ﻿using FarmlyCore.Application.DTOs.Adverts;
+using FarmlyCore.Application.Paging;
 using FarmlyCore.Application.Requests.Adverts;
 using FarmlyCore.Infrastructure.Queries;
 using Microsoft.AspNetCore.Http;
@@ -71,7 +72,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(typeof(AdvertDto[]), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> FindAdverts(
-        [FromServices] IQueryHandler<FindAdvertsRequest, IReadOnlyList<AdvertDto>> handler,
+        [FromServices] IQueryHandler<FindAdvertsRequest, PagedResponse<IReadOnlyList<AdvertDto>>> handler,
         [FromBody] FindAdvertsRequest request,
         CancellationToken cancellationToken)
         {

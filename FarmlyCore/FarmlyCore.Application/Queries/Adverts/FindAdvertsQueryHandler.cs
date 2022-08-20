@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using FarmlyCore.Application.DTOs.Adverts;
+using FarmlyCore.Application.Paging;
 using FarmlyCore.Application.Queries.Adverts.QueryFilters;
 using FarmlyCore.Application.Requests.Adverts;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
@@ -9,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FarmlyCore.Application.Queries.Adverts
 {
-    public class FindAdvertsQueryHandler : IQueryHandler<FindAdvertsRequest, IReadOnlyList<AdvertDto>>
+    public class FindAdvertsQueryHandler : IQueryHandler<FindAdvertsRequest, PagedResponse<IReadOnlyList<AdvertDto>>>
     {
         private readonly FarmlyEntityDbContext _farmlyEntityDataContext;
         private readonly IMapper _mapper;
@@ -22,7 +23,7 @@ namespace FarmlyCore.Application.Queries.Adverts
             _advertFilters = advertFilters ?? throw new ArgumentNullException(nameof(advertFilters));
         }
 
-        public async Task<IReadOnlyList<AdvertDto>> HandleAsync(FindAdvertsRequest request, CancellationToken cancellationToken = default)
+        public async Task<PagedResponse<IReadOnlyList<AdvertDto>>> HandleAsync(FindAdvertsRequest request, CancellationToken cancellationToken = default)
         {
             var baseRequest = _farmlyEntityDataContext.Adverts
                 .Where(e => e.Available == true)
@@ -45,7 +46,13 @@ namespace FarmlyCore.Application.Queries.Adverts
                 .Take(request.PageSize)
                 .ToArrayAsync(cancellationToken);
 
-            return requestResult;
+            var response = new PagedResponse<IReadOnlyList<AdvertDto>>(requestResult, request.PageNumber, request.PageSize)
+            {
+                TotalPages = (int)Math.Ceiling(totalPages),
+                TotalRecords = totalRecords
+            };
+
+            return response;
         }
     }
 }

@@ -2,6 +2,7 @@
 using FarmlyCore.Application.DTOs.Adverts;
 using FarmlyCore.Application.DTOs.Customer;
 using FarmlyCore.Application.DTOs.Order;
+using FarmlyCore.Application.Paging;
 using FarmlyCore.Application.Queries.Adverts;
 using FarmlyCore.Application.Queries.Adverts.QueryFilters;
 using FarmlyCore.Application.Queries.Categories;
@@ -43,7 +44,7 @@ namespace FarmlyCore.Application.Extensions
 
             services.AddTransient<IQueryHandler<GetAdvertRequest, AdvertDto>, GetAdvertQueryHandler>();
             services.AddTransient<IQueryHandler<AdvertDto[]>, GetAllAdvertsQueryHandler>();
-            services.AddTransient<IQueryHandler<FindAdvertsRequest, IReadOnlyList<AdvertDto>>, FindAdvertsQueryHandler>();
+            services.AddTransient<IQueryHandler<FindAdvertsRequest, PagedResponse<IReadOnlyList<AdvertDto>>>, FindAdvertsQueryHandler >();
             services.AddTransient<IQueryHandler<CreateAdvertRequest, AdvertDto>, CreateAdvertQueryHandler>();
             services.AddTransient<IQueryHandler<UpdateAdvertRequest, AdvertDto>, UpdateAdvertQueryHandler>();
             services.AddTransient<IQueryHandler<CreateAdvertItemRequest, AdvertItemDto>, CreateAdvertItemQueryHandler>();
