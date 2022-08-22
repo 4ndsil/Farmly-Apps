@@ -20,6 +20,9 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(e => e.TotalPrice)
                 .HasColumnName("TotalPrice");
 
+            entity.Property(e => e.TotalWeight)
+                .HasColumnName("TotalWeight");
+
             entity.Property(e => e.PlacementDate)
                 .HasColumnName("PlacementDate");
 

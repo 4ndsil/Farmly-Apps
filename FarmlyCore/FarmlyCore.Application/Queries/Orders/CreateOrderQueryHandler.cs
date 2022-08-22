@@ -90,8 +90,8 @@ namespace FarmlyCore.Application.Queries.Orders
                 OrderNumber = OrderNumberGenerator(request.Order.BuyerId),
                 FkBuyerId = request.Order.BuyerId,
                 FkDeliveryPointId = request.Order.DeliveryPointId,                
-                TotalPrice = orderItems.Select(e => e.Price).Sum(),
-                TotalQuantity = orderItems.Select(e => e.Quantity).Sum(),
+                TotalPrice = request.Order.TotalPrice,
+                TotalWeight = request.Order.TotalWeight,
                 OrderItems = orderItems
             };
 

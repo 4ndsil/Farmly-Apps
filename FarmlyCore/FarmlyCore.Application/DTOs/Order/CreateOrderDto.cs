@@ -11,6 +11,8 @@ namespace FarmlyCore.Application.DTOs.Order
         public DateTime PlacementDate { get; set; }
         public DateTime DeliveryDate { get; set; }
         public DateTime EstimatedDeliveryDate { get; set; }
+        public decimal? TotalPrice { get; set; }
+        public decimal? TotalWeight { get; set; }
         public int DeliveryPointId { get; set; }
         public int BuyerId { get; set; }
         public IEnumerable<CreateOrderItemDto> CreateOrderItems { get; set; } = Array.Empty<CreateOrderItemDto>();

@@ -9,6 +9,7 @@ namespace FarmlyCore.Application.DTOs.Order
         public int Id { get; set; }
         public string OrderNumber { get; set; }
         public decimal TotalPrice { get; set; }
+        public decimal TotalWeight { get; set; }
         public DateTime PlacementDate { get; set; }
         public DateTime DeliveryDate { get; set; }
         public DateTime EstimatedDeliveryDate { get; set; }
