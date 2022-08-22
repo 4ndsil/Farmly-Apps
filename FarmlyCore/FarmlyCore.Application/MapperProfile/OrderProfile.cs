@@ -28,8 +28,12 @@ namespace FarmlyCore.Application.MapperProfile
                 .ForMember(e => e.PickupPointId, v => v.MapFrom(src => src.FkPickupPointId));
 
             CreateMap<OrderItemDto, OrderItem>()
-              .ForMember(e => e.Category, v => v.Ignore())
-              .ForMember(e => e.PriceType, v => v.MapFrom(src => src.PriceType));
+                .ForMember(e => e.Category, v => v.Ignore())
+                .ForMember(e => e.PriceType, v => v.MapFrom(src => src.PriceType));
+
+            CreateMap<CreateOrderDto, Order>().ReverseMap(); ;
+
+            CreateMap<CreateOrderItemDto, OrderItem>().ReverseMap(); ;
         }
     }
 }

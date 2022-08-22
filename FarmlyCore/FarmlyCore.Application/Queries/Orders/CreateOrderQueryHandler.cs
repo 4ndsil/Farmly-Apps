@@ -66,6 +66,7 @@ namespace FarmlyCore.Application.Queries.Orders
                 e.AdvertItemId,
                 e.PickupPointId,
                 e.CategoryId,
+                e.SellerId,
                 PriceType = (OrderPriceType)e.PriceType,
                 e.Quantity,
             }).Select(item => new OrderItem
@@ -78,6 +79,7 @@ namespace FarmlyCore.Application.Queries.Orders
                 FkAdvertItemId = item.AdvertItemId,
                 FkPickupPointId = item.PickupPointId,
                 FkCategoryId = item.CategoryId,
+                FkSellerId = item.SellerId,
                 PriceType = item.PriceType,
                 Quantity = item.Quantity
             }).ToList();

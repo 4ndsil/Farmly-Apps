@@ -29,5 +29,6 @@ namespace FarmlyCore.Application.DTOs.Order
         public int AdvertItemId { get; set; }
         public int CategoryId { get; set; }
         public int PickupPointId { get; set; }
+        public int SellerId { get; set; }
     }
 }
