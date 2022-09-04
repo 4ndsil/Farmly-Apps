@@ -10,6 +10,6 @@
 
         public DateTime? PlacementDate { get; set; }
 
-        public DateTime? EstimatedDeliveryDate { get; set; }        
+        public DateTime? EstimatedDeliveryDate { get; set; }  
     }
 }

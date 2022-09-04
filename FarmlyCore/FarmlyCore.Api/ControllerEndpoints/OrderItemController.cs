@@ -52,7 +52,6 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [Route("{orderItemId:int:min(1)}")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(OrderItemDto), StatusCodes.Status200OK)]
-        [Consumes("application/json-patch+json")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status415UnsupportedMediaType)]

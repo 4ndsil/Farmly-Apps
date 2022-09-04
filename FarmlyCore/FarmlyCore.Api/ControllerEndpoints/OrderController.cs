@@ -70,14 +70,14 @@ namespace FarmlyCore.Api.ControllerEndpoints
 
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(CreateOrderResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(OrderDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateOrder(
-       [FromServices] IQueryHandler<CreateOrderRequest, CreateOrderResponse> handler,
-       [FromBody] CreateOrderDto order,
-       CancellationToken cancellationToken)
+        [FromServices] IQueryHandler<CreateOrderRequest, CreateOrderResponse> handler,
+        [FromBody] CreateOrderDto order,
+        CancellationToken cancellationToken)
         {
             var response = await handler.HandleAsync(new CreateOrderRequest(order), cancellationToken);
 

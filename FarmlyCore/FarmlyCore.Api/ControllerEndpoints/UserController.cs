@@ -48,7 +48,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
 
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(UserAuthenticationResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UserAuthentication(
         [FromServices] IQueryHandler<UserAuthenticationRequest, UserAuthenticationResponse> handler,
