@@ -57,9 +57,14 @@ namespace FarmlyCore.Api.ControllerEndpoints
         {
             var response = await handler.HandleAsync(request, cancellationToken);
 
-            if (response == null)
-            {
-                return NotFound();
+            if (response.Detail.HasValue)
+            {    
+                return response.Detail.Value switch
+                {
+                    AuthenticationDetail.UserNotFound => NotFound(),
+                    AuthenticationDetail.InvalidCredentials => NotFound(),
+                    _ => StatusCode(StatusCodes.Status500InternalServerError)
+                };
             }
 
             return Ok(response);

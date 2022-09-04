@@ -11,22 +11,22 @@ namespace FarmlyCore.Application.Queries.Users
 {
     public class UserAuthenticationResponse
     {
-        private UserAuthenticationResponse(UserDto user, AuthenticationDetail detail) { User = user; Detail = detail; }
+        private UserAuthenticationResponse(UserDto user) { User = user; }
 
         private UserAuthenticationResponse(AuthenticationDetail detail) { Detail = detail; }
 
-        public static UserAuthenticationResponse WithSuccess(UserDto user, AuthenticationDetail detail) => new UserAuthenticationResponse(user, detail);
+        public static UserAuthenticationResponse WithSuccess(UserDto user) => new UserAuthenticationResponse(user);
 
         public static UserAuthenticationResponse WithProblem(AuthenticationDetail detail) => new UserAuthenticationResponse(detail);
 
         public UserDto? User { get; set; }
 
-        public AuthenticationDetail Detail { get; set; }
+        public AuthenticationDetail? Detail { get; set; }
     }
 
     public enum AuthenticationDetail
     {
-        ValidCredentials,
+        UserNotFound,
         InvalidCredentials
     }
 
@@ -49,7 +49,7 @@ namespace FarmlyCore.Application.Queries.Users
 
             if (user == null)
             {
-                return null;
+                return UserAuthenticationResponse.WithProblem(AuthenticationDetail.UserNotFound);
             }
 
             var userPassword = user.Password;
@@ -63,7 +63,7 @@ namespace FarmlyCore.Application.Queries.Users
 
             var userDto = _mapper.Map<UserDto>(user);
 
-            return UserAuthenticationResponse.WithSuccess(userDto, AuthenticationDetail.ValidCredentials);
+            return UserAuthenticationResponse.WithSuccess(userDto);
         }
 
         private static byte[] GetHash(string credentials)

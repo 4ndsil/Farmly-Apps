@@ -21,7 +21,7 @@ namespace FarmlyCore.Application.Queries.Orders
 
         public OrderDto? Order { get; set; }
 
-        public CreateOrderProblemDetail Detail { get; set; }
+        public CreateOrderProblemDetail? Detail { get; set; }
 
         public int[]? AdvertItemIds { get; set; } = Array.Empty<int>();
     }

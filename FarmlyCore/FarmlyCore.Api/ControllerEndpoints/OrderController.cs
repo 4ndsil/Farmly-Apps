@@ -81,9 +81,16 @@ namespace FarmlyCore.Api.ControllerEndpoints
         {
             var response = await handler.HandleAsync(new CreateOrderRequest(order), cancellationToken);
 
-            if (response == null)
+            if (response.Detail.HasValue)
             {
-                return NotFound();
+                return response.Detail.Value switch
+                {
+                    CreateOrderProblemDetail.ConcurrencyConflict => Forbid(),
+                    CreateOrderProblemDetail.ConcurrecyFailure => Forbid(),
+                    CreateOrderProblemDetail.AddressNotFound => NotFound(),
+                    CreateOrderProblemDetail.AdvertItemsNotFound => NotFound(),
+                    _ => StatusCode(StatusCodes.Status500InternalServerError)
+                };
             }
 
             return Ok(response);
