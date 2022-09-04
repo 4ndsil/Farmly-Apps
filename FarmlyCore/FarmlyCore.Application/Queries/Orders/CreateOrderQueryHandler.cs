@@ -169,8 +169,6 @@ namespace FarmlyCore.Application.Queries.Orders
 
         private string OrderNumberGenerator(int customerId)
         {
-            var orderNumber = $"C{customerId}";
-
             var rnd1 = new Random();
 
             var rnd2 = new Random();
@@ -179,16 +177,7 @@ namespace FarmlyCore.Application.Queries.Orders
 
             var second = rnd2.Next().ToString();
 
-            int i = 0;
-
-            while (i < 8)
-            {
-                orderNumber = $"{orderNumber}-{first.Substring(i, 4)}-{second.Substring(i, 4)}";
-
-                i += 4;
-            }
-
-            return orderNumber;
+            return $"{first.Substring(0, 4)}-{second.Substring(3, 4)}";
         }
     }
 }

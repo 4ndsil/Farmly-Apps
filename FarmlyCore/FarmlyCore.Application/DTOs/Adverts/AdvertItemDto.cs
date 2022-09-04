@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public decimal Weight { get; set; }
-        public int? Quantity { get; set; }
+        public decimal? Quantity { get; set; }
         public decimal Price { get; set; }
         public int AdvertId { get; set; }
     }

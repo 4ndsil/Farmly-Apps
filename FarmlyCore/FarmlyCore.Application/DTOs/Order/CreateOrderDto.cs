@@ -22,7 +22,7 @@ namespace FarmlyCore.Application.DTOs.Order
     {
         public string ProductName { get; set; }
         public decimal? Weight { get; set; }
-        public int? Quantity { get; set; }
+        public decimal? Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal? AdvertItemPrice { get; set; }
         public OrderPriceTypeDto PriceType { get; set; }
