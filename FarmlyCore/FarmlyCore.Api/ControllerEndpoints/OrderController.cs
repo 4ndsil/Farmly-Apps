@@ -93,7 +93,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
                 };
             }
 
-            return Ok(response);
+            return Ok(response.Order);
         }
     }
 }
