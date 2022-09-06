@@ -39,6 +39,7 @@ namespace FarmlyCore.Application.Extensions
 
             services.AddTransient<IQueryHandler<FindUsersRequest, UserDto[]>, FindUsersQueryHandler>();
             services.AddTransient<IQueryHandler<GetUserRequest, UserDto>, GetUserQueryHandler>();
+            services.AddTransient<IQueryHandler<GetUserByEmailRequest, UserDto>, GetUserByEmailQueryHandler>();
             services.AddTransient<IQueryHandler<UpdateUserRequest, UserDto>, UpdateUserQueryHandler>();
             services.AddTransient<IQueryHandler<UserAuthenticationRequest, UserAuthenticationResponse>, UserAuthenticationQueryHandler>();
 

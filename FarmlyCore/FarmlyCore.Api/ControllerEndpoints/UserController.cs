@@ -5,6 +5,7 @@ using FarmlyCore.Infrastructure.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 using System;
@@ -33,10 +34,29 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetUser(
         [FromServices] IQueryHandler<GetUserRequest, UserDto> handler,
-        int userId,
+        [Range(1, int.MaxValue), FromRoute] int userId,
         CancellationToken cancellationToken)
         {
             var response = await handler.HandleAsync(new GetUserRequest(userId), cancellationToken);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(response);
+        }
+
+        [HttpGet("{email}")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetUserByEmail(
+        [FromServices] IQueryHandler<GetUserByEmailRequest, UserDto> handler,
+        [FromRoute] string email,
+        CancellationToken cancellationToken)
+        {
+            var response = await handler.HandleAsync(new GetUserByEmailRequest(email), cancellationToken);
 
             if (response == null)
             {
@@ -58,7 +78,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
             var response = await handler.HandleAsync(request, cancellationToken);
 
             if (response.Detail.HasValue)
-            {    
+            {
                 return response.Detail.Value switch
                 {
                     AuthenticationDetail.UserNotFound => NotFound(),
