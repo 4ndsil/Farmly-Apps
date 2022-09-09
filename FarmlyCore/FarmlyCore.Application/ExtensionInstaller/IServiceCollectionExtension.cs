@@ -15,6 +15,7 @@ using FarmlyCore.Application.Queries.Orders;
 using FarmlyCore.Application.Queries.Orders.QueryFilters;
 using FarmlyCore.Application.Queries.Users;
 using FarmlyCore.Application.Queries.Users.QueryFilters;
+using FarmlyCore.Application.Requests.AdvertItems;
 using FarmlyCore.Application.Requests.Adverts;
 using FarmlyCore.Application.Requests.Categories;
 using FarmlyCore.Application.Requests.Customers;
@@ -29,6 +30,7 @@ namespace FarmlyCore.Application.Extensions
     {
         public static IServiceCollection RegisterApplicationQueryHandlers(this IServiceCollection services)
         {
+            //customers
             services.AddTransient<IQueryHandler<GetCustomerRequest, CustomerDto>, GetCustomerQueryHandler>();
             services.AddTransient<IQueryHandler<CreateCustomerRequest, CustomerDto>, CreateCustomerQueryHandler>();
             services.AddTransient<IQueryHandler<CreateCustomerAddressRequest, CustomerAddressDto>, CreateCustomerAddressQueryHandler>();
@@ -37,12 +39,14 @@ namespace FarmlyCore.Application.Extensions
             services.AddTransient<IQueryHandler<UpdateCustomerAddressRequest, CustomerAddressDto>, UpdateCustomerAddressQueryHandler>();
             services.AddTransient<IQueryHandler<FindCustomersRequest, CustomerDto[]>, FindCustomersQueryHandler>();
 
+            //users
             services.AddTransient<IQueryHandler<FindUsersRequest, UserDto[]>, FindUsersQueryHandler>();
             services.AddTransient<IQueryHandler<GetUserRequest, UserDto>, GetUserQueryHandler>();
             services.AddTransient<IQueryHandler<GetUserByEmailRequest, UserDto>, GetUserByEmailQueryHandler>();
             services.AddTransient<IQueryHandler<UpdateUserRequest, UserDto>, UpdateUserQueryHandler>();
             services.AddTransient<IQueryHandler<UserAuthenticationRequest, UserAuthenticationResponse>, UserAuthenticationQueryHandler>();
 
+            //adverts
             services.AddTransient<IQueryHandler<GetAdvertRequest, AdvertDto>, GetAdvertQueryHandler>();
             services.AddTransient<IQueryHandler<AdvertDto[]>, GetAllAdvertsQueryHandler>();
             services.AddTransient<IQueryHandler<FindAdvertsRequest, PagedResponse<IReadOnlyList<AdvertDto>>>, FindAdvertsQueryHandler >();
@@ -51,14 +55,21 @@ namespace FarmlyCore.Application.Extensions
             services.AddTransient<IQueryHandler<CreateAdvertItemRequest, AdvertItemDto>, CreateAdvertItemQueryHandler>();
             services.AddTransient<IQueryHandler<DeleteAdvertItemRequest, DeleteAdvertItemResult>, DeleteAdvertItemQueryHandler>();
 
+            //advertItems
+            services.AddTransient<IQueryHandler<FindAdvertItemsRequest, AdvertItemDto[]>, FindAdvertItemsQueryHandler>();
+            services.AddTransient<IQueryHandler<UpdateAdvertItemRequest, AdvertItemDto>, UpdateAdvertItemQueryHandler>();
+
+            //order
             services.AddTransient<IQueryHandler<GetOrderRequest, OrderDto>, GetOrderQueryHandler>();
             services.AddTransient<IQueryHandler<CreateOrderRequest, CreateOrderResponse>, CreateOrderQueryHandler>();
             services.AddTransient<IQueryHandler<FindOrdersRequest, IReadOnlyList<OrderDto>>, FindOrdersQueryHandler>();
             services.AddTransient<IQueryHandler<UpdateOrderItemRequest, OrderItemDto>, UpdateOrderItemQueryHandler>();
 
+            //orderItems
             services.AddTransient<IQueryHandler<FindOrderItemsRequest, IReadOnlyList<OrderItemDto>>, FindOrderItemsQueryHandler>();
             services.AddTransient<IQueryHandler<RespondToOrderItemRequest, OrderItemDto>, RespondToOrderItemQueryHandler>();
 
+            //categories
             services.AddTransient<IQueryHandler<GetCategoryRequest, CategoryDto>, GetCategoryQueryHandler>();
             services.AddTransient<IQueryHandler<CategoryDto[]>, GetCategoriesQueryHandler>();
 

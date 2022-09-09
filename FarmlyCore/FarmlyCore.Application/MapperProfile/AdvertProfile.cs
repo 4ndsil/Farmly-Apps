@@ -21,7 +21,10 @@ namespace FarmlyCore.Application.MapperProfile
                .ForMember(e => e.Category, v => v.MapFrom(src => src.Category))               
                .ForMember(e => e.AdvertItems, v => v.MapFrom(src => src.AdvertItems));
 
-            CreateMap<AdvertItem, AdvertItemDto>().ReverseMap();
+            CreateMap<AdvertItem, AdvertItemDto>()
+                .ForMember(e => e.AdvertId, v => v.MapFrom(src => src.Advert.Id));
+
+            CreateMap<AdvertItemDto, AdvertItem>();
 
             CreateMap<CreateAdvertDto, Advert>().ReverseMap();
 
