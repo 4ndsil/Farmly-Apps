@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FarmlyCore.Application.Queries.OrderItems
 {
-    public class FindOrderItemsQueryHandler : IQueryHandler<FindOrderItemsRequest, IReadOnlyList<OrderItemDto>>
+    public class FindOrderItemsQueryHandler : IQueryHandler<FindOrderItemsRequest, OrderItemDto[]>
     {
         private readonly FarmlyEntityDbContext _farmlyEntityDataContext;
         private readonly IMapper _mapper;
@@ -22,7 +22,7 @@ namespace FarmlyCore.Application.Queries.OrderItems
             _orderItemFilters = orderItemFilters ?? throw new ArgumentNullException(nameof(orderItemFilters));
         }
 
-        public async Task<IReadOnlyList<OrderItemDto>> HandleAsync(FindOrderItemsRequest request, CancellationToken cancellationToken = default)
+        public async Task<OrderItemDto[]> HandleAsync(FindOrderItemsRequest request, CancellationToken cancellationToken = default)
         {
             var baseRequest = _farmlyEntityDataContext.OrderItems.AsNoTracking().AsQueryable();
 
