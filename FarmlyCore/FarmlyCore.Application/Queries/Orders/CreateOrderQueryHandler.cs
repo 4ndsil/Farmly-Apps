@@ -69,6 +69,8 @@ namespace FarmlyCore.Application.Queries.Orders
                 e.SellerId,
                 PriceType = (OrderPriceType)e.PriceType,
                 e.Quantity,
+                e.PlacementDate,
+                e.PickupDate,
             }).Select(item => new OrderItem
             {
                 ProductName = item.ProductName,
@@ -81,7 +83,9 @@ namespace FarmlyCore.Application.Queries.Orders
                 FkCategoryId = item.CategoryId,
                 FkSellerId = item.SellerId,
                 PriceType = item.PriceType,
-                Quantity = item.Quantity
+                Quantity = item.Quantity,
+                PlacementDate = item.PlacementDate,
+                PickupDate = item.PickupDate
             }).ToList();
 
             var order = new Order
@@ -94,7 +98,7 @@ namespace FarmlyCore.Application.Queries.Orders
                 FkDeliveryPointId = request.Order.DeliveryPointId,                
                 TotalPrice = request.Order.TotalPrice,
                 TotalWeight = request.Order.TotalWeight,
-                OrderItems = orderItems
+                OrderItems = orderItems,                
             };
 
             var saved = false;
