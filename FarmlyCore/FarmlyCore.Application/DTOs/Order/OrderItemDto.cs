@@ -20,13 +20,21 @@ namespace FarmlyCore.Application.DTOs.Order
         public int PickupPointId { get; set; }
         public ResponseStatusDto ResponseStatus { get; set; }
         public int OrderId { get; set; }
+        public DateTime PickupDate { get; set; }
+        public DateTime PlacementDate { get; set; }
+        public DateTime? ResponseDate { get; set; }
     }
 
     public enum OrderPriceTypeDto
     {
-        Kg,
-        Gram,
-        Styck
+        kg,
+        hg,
+        g,
+        l,
+        dl,
+        cl,
+        ml,
+        st,
     }
 
     public enum ResponseStatusDto

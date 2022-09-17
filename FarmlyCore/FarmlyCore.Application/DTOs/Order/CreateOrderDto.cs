@@ -30,5 +30,7 @@ namespace FarmlyCore.Application.DTOs.Order
         public int CategoryId { get; set; }
         public int PickupPointId { get; set; }
         public int SellerId { get; set; }
+        public DateTime PickupDate { get; set; }
+        public DateTime PlacementDate { get; set; }
     }
 }

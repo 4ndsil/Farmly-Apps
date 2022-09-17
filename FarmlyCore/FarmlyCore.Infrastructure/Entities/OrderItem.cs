@@ -23,6 +23,9 @@ namespace FarmlyCore.Infrastructure.Entities
         public int FkPickupPointId { get; set; }
         public int FkCategoryId { get; set; }
         public int FkSellerId { get; set; }
+        public DateTime PlacementDate { get; set; }
+        public DateTime? ResponseDate { get; set; }
+        public DateTime PickupDate { get; set; }
         public AdvertItem AdvertItem { get; set; }
         public Order Order { get; set; }
         public CustomerAddress PickupPoint { get; set; }
@@ -32,9 +35,14 @@ namespace FarmlyCore.Infrastructure.Entities
 
     public enum OrderPriceType
     {
-        Kg,
-        Gram,
-        Styck
+        kg,
+        hg,
+        g,
+        l,
+        dl,
+        cl,
+        ml,
+        st,
     }
 
     public enum ResponseStatus

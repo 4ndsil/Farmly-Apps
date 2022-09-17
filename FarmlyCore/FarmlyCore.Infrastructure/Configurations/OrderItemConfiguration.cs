@@ -58,6 +58,18 @@ namespace FarmlyCore.Infrastructure.Configurations
                 .HasColumnName("FKSellerID")
                 .IsRequired();
 
+            entity.Property(e => e.PlacementDate)
+             .HasColumnName("PlacementDate")
+             .IsRequired();
+
+            entity.Property(e => e.PickupDate)
+             .HasColumnName("PickupDate")
+             .IsRequired();
+
+            entity.Property(e => e.ResponseDate)
+             .HasColumnName("ResponseDate")
+             .IsRequired();
+
             entity.HasOne(e => e.AdvertItem)
                  .WithOne()
                  .HasForeignKey<OrderItem>(e => e.FkAdvertItemId)
