@@ -51,10 +51,10 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [HttpPost]
         [Route("find")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(OrderItemDto[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(OrderDto[]), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> FindOrders(
-        [FromServices] IQueryHandler<FindOrdersRequest, OrderDto[]> handler,
+        [FromServices] IQueryHandler<FindOrdersRequest, IReadOnlyList<OrderDto>> handler,
         [FromBody] FindOrdersRequest request,
         CancellationToken cancellationToken)
         {
