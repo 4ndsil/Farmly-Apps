@@ -15,17 +15,14 @@ namespace FarmlyCore.Application.MapperProfile
                 .ForMember(e => e.DeliveryPointId, v => v.MapFrom(src => src.FkDeliveryPointId));
 
             CreateMap<OrderDto, Order>()
-                .ForMember(e => e.Buyer, v => v.Ignore())
+                .ForMember(e => e.Buyer, v => v.Ignore())                
                 .ForMember(e => e.OrderItems, v => v.MapFrom(src => src.OrderItems));
 
             CreateMap<OrderItem, OrderItemDto>()
-                .ForMember(e => e.AdvertItemId, v => v.MapFrom(src => src.AdvertItem.Id))
-                .ForMember(e => e.ProductName, v => v.MapFrom(src => src.AdvertItem.Advert.ProductName))
-                .ForMember(e => e.SellerId, v => v.MapFrom(src => src.AdvertItem.Advert.Seller.Id))
+                .ForMember(e => e.SellerId, v => v.MapFrom(src => src.AdvertItem.Advert.FkSellerId))
                 .ForMember(e => e.SellerName, v => v.MapFrom(src => src.AdvertItem.Advert.Seller.CompanyName))
-                .ForMember(e => e.Category, v => v.MapFrom(src => src.Category))
-                .ForMember(e => e.PriceType, v => v.MapFrom(src => src.PriceType))
-                .ForMember(e => e.PickupPointId, v => v.MapFrom(src => src.FkPickupPointId));
+                .ForMember(e => e.CategoryId, v => v.MapFrom(src => src.AdvertItem.Advert.FkCategoryId))
+                .ForMember(e => e.Category, v => v.MapFrom(src => src.AdvertItem.Advert.Category));
 
             CreateMap<OrderItemDto, OrderItem>()
                 .ForMember(e => e.Category, v => v.Ignore())

@@ -59,16 +59,15 @@ namespace FarmlyCore.Infrastructure.Configurations
                 .IsRequired();
 
             entity.Property(e => e.PlacementDate)
-             .HasColumnName("PlacementDate")
-             .IsRequired();
+                .HasColumnName("PlacementDate")
+                .IsRequired();
 
             entity.Property(e => e.PickupDate)
-             .HasColumnName("PickupDate")
-             .IsRequired();
+                .HasColumnName("PickupDate")
+                .IsRequired();
 
             entity.Property(e => e.ResponseDate)
-             .HasColumnName("ResponseDate")
-             .IsRequired();
+                .HasColumnName("ResponseDate");
 
             entity.HasOne(e => e.AdvertItem)
                  .WithOne()
@@ -81,14 +80,14 @@ namespace FarmlyCore.Infrastructure.Configurations
                  .IsRequired();
 
             entity.HasOne(e => e.Seller)
-                  .WithOne()
-                  .HasForeignKey<OrderItem>(e => e.FkSellerId)
-                  .IsRequired();
+                .WithOne()
+                .HasForeignKey<OrderItem>(e => e.FkSellerId)
+                .IsRequired();
 
             entity.HasOne(e => e.Order)
-                 .WithMany(e => e.OrderItems)
-                 .HasForeignKey(e => e.FkOrderId)
-                 .IsRequired();
+                .WithMany(e => e.OrderItems)
+                .HasForeignKey(e => e.FkOrderId)
+                .IsRequired();
 
             entity.HasOne(e => e.PickupPoint)
                  .WithOne()

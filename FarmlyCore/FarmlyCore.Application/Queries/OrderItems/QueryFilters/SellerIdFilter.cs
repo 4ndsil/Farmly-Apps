@@ -9,9 +9,9 @@ namespace FarmlyCore.Application.Queries.OrderItems.QueryFilters
     {
         public bool CanFilter(FindOrderItemsRequest request) => request.SellerId.HasValue;
 
-        public IQueryable<OrderItem> Filter(FindOrderItemsRequest request, IQueryable<OrderItem> orders)
+        public IQueryable<OrderItem> Filter(FindOrderItemsRequest request, IQueryable<OrderItem> orderItems)
         {
-            return orders.Where(e => e.FkSellerId == request.SellerId);
+            return orderItems.Where(e => e.FkSellerId == request.SellerId);
         }
     }
 }

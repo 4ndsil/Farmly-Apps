@@ -7,9 +7,9 @@ namespace FarmlyCore.Application.Queries.OrderItems.QueryFilters
     {
         public bool CanFilter(FindOrderItemsRequest request) => request.ResponseStatus.HasValue;
 
-        public IQueryable<OrderItem> Filter(FindOrderItemsRequest request, IQueryable<OrderItem> customers)
+        public IQueryable<OrderItem> Filter(FindOrderItemsRequest request, IQueryable<OrderItem> orderItems)
         {
-            return customers.Where(e => request.ResponseStatus.HasValue && e.ResponseStatus == (ResponseStatus)request.ResponseStatus.Value);
+            return orderItems.Where(e => e.ResponseStatus == (ResponseStatus)request.ResponseStatus.Value);
         }
     }
 }
