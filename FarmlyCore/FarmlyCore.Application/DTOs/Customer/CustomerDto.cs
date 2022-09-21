@@ -7,7 +7,8 @@
         public string Email { get; set; }
         public CustomerTypeDto CustomerType { get; set; }
         public string BankGiro { get; set; }
-        public string OrgNumber { get; set; }        
+        public string OrgNumber { get; set; }
+        public string Phone { get; set; }
         public IEnumerable<CustomerAddressDto> CustomerAddresses { get; set; } = Array.Empty<CustomerAddressDto>();
     }
 

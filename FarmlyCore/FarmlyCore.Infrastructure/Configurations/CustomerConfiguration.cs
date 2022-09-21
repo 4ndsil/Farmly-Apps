@@ -26,6 +26,9 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(p => p.OrgNumber)
                 .HasColumnName("OrgNumber");
 
+            entity.Property(p => p.Phone)
+                .HasColumnName("Phone");
+
             entity.HasMany(p => p.CustomerAddresses)
                 .WithOne(p => p.Customer)
                 .HasForeignKey(p => p.FkCustomerId);                

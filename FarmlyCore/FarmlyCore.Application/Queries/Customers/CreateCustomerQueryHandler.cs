@@ -4,10 +4,6 @@ using FarmlyCore.Application.Requests.Customers;
 using FarmlyCore.Infrastructure.Entities;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using FarmlyCore.Infrastructure.Queries;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace FarmlyCore.Application.Queries.Customers
 {
@@ -33,7 +29,8 @@ namespace FarmlyCore.Application.Queries.Customers
                 CompanyName = request.Customer.CompanyName,
                 Email = request.Customer.Email,
                 CustomerType = (CustomerType)request.Customer.CustomerType,
-                OrgNumber = request.Customer.OrgNumber
+                OrgNumber = request.Customer.OrgNumber,
+                Phone = request.Customer.Phone
             };
 
             foreach (var address in request.Customer.CustomerAddresses)
@@ -43,7 +40,7 @@ namespace FarmlyCore.Application.Queries.Customers
                     Street = address.Street,
                     City = address.City,
                     State = address.State,
-                    Zip = address.Zip
+                    Zip = address.Zip,                    
                 };
 
                 addressList.Add(customerAddress);

@@ -53,9 +53,9 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(typeof(CustomerDto[]), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> FindCustomers(
-            [FromServices] IQueryHandler<FindCustomersRequest, CustomerDto[]> handler,
-            [FromBody] FindCustomersRequest request,
-            CancellationToken cancellationToken)
+        [FromServices] IQueryHandler<FindCustomersRequest, CustomerDto[]> handler,
+        [FromBody] FindCustomersRequest request,
+        CancellationToken cancellationToken)
         {
             var response = await handler.HandleAsync(request, cancellationToken);
 
@@ -74,9 +74,9 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateCustomer(
-            [FromServices] IQueryHandler<CreateCustomerRequest, CustomerDto> handler,
-            [FromBody] CustomerDto customer,
-            CancellationToken cancellationToken)
+        [FromServices] IQueryHandler<CreateCustomerRequest, CustomerDto> handler,
+        [FromBody] CustomerDto customer,
+        CancellationToken cancellationToken)
         {
             var response = await handler.HandleAsync(new CreateCustomerRequest(customer), cancellationToken);
 
@@ -97,10 +97,10 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(StatusCodes.Status415UnsupportedMediaType)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         public async Task<IActionResult> UpdateCustomer(
-            [FromServices] IQueryHandler<UpdateCustomerRequest, CustomerDto> handler,
-            [Range(1, int.MaxValue), FromRoute] int customerId,
-            [FromBody] JsonPatchDocument<CustomerDto> patchDocument,
-            CancellationToken cancellationToken)
+        [FromServices] IQueryHandler<UpdateCustomerRequest, CustomerDto> handler,
+        [Range(1, int.MaxValue), FromRoute] int customerId,
+        [FromBody] JsonPatchDocument<CustomerDto> patchDocument,
+        CancellationToken cancellationToken)
         {
             try
             {
@@ -122,9 +122,9 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(typeof(CustomerAddressDto[]), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCustomerAddresses(
-            [FromServices] IQueryHandler<GetCustomerAddressesRequest, CustomerAddressDto[]> handler,
-            [Range(1, int.MaxValue), FromRoute] int customerId,
-            CancellationToken cancellationToken)
+        [FromServices] IQueryHandler<GetCustomerAddressesRequest, CustomerAddressDto[]> handler,
+        [Range(1, int.MaxValue), FromRoute] int customerId,
+        CancellationToken cancellationToken)
         {
             var response = await handler.HandleAsync(new GetCustomerAddressesRequest(customerId), cancellationToken);
 
@@ -144,10 +144,10 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateCustomerAddress(
-            [FromServices] IQueryHandler<CreateCustomerAddressRequest, CustomerAddressDto> handler,
-            [FromBody] CustomerAddressDto customerAddress,
-            [Range(1, int.MaxValue), FromRoute] int customerId,
-            CancellationToken cancellationToken)
+        [FromServices] IQueryHandler<CreateCustomerAddressRequest, CustomerAddressDto> handler,
+        [FromBody] CustomerAddressDto customerAddress,
+        [Range(1, int.MaxValue), FromRoute] int customerId,
+        CancellationToken cancellationToken)
         {
             var response = await handler.HandleAsync(new CreateCustomerAddressRequest(customerAddress, customerId), cancellationToken);
 

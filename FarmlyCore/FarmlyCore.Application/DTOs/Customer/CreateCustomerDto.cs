@@ -11,6 +11,7 @@ namespace FarmlyCore.Application.DTOs.Customer
         public CustomerTypeDto CustomerType { get; set; }
         public string BankGiro { get; set; }
         public string OrgNumber { get; set; }
+        public string Phone { get; set; }
         public ICollection<CustomerAddressDto> CustomerAddresses { get; set; } = Array.Empty<CustomerAddressDto>();
     }
 }
