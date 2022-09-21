@@ -69,7 +69,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(CreateOrderResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CreateOrderResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

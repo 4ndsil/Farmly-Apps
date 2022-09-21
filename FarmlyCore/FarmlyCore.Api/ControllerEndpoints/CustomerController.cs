@@ -139,7 +139,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [HttpPost]
         [Route("{customerId:int:min(1)}/addresses")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(CustomerAddressDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CustomerAddressDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

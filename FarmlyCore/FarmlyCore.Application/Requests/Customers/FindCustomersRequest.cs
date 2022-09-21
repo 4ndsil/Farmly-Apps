@@ -8,6 +8,8 @@ namespace FarmlyCore.Application.Requests.Customers
 
         public CustomerTypeDto? CustomerType { get; set; }
 
+        public int [] CustomerIds { get; set; } = Array.Empty<int>();
+
         public string? CompanyName { get; set; }
     }
 }

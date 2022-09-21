@@ -87,7 +87,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(AdvertDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(AdvertDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -137,7 +137,7 @@ namespace FarmlyCore.Api.ControllerEndpoints
 
         [HttpPost]
         [Route("{advertId:int:min(1)}/advertItems")]
-        [ProducesResponseType(typeof(AdvertItemDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(AdvertItemDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

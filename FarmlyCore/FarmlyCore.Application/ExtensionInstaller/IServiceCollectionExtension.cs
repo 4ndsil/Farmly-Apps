@@ -90,6 +90,7 @@ namespace FarmlyCore.Application.Extensions
 
             services.AddSingleton<ICustomerFilter, CustomerTypeFilter>();
             services.AddSingleton<ICustomerFilter, CompanyNameFilter>();
+            services.AddSingleton<ICustomerFilter, Queries.Customers.QueryFilters.CustomerIdFilter>();
 
             services.AddSingleton<IUserFilter, UserEmailFilter>();
             services.AddSingleton<IUserFilter, UserCustomerIdFilter>();
