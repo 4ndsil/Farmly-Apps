@@ -5,7 +5,7 @@ namespace FarmlyCore.Application.Queries.Adverts.QueryFilters
 {
     public class PriceTypeFilter : IAdvertFilter
     {
-        public bool CanFilter(FindAdvertsRequest request) => request.CategoryId.HasValue;
+        public bool CanFilter(FindAdvertsRequest request) => request.PriceType.HasValue;
 
         public IQueryable<Advert> Filter(FindAdvertsRequest request, IQueryable<Advert> adverts)
         {

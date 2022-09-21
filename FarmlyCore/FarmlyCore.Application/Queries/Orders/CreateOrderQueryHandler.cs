@@ -11,27 +11,29 @@ namespace FarmlyCore.Application.Queries.Orders
 {
     public class CreateOrderResponse
     {
-        private CreateOrderResponse(OrderDto order) { Order = order; }
+        private CreateOrderResponse(CreateOrderDetail detail, OrderSummaryDto order) { Order = order; Detail = detail; }
 
-        private CreateOrderResponse(CreateOrderProblemDetail detail, int[] advertItemsIds) { Detail = detail; AdvertItemIds = advertItemsIds; }
+        private CreateOrderResponse(CreateOrderDetail detail, int[] advertItemsIds) { Detail = detail; AdvertItemIds = advertItemsIds; }
 
-        public static CreateOrderResponse WithSuccess(OrderDto order) => new CreateOrderResponse(order);
+        public static CreateOrderResponse WithSuccess(CreateOrderDetail detail, OrderSummaryDto order) => new CreateOrderResponse(detail, order);
 
-        public static CreateOrderResponse WithProblem(CreateOrderProblemDetail detail, int[] advertItemsIds = null) => new CreateOrderResponse(detail, advertItemsIds);
+        public static CreateOrderResponse WithProblem(CreateOrderDetail detail, int[] advertItemsIds = null) => new CreateOrderResponse(detail, advertItemsIds);
 
-        public OrderDto? Order { get; set; }
+        public OrderSummaryDto? Order { get; set; }
 
-        public CreateOrderProblemDetail? Detail { get; set; }
+        public CreateOrderDetail? Detail { get; set; }
 
         public int[]? AdvertItemIds { get; set; } = Array.Empty<int>();
     }
 
-    public enum CreateOrderProblemDetail
+    public enum CreateOrderDetail
     {
         AddressNotFound,
         AdvertItemsNotFound,
         ConcurrencyConflict,
-        ConcurrecyFailure
+        ConcurrecyFailure,
+        BuyerNotFound,
+        WithSuccess
     }
 
     public class CreateOrderQueryHandler : IQueryHandler<CreateOrderRequest, CreateOrderResponse>
@@ -54,7 +56,14 @@ namespace FarmlyCore.Application.Queries.Orders
 
             if (advertItems == null)
             {
-                return CreateOrderResponse.WithProblem(CreateOrderProblemDetail.AdvertItemsNotFound, Array.Empty<int>());
+                return CreateOrderResponse.WithProblem(CreateOrderDetail.BuyerNotFound, Array.Empty<int>());
+            }
+
+            var buyer = await _farmlyEntityDataContext.Customers.Where(e => e.Id == request.Order.BuyerId).AsTracking().FirstOrDefaultAsync();
+
+            if (buyer == null)
+            {
+                return CreateOrderResponse.WithProblem(CreateOrderDetail.AdvertItemsNotFound, Array.Empty<int>());
             }
 
             var orderItems = request.Order.CreateOrderItems.Select(e => new
@@ -85,7 +94,8 @@ namespace FarmlyCore.Application.Queries.Orders
                 PriceType = item.PriceType,
                 Quantity = item.Quantity,
                 PlacementDate = item.PlacementDate,
-                PickupDate = item.PickupDate
+                PickupDate = item.PickupDate,
+                
             }).ToList();
 
             var order = new Order
@@ -98,7 +108,8 @@ namespace FarmlyCore.Application.Queries.Orders
                 FkDeliveryPointId = request.Order.DeliveryPointId,                
                 TotalPrice = request.Order.TotalPrice,
                 TotalWeight = request.Order.TotalWeight,
-                OrderItems = orderItems,                
+                OrderItems = orderItems,
+                Buyer = buyer
             };
 
             var saved = false;
@@ -121,7 +132,7 @@ namespace FarmlyCore.Application.Queries.Orders
 
                                 if (orderItem.Quantity > advertItem.Quantity)
                                 {
-                                    return CreateOrderResponse.WithProblem(CreateOrderProblemDetail.ConcurrencyConflict, new int[] { currentAdvert.Id });
+                                    return CreateOrderResponse.WithProblem(CreateOrderDetail.ConcurrencyConflict, new int[] { currentAdvert.Id });
                                 }
 
                                 advertItem.Quantity -= orderItem.Quantity;
@@ -149,7 +160,7 @@ namespace FarmlyCore.Application.Queries.Orders
                         }
                         else
                         {
-                            return CreateOrderResponse.WithProblem(CreateOrderProblemDetail.ConcurrecyFailure);
+                            return CreateOrderResponse.WithProblem(CreateOrderDetail.ConcurrecyFailure);
                         }
                     }
 
@@ -159,16 +170,16 @@ namespace FarmlyCore.Application.Queries.Orders
 
             if (!saved)
             {
-                return CreateOrderResponse.WithProblem(CreateOrderProblemDetail.ConcurrencyConflict, new int[] { currentAdvert.Id });
+                return CreateOrderResponse.WithProblem(CreateOrderDetail.ConcurrencyConflict, new int[] { currentAdvert.Id });
             }
 
             _farmlyEntityDataContext.Add(order);
 
             _farmlyEntityDataContext.SaveChanges();
 
-            var orderDto = _mapper.Map<OrderDto>(order);
+            var orderDto = _mapper.Map<OrderSummaryDto>(order);
 
-            return CreateOrderResponse.WithSuccess(orderDto);
+            return CreateOrderResponse.WithSuccess(CreateOrderDetail.WithSuccess, orderDto);
         }
 
         private string OrderNumberGenerator(int customerId)

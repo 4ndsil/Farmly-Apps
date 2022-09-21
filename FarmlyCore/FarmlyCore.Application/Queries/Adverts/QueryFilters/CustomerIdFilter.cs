@@ -7,9 +7,9 @@ namespace FarmlyCore.Application.Queries.Adverts.QueryFilters
     {
         public bool CanFilter(FindAdvertsRequest request) => request.CustomerId.HasValue;
 
-        public IQueryable<Advert> Filter(FindAdvertsRequest request, IQueryable<Advert> customers)
+        public IQueryable<Advert> Filter(FindAdvertsRequest request, IQueryable<Advert> adverts)
         {
-            return customers.Where(e => e.FkSellerId == request.CustomerId);
+            return adverts.Where(e => e.FkSellerId == request.CustomerId);
         }
     }
 }

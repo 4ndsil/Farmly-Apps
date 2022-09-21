@@ -31,6 +31,14 @@ namespace FarmlyCore.Application.MapperProfile
             CreateMap<CreateOrderDto, Order>().ReverseMap();
 
             CreateMap<CreateOrderItemDto, OrderItem>().ReverseMap();
+
+            CreateMap<OrderSummaryDto, Order>()
+                .ForMember(e => e.OrderItems, v => v.MapFrom(src => src.OrderItems));
+
+            CreateMap<Order, OrderSummaryDto>()
+                .ForMember(e => e.OrderItems, v => v.MapFrom(src => src.OrderItems));
+
+            CreateMap<OrderItemSummaryDto, OrderItem>().ReverseMap();
         }
     }
 }
