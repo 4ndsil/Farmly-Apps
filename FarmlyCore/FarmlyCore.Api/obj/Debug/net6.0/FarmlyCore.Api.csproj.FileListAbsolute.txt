@@ -162,4 +162,3 @@ C:\Development\Farmly-Apps\FarmlyCore - Copy\FarmlyCore.Api\obj\Debug\net6.0\ref
 C:\Development\Farmly-Apps\FarmlyCore - Copy\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.pdb
 C:\Development\Farmly-Apps\FarmlyCore - Copy\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.genruntimeconfig.cache
 C:\Development\Farmly-Apps\FarmlyCore - Copy\FarmlyCore.Api\obj\Debug\net6.0\ref\FarmlyCore.Api.dll
-C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Api\obj\Debug\net6.0\FarmlyCore.Api.MvcApplicationPartsAssemblyInfo.cs

@@ -40,7 +40,8 @@ namespace FarmlyCore.Application.DTOs.Order
     public enum ResponseStatusDto
     {
         Pending,
-        IsAccepted,
+        Accepted,
         Delivered,
+        Rejected
     }
 }

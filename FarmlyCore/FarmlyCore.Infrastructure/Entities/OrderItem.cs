@@ -48,7 +48,8 @@ namespace FarmlyCore.Infrastructure.Entities
     public enum ResponseStatus
     {
         Pending,
-        IsAccepted,
+        Accepted,        
         Delivered,
+        Rejected
     }
 }

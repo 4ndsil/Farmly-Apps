@@ -62,12 +62,11 @@ namespace FarmlyCore.Application.Extensions
             //order
             services.AddTransient<IQueryHandler<GetOrderRequest, OrderDto>, GetOrderQueryHandler>();
             services.AddTransient<IQueryHandler<CreateOrderRequest, CreateOrderResponse>, CreateOrderQueryHandler>();
-            services.AddTransient<IQueryHandler<FindOrdersRequest, OrderDto[]>, FindOrdersQueryHandler>();
-            services.AddTransient<IQueryHandler<UpdateOrderItemRequest, OrderItemDto>, UpdateOrderItemQueryHandler>();
+            services.AddTransient<IQueryHandler<FindOrdersRequest, OrderDto[]>, FindOrdersQueryHandler>();            
 
             //orderItems
             services.AddTransient<IQueryHandler<FindOrderItemsRequest, OrderItemDto[]>, FindOrderItemsQueryHandler>();
-            services.AddTransient<IQueryHandler<RespondToOrderItemRequest, OrderItemDto>, RespondToOrderItemQueryHandler>();
+            services.AddTransient<IQueryHandler<RespondToOrderItemRequest, OrderItemStatusResponse>, RespondToOrderItemQueryHandler>();
 
             //categories
             services.AddTransient<IQueryHandler<GetCategoryRequest, CategoryDto>, GetCategoryQueryHandler>();

@@ -20,9 +20,9 @@ namespace FarmlyCore.Application.MapperProfile
 
             CreateMap<OrderItem, OrderItemDto>()
                 .ForMember(e => e.SellerId, v => v.MapFrom(src => src.AdvertItem.Advert.FkSellerId))
-                .ForMember(e => e.SellerName, v => v.MapFrom(src => src.AdvertItem.Advert.Seller.CompanyName))
-                .ForMember(e => e.CategoryId, v => v.MapFrom(src => src.AdvertItem.Advert.FkCategoryId))
-                .ForMember(e => e.Category, v => v.MapFrom(src => src.AdvertItem.Advert.Category));
+                .ForMember(e => e.SellerName, v => v.MapFrom(src => src.Seller.CompanyName))
+                .ForMember(e => e.CategoryId, v => v.MapFrom(src => src.Category.Id))
+                .ForMember(e => e.Category, v => v.MapFrom(src => src.Category));
 
             CreateMap<OrderItemDto, OrderItem>()
                 .ForMember(e => e.Category, v => v.Ignore())

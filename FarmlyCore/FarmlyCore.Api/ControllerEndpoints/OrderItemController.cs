@@ -1,4 +1,5 @@
 ﻿using FarmlyCore.Application.DTOs.Order;
+using FarmlyCore.Application.Queries.OrderItems;
 using FarmlyCore.Application.Requests.OrderItems;
 using FarmlyCore.Application.Requests.Orders;
 using FarmlyCore.Infrastructure.Queries;
@@ -8,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
 using System.Threading;
@@ -51,20 +51,20 @@ namespace FarmlyCore.Api.ControllerEndpoints
         [HttpPatch]
         [Route("{orderItemId:int:min(1)}")]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(OrderItemDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(OrderItemStatusResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status415UnsupportedMediaType)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         public async Task<IActionResult> RespondToOrderItem(
-        [FromServices] IQueryHandler<RespondToOrderItemRequest, OrderItemDto> handler,
+        [FromServices] IQueryHandler<RespondToOrderItemRequest, OrderItemStatusResponse> handler,
         [Range(1, int.MaxValue), FromRoute] int orderItemId,
         [FromBody] JsonPatchDocument<OrderItemDto> patchDocument,
         CancellationToken cancellationToken)
         {
             var response = await handler.HandleAsync(new RespondToOrderItemRequest(orderItemId, patchDocument), cancellationToken);
 
-            if (response == null)
+            if (response.Detail.Value == OrderItemResponseDetail.Problem)
             {
                 return NotFound();
             }
