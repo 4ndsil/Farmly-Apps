@@ -26,6 +26,7 @@ namespace FarmlyCore.Application.Queries.Orders
         {
             var orderDto = await _farmlyEntityDataContext.Orders
                 .Where(e => e.Id.Equals(request.OrderId))
+                .Include(e => e.OrderItems)
                 .ProjectTo<OrderDto>(_mapper.ConfigurationProvider)             
                 .AsNoTracking()
                 .FirstOrDefaultAsync(cancellationToken);

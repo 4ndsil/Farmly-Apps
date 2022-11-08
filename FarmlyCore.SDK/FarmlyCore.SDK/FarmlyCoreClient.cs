@@ -15,6 +15,7 @@
 
 namespace FarmlyCore
 {
+    using System.Net.Http;
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -49,11 +50,11 @@ namespace FarmlyCore
         System.Threading.Tasks.Task<AdvertDto> CreateAdvertAsync(CreateAdvertDto advert, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AdvertDto>> FindAdvertsAsync(FindAdvertsRequest request);
+        System.Threading.Tasks.Task<PagedResponseOfIReadOnlyListOfAdvertDto> FindAdvertsAsync(FindAdvertsRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AdvertDto>> FindAdvertsAsync(FindAdvertsRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<PagedResponseOfIReadOnlyListOfAdvertDto> FindAdvertsAsync(FindAdvertsRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<AdvertItemDto> CreateAdvertItemAsync(int advertId, CreateAdvertItemDto advertItem);
@@ -68,19 +69,18 @@ namespace FarmlyCore
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task DeleteAdvertItemAsync(int advertItemId, string advertId, System.Threading.CancellationToken cancellationToken);
-
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class AdvertClient : IAdvertClient
     {
-        private string _baseUrl = "https://localhost:5001";
+        private string _baseUrl = "https://farmlycore.azurewebsites.net";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public AdvertClient(System.Net.Http.HttpClient httpClient)
+        public AdvertClient()
         {
-            _httpClient = httpClient;
+            _httpClient = new HttpClient();
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
 
@@ -444,7 +444,7 @@ namespace FarmlyCore
                         ProcessResponse(client_, response_);
 
                         var status_ = (int)response_.StatusCode;
-                        if (status_ == 201)
+                        if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<AdvertDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
@@ -476,7 +476,7 @@ namespace FarmlyCore
                         else
                         if (status_ == 500)
                         {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("A server side error occurred.", status_, responseText_, headers_, null);
                         }
                         else
@@ -500,14 +500,14 @@ namespace FarmlyCore
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AdvertDto>> FindAdvertsAsync(FindAdvertsRequest request)
+        public virtual System.Threading.Tasks.Task<PagedResponseOfIReadOnlyListOfAdvertDto> FindAdvertsAsync(FindAdvertsRequest request)
         {
             return FindAdvertsAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AdvertDto>> FindAdvertsAsync(FindAdvertsRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<PagedResponseOfIReadOnlyListOfAdvertDto> FindAdvertsAsync(FindAdvertsRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -550,7 +550,7 @@ namespace FarmlyCore
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<AdvertDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<PagedResponseOfIReadOnlyListOfAdvertDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -640,7 +640,7 @@ namespace FarmlyCore
                         ProcessResponse(client_, response_);
 
                         var status_ = (int)response_.StatusCode;
-                        if (status_ == 201)
+                        if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<AdvertItemDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
@@ -672,7 +672,7 @@ namespace FarmlyCore
                         else
                         if (status_ == 500)
                         {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("A server side error occurred.", status_, responseText_, headers_, null);
                         }
                         else
@@ -851,7 +851,7 @@ namespace FarmlyCore
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -863,17 +863,383 @@ namespace FarmlyCore
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value.GetType().IsArray)
             {
-                var array = System.Linq.Enumerable.OfType<object>((System.Array) value);
+                var array = System.Linq.Enumerable.OfType<object>((System.Array)value);
+                return string.Join(",", System.Linq.Enumerable.Select(array, o => ConvertToString(o, cultureInfo)));
+            }
+
+            var result = System.Convert.ToString(value, cultureInfo);
+            return result == null ? "" : result;
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial interface IAdvertItemClient
+    {
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AdvertItemDto>> FindAdvertItemsAsync(FindAdvertItemsRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AdvertItemDto>> FindAdvertItemsAsync(FindAdvertItemsRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<AdvertItemDto> UpdateAdvertAsync(int advertItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<AdvertItemDto> UpdateAdvertAsync(int advertItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument, System.Threading.CancellationToken cancellationToken);
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class AdvertItemClient : IAdvertItemClient
+    {
+        private string _baseUrl = "https://farmlycore.azurewebsites.net";
+        private System.Net.Http.HttpClient _httpClient;
+        private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
+
+        public AdvertItemClient()
+        {
+            _httpClient = new HttpClient();
+            _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
+        }
+
+        private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
+        {
+            var settings = new Newtonsoft.Json.JsonSerializerSettings();
+            UpdateJsonSerializerSettings(settings);
+            return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set { _baseUrl = value; }
+        }
+
+        protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _settings.Value; } }
+
+        partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
+
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
+        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AdvertItemDto>> FindAdvertItemsAsync(FindAdvertItemsRequest request)
+        {
+            return FindAdvertItemsAsync(request, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AdvertItemDto>> FindAdvertItemsAsync(FindAdvertItemsRequest request, System.Threading.CancellationToken cancellationToken)
+        {
+            if (request == null)
+                throw new System.ArgumentNullException("request");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/advertItem-access/advertItem/find");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(request, _settings.Value));
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<AdvertItemDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProblemDetails>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ProblemDetails>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<AdvertItemDto> UpdateAdvertAsync(int advertItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument)
+        {
+            return UpdateAdvertAsync(advertItemId, patchDocument, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<AdvertItemDto> UpdateAdvertAsync(int advertItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument, System.Threading.CancellationToken cancellationToken)
+        {
+            if (advertItemId == null)
+                throw new System.ArgumentNullException("advertItemId");
+
+            if (patchDocument == null)
+                throw new System.ArgumentNullException("patchDocument");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/advertItem-access/advertItem/{advertItemId}");
+            urlBuilder_.Replace("{advertItemId}", System.Uri.EscapeDataString(ConvertToString(advertItemId, System.Globalization.CultureInfo.InvariantCulture)));
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(patchDocument, _settings.Value));
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PATCH");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<AdvertItemDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProblemDetails>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ProblemDetails>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProblemDetails>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ProblemDetails>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 415)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProblemDetails>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ProblemDetails>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 422)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProblemDetails>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ProblemDetails>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        protected struct ObjectResponseResult<T>
+        {
+            public ObjectResponseResult(T responseObject, string responseText)
+            {
+                this.Object = responseObject;
+                this.Text = responseText;
+            }
+
+            public T Object { get; }
+
+            public string Text { get; }
+        }
+
+        public bool ReadResponseAsString { get; set; }
+
+        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
+        {
+            if (response == null || response.Content == null)
+            {
+                return new ObjectResponseResult<T>(default(T), string.Empty);
+            }
+
+            if (ReadResponseAsString)
+            {
+                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody, responseText);
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    using (var streamReader = new System.IO.StreamReader(responseStream))
+                    using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
+                    {
+                        var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
+                        var typedBody = serializer.Deserialize<T>(jsonTextReader);
+                        return new ObjectResponseResult<T>(typedBody, string.Empty);
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                }
+            }
+        }
+
+        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+
+            if (value is System.Enum)
+            {
+                var name = System.Enum.GetName(value.GetType(), value);
+                if (name != null)
+                {
+                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
+                    if (field != null)
+                    {
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
+                            as System.Runtime.Serialization.EnumMemberAttribute;
+                        if (attribute != null)
+                        {
+                            return attribute.Value != null ? attribute.Value : name;
+                        }
+                    }
+
+                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
+                    return converted == null ? string.Empty : converted;
+                }
+            }
+            else if (value is bool)
+            {
+                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
+            }
+            else if (value is byte[])
+            {
+                return System.Convert.ToBase64String((byte[])value);
+            }
+            else if (value.GetType().IsArray)
+            {
+                var array = System.Linq.Enumerable.OfType<object>((System.Array)value);
                 return string.Join(",", System.Linq.Enumerable.Select(array, o => ConvertToString(o, cultureInfo)));
             }
 
@@ -904,13 +1270,14 @@ namespace FarmlyCore
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CategoryClient : ICategoryClient
     {
-        private string _baseUrl = "https://localhost:5001";
+        private string _baseUrl = "https://farmlycore.azurewebsites.net";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public CategoryClient(System.Net.Http.HttpClient httpClient)
+
+        public CategoryClient()
         {
-            _httpClient = httpClient;
+            _httpClient = new HttpClient();
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
 
@@ -1175,7 +1542,7 @@ namespace FarmlyCore
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -1187,17 +1554,17 @@ namespace FarmlyCore
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value.GetType().IsArray)
             {
-                var array = System.Linq.Enumerable.OfType<object>((System.Array) value);
+                var array = System.Linq.Enumerable.OfType<object>((System.Array)value);
                 return string.Join(",", System.Linq.Enumerable.Select(array, o => ConvertToString(o, cultureInfo)));
             }
 
@@ -1263,13 +1630,13 @@ namespace FarmlyCore
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CustomerClient : ICustomerClient
     {
-        private string _baseUrl = "https://localhost:5001";
+        private string _baseUrl = "https://farmlycore.azurewebsites.net";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public CustomerClient(System.Net.Http.HttpClient httpClient)
+        public CustomerClient()
         {
-            _httpClient = httpClient;
+            _httpClient = new HttpClient();
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
 
@@ -1639,7 +2006,7 @@ namespace FarmlyCore
                         ProcessResponse(client_, response_);
 
                         var status_ = (int)response_.StatusCode;
-                        if (status_ == 201)
+                        if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<CustomerDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
@@ -1671,7 +2038,7 @@ namespace FarmlyCore
                         else
                         if (status_ == 500)
                         {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("A server side error occurred.", status_, responseText_, headers_, null);
                         }
                         else
@@ -1833,7 +2200,7 @@ namespace FarmlyCore
                         ProcessResponse(client_, response_);
 
                         var status_ = (int)response_.StatusCode;
-                        if (status_ == 201)
+                        if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<CustomerAddressDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
@@ -1865,7 +2232,7 @@ namespace FarmlyCore
                         else
                         if (status_ == 500)
                         {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("A server side error occurred.", status_, responseText_, headers_, null);
                         }
                         else
@@ -2086,7 +2453,7 @@ namespace FarmlyCore
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -2098,17 +2465,17 @@ namespace FarmlyCore
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value.GetType().IsArray)
             {
-                var array = System.Linq.Enumerable.OfType<object>((System.Array) value);
+                var array = System.Linq.Enumerable.OfType<object>((System.Array)value);
                 return string.Join(",", System.Linq.Enumerable.Select(array, o => ConvertToString(o, cultureInfo)));
             }
 
@@ -2146,13 +2513,13 @@ namespace FarmlyCore
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OrderClient : IOrderClient
     {
-        private string _baseUrl = "https://localhost:5001";
+        private string _baseUrl = "https://farmlycore.azurewebsites.net";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public OrderClient(System.Net.Http.HttpClient httpClient)
+        public OrderClient()
         {
-            _httpClient = httpClient;
+            _httpClient = new HttpClient();
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
 
@@ -2400,7 +2767,7 @@ namespace FarmlyCore
                         ProcessResponse(client_, response_);
 
                         var status_ = (int)response_.StatusCode;
-                        if (status_ == 201)
+                        if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<CreateOrderResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
@@ -2432,7 +2799,7 @@ namespace FarmlyCore
                         else
                         if (status_ == 500)
                         {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("A server side error occurred.", status_, responseText_, headers_, null);
                         }
                         else
@@ -2527,7 +2894,7 @@ namespace FarmlyCore
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -2539,17 +2906,17 @@ namespace FarmlyCore
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value.GetType().IsArray)
             {
-                var array = System.Linq.Enumerable.OfType<object>((System.Array) value);
+                var array = System.Linq.Enumerable.OfType<object>((System.Array)value);
                 return string.Join(",", System.Linq.Enumerable.Select(array, o => ConvertToString(o, cultureInfo)));
             }
 
@@ -2562,31 +2929,31 @@ namespace FarmlyCore
     public partial interface IOrderItemClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<OrderDto>> FindOrderItemsAsync(FindOrderItemsRequest request);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<OrderItemDto>> FindOrderItemsAsync(FindOrderItemsRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<OrderDto>> FindOrderItemsAsync(FindOrderItemsRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<OrderItemDto>> FindOrderItemsAsync(FindOrderItemsRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemDto> RespondToOrderItemAsync(int orderItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument);
+        System.Threading.Tasks.Task<OrderItemStatusResponse> RespondToOrderItemAsync(int orderItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemDto> RespondToOrderItemAsync(int orderItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<OrderItemStatusResponse> RespondToOrderItemAsync(int orderItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument, System.Threading.CancellationToken cancellationToken);
 
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OrderItemClient : IOrderItemClient
     {
-        private string _baseUrl = "https://localhost:5001";
+        private string _baseUrl = "https://farmlycore.azurewebsites.net";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public OrderItemClient(System.Net.Http.HttpClient httpClient)
+        public OrderItemClient()
         {
-            _httpClient = httpClient;
+            _httpClient = new HttpClient();
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
 
@@ -2612,14 +2979,14 @@ namespace FarmlyCore
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<OrderDto>> FindOrderItemsAsync(FindOrderItemsRequest request)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<OrderItemDto>> FindOrderItemsAsync(FindOrderItemsRequest request)
         {
             return FindOrderItemsAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<OrderDto>> FindOrderItemsAsync(FindOrderItemsRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<OrderItemDto>> FindOrderItemsAsync(FindOrderItemsRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -2662,7 +3029,7 @@ namespace FarmlyCore
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<OrderDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<OrderItemDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -2700,14 +3067,14 @@ namespace FarmlyCore
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderItemDto> RespondToOrderItemAsync(int orderItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument)
+        public virtual System.Threading.Tasks.Task<OrderItemStatusResponse> RespondToOrderItemAsync(int orderItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument)
         {
             return RespondToOrderItemAsync(orderItemId, patchDocument, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderItemDto> RespondToOrderItemAsync(int orderItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<OrderItemStatusResponse> RespondToOrderItemAsync(int orderItemId, System.Collections.Generic.IEnumerable<Operation> patchDocument, System.Threading.CancellationToken cancellationToken)
         {
             if (orderItemId == null)
                 throw new System.ArgumentNullException("orderItemId");
@@ -2754,7 +3121,7 @@ namespace FarmlyCore
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<OrderItemDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<OrderItemStatusResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -2893,7 +3260,7 @@ namespace FarmlyCore
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -2905,17 +3272,17 @@ namespace FarmlyCore
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value.GetType().IsArray)
             {
-                var array = System.Linq.Enumerable.OfType<object>((System.Array) value);
+                var array = System.Linq.Enumerable.OfType<object>((System.Array)value);
                 return string.Join(",", System.Linq.Enumerable.Select(array, o => ConvertToString(o, cultureInfo)));
             }
 
@@ -2942,11 +3309,18 @@ namespace FarmlyCore
         System.Threading.Tasks.Task<UserDto> UpdateUserAsync(int userId, System.Collections.Generic.IEnumerable<Operation> patchDocument, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserAuthenticationResponse> UserAuthenticationAsync(UserAuthenticationRequest request);
+        System.Threading.Tasks.Task<UserDto> GetUserByEmailAsync(string email);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserAuthenticationResponse> UserAuthenticationAsync(UserAuthenticationRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<UserDto> GetUserByEmailAsync(string email, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<UserDto> UserAuthenticationAsync(UserAuthenticationRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<UserDto> UserAuthenticationAsync(UserAuthenticationRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<UserDto>> FindUsersAsync(FindUsersRequest request);
@@ -2960,13 +3334,13 @@ namespace FarmlyCore
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class UserClient : IUserClient
     {
-        private string _baseUrl = "https://localhost:5001";
+        private string _baseUrl = "https://farmlycore.azurewebsites.net";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public UserClient(System.Net.Http.HttpClient httpClient)
+        public UserClient()
         {
-            _httpClient = httpClient;
+            _httpClient = new HttpClient();
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
 
@@ -3200,14 +3574,97 @@ namespace FarmlyCore
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<UserAuthenticationResponse> UserAuthenticationAsync(UserAuthenticationRequest request)
+        public virtual System.Threading.Tasks.Task<UserDto> GetUserByEmailAsync(string email)
+        {
+            return GetUserByEmailAsync(email, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<UserDto> GetUserByEmailAsync(string email, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/user-access/user/{email}");
+            urlBuilder_.Replace("{email}", System.Uri.EscapeDataString(ConvertToString(email, System.Globalization.CultureInfo.InvariantCulture)));
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<UserDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProblemDetails>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ProblemDetails>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<UserDto> UserAuthenticationAsync(UserAuthenticationRequest request)
         {
             return UserAuthenticationAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<UserAuthenticationResponse> UserAuthenticationAsync(UserAuthenticationRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<UserDto> UserAuthenticationAsync(UserAuthenticationRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -3250,7 +3707,7 @@ namespace FarmlyCore
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<UserAuthenticationResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<UserDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -3447,7 +3904,7 @@ namespace FarmlyCore
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -3459,17 +3916,17 @@ namespace FarmlyCore
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value.GetType().IsArray)
             {
-                var array = System.Linq.Enumerable.OfType<object>((System.Array) value);
+                var array = System.Linq.Enumerable.OfType<object>((System.Array)value);
                 return string.Join(",", System.Linq.Enumerable.Select(array, o => ConvertToString(o, cultureInfo)));
             }
 
@@ -3566,7 +4023,7 @@ namespace FarmlyCore
         public decimal Weight { get; set; }
 
         [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Quantity { get; set; }
+        public decimal? Quantity { get; set; }
 
         [Newtonsoft.Json.JsonProperty("price", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal Price { get; set; }
@@ -3616,6 +4073,26 @@ namespace FarmlyCore
             get { return _additionalProperties; }
             set { _additionalProperties = value; }
         }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class PagedResponseOfIReadOnlyListOfAdvertDto
+    {
+        [Newtonsoft.Json.JsonProperty("pageNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int PageNumber { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("pageSize", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int PageSize { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("totalPages", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int TotalPages { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("totalRecords", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int TotalRecords { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<AdvertDto> Data { get; set; }
 
     }
 
@@ -3697,7 +4174,7 @@ namespace FarmlyCore
         public decimal Price { get; set; }
 
         [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
 
     }
 
@@ -3724,6 +4201,14 @@ namespace FarmlyCore
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class FindAdvertItemsRequest
+    {
+        [Newtonsoft.Json.JsonProperty("advertId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? AdvertId { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CustomerDto
     {
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -3744,6 +4229,9 @@ namespace FarmlyCore
 
         [Newtonsoft.Json.JsonProperty("orgNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string OrgNumber { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("phone", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Phone { get; set; }
 
         [Newtonsoft.Json.JsonProperty("customerAddresses", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<CustomerAddressDto> CustomerAddresses { get; set; }
@@ -3792,6 +4280,9 @@ namespace FarmlyCore
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public CustomerTypeDto? CustomerType { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("customerIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<int> CustomerIds { get; set; }
+
         [Newtonsoft.Json.JsonProperty("companyName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CompanyName { get; set; }
 
@@ -3809,14 +4300,17 @@ namespace FarmlyCore
         [Newtonsoft.Json.JsonProperty("totalPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal TotalPrice { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("totalWeight", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal TotalWeight { get; set; }
+
         [Newtonsoft.Json.JsonProperty("placementDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset PlacementDate { get; set; }
+        public System.DateTime PlacementDate { get; set; }
 
         [Newtonsoft.Json.JsonProperty("deliveryDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset DeliveryDate { get; set; }
+        public System.DateTime DeliveryDate { get; set; }
 
         [Newtonsoft.Json.JsonProperty("estimatedDeliveryDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset EstimatedDeliveryDate { get; set; }
+        public System.DateTime EstimatedDeliveryDate { get; set; }
 
         [Newtonsoft.Json.JsonProperty("deliveryPointId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int DeliveryPointId { get; set; }
@@ -3825,7 +4319,7 @@ namespace FarmlyCore
         public int BuyerId { get; set; }
 
         [Newtonsoft.Json.JsonProperty("buyerName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int BuyerName { get; set; }
+        public string BuyerName { get; set; }
 
         [Newtonsoft.Json.JsonProperty("orderItems", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<OrderItemDto> OrderItems { get; set; }
@@ -3845,7 +4339,7 @@ namespace FarmlyCore
         public decimal? Weight { get; set; }
 
         [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Quantity { get; set; }
+        public decimal? Quantity { get; set; }
 
         [Newtonsoft.Json.JsonProperty("price", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal Price { get; set; }
@@ -3882,20 +4376,44 @@ namespace FarmlyCore
         [Newtonsoft.Json.JsonProperty("orderId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int OrderId { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("pickupDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime PickupDate { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("placementDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime PlacementDate { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("responseDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime? ResponseDate { get; set; }
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public enum OrderPriceTypeDto
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"Kg")]
+        [System.Runtime.Serialization.EnumMember(Value = @"kg")]
         Kg = 0,
 
-        [System.Runtime.Serialization.EnumMember(Value = @"Gram")]
-        Gram = 1,
+        [System.Runtime.Serialization.EnumMember(Value = @"hg")]
+        Hg = 1,
 
-        [System.Runtime.Serialization.EnumMember(Value = @"Styck")]
-        Styck = 2,
+        [System.Runtime.Serialization.EnumMember(Value = @"g")]
+        G = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"l")]
+        L = 3,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"dl")]
+        Dl = 4,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"cl")]
+        Cl = 5,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"ml")]
+        Ml = 6,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"st")]
+        St = 7,
 
     }
 
@@ -3906,11 +4424,14 @@ namespace FarmlyCore
         [System.Runtime.Serialization.EnumMember(Value = @"Pending")]
         Pending = 0,
 
-        [System.Runtime.Serialization.EnumMember(Value = @"IsAccepted")]
-        IsAccepted = 1,
+        [System.Runtime.Serialization.EnumMember(Value = @"Accepted")]
+        Accepted = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"Delivered")]
         Delivered = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"Rejected")]
+        Rejected = 3,
 
     }
 
@@ -3924,10 +4445,10 @@ namespace FarmlyCore
         public bool? Delivered { get; set; }
 
         [Newtonsoft.Json.JsonProperty("placementDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? PlacementDate { get; set; }
+        public System.DateTime? PlacementDate { get; set; }
 
         [Newtonsoft.Json.JsonProperty("estimatedDeliveryDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? EstimatedDeliveryDate { get; set; }
+        public System.DateTime? EstimatedDeliveryDate { get; set; }
 
     }
 
@@ -3935,11 +4456,11 @@ namespace FarmlyCore
     public partial class CreateOrderResponse
     {
         [Newtonsoft.Json.JsonProperty("order", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public OrderDto Order { get; set; }
+        public OrderSummaryDto Order { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("detail", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("detail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public CreateOrderProblemDetail Detail { get; set; }
+        public CreateOrderDetail? Detail { get; set; }
 
         [Newtonsoft.Json.JsonProperty("advertItemIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<int> AdvertItemIds { get; set; }
@@ -3947,7 +4468,66 @@ namespace FarmlyCore
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum CreateOrderProblemDetail
+    public partial class OrderSummaryDto
+    {
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("placementDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime PlacementDate { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("deliveryDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime DeliveryDate { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("estimatedDeliveryDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime EstimatedDeliveryDate { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("totalPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? TotalPrice { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("totalWeight", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? TotalWeight { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("deliveryPointId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int DeliveryPointId { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("buyerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int BuyerId { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("orderItems", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<OrderItemSummaryDto> OrderItems { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OrderItemSummaryDto
+    {
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("productName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ProductName { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("weight", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? Weight { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? Quantity { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("price", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal Price { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("advertItemPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? AdvertItemPrice { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("priceType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public OrderPriceTypeDto PriceType { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public enum CreateOrderDetail
     {
 
         [System.Runtime.Serialization.EnumMember(Value = @"AddressNotFound")]
@@ -3962,19 +4542,31 @@ namespace FarmlyCore
         [System.Runtime.Serialization.EnumMember(Value = @"ConcurrecyFailure")]
         ConcurrecyFailure = 3,
 
+        [System.Runtime.Serialization.EnumMember(Value = @"BuyerNotFound")]
+        BuyerNotFound = 4,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"WithSuccess")]
+        WithSuccess = 5,
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class CreateOrderDto
     {
         [Newtonsoft.Json.JsonProperty("placementDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset PlacementDate { get; set; }
+        public System.DateTime PlacementDate { get; set; }
 
         [Newtonsoft.Json.JsonProperty("deliveryDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset DeliveryDate { get; set; }
+        public System.DateTime DeliveryDate { get; set; }
 
         [Newtonsoft.Json.JsonProperty("estimatedDeliveryDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset EstimatedDeliveryDate { get; set; }
+        public System.DateTime EstimatedDeliveryDate { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("totalPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? TotalPrice { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("totalWeight", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public decimal? TotalWeight { get; set; }
 
         [Newtonsoft.Json.JsonProperty("deliveryPointId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int DeliveryPointId { get; set; }
@@ -3997,7 +4589,7 @@ namespace FarmlyCore
         public decimal? Weight { get; set; }
 
         [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Quantity { get; set; }
+        public decimal? Quantity { get; set; }
 
         [Newtonsoft.Json.JsonProperty("price", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal Price { get; set; }
@@ -4017,6 +4609,15 @@ namespace FarmlyCore
 
         [Newtonsoft.Json.JsonProperty("pickupPointId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int PickupPointId { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("sellerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int SellerId { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("pickupDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime PickupDate { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("placementDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTime PlacementDate { get; set; }
 
     }
 
@@ -4039,11 +4640,41 @@ namespace FarmlyCore
         [System.Runtime.Serialization.EnumMember(Value = @"Pending")]
         Pending = 0,
 
-        [System.Runtime.Serialization.EnumMember(Value = @"IsAccepted")]
-        IsAccepted = 1,
+        [System.Runtime.Serialization.EnumMember(Value = @"Accepted")]
+        Accepted = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"Delivered")]
         Delivered = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"Rejected")]
+        Rejected = 3,
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OrderItemStatusResponse
+    {
+        [Newtonsoft.Json.JsonProperty("detail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public OrderItemResponseDetail? Detail { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public enum OrderItemResponseDetail
+    {
+
+        [System.Runtime.Serialization.EnumMember(Value = @"Problem")]
+        Problem = 0,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"OrderAccepted")]
+        OrderAccepted = 1,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"OrderRejected")]
+        OrderRejected = 2,
+
+        [System.Runtime.Serialization.EnumMember(Value = @"OrderDelivered")]
+        OrderDelivered = 3,
 
     }
 
@@ -4067,30 +4698,6 @@ namespace FarmlyCore
 
         [Newtonsoft.Json.JsonProperty("customerId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int CustomerId { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserAuthenticationResponse
-    {
-        [Newtonsoft.Json.JsonProperty("user", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public UserDto User { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("detail", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public AuthenticationDetail Detail { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.0.0 (NJsonSchema v10.7.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum AuthenticationDetail
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"ValidCredentials")]
-        ValidCredentials = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"InvalidCredentials")]
-        InvalidCredentials = 1,
 
     }
 
@@ -4152,13 +4759,12 @@ namespace FarmlyCore
             Result = result;
         }
     }
-
 }
 
 #pragma warning restore 1591
 #pragma warning restore 1573
-#pragma warning restore  472
-#pragma warning restore  114
-#pragma warning restore  108
+#pragma warning restore 472
+#pragma warning restore 114
+#pragma warning restore 108
 #pragma warning restore 3016
 #pragma warning restore 8603
