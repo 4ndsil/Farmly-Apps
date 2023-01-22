@@ -1,0 +1,50 @@
+﻿<Properties StartupConfiguration="{5C4EA4F3-960E-4662-BF5F-37879F25B150}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FarmlyCore.Application/Requests/Users/UpdateUserRequest.cs">
+    <Files>
+      <File FileName="FarmlyCore.Api/ControllerEndpoints/UserController.cs" Line="1" Column="1" />
+      <File FileName="FarmlyCore.Application/Requests/Users/UpdateUserRequest.cs" Line="1" Column="1" />
+      <File FileName="FarmlyCore.Api/Program.cs" Line="1" Column="1" />
+      <File FileName="FarmlyCore.Api/Startup.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FarmlyCore" expanded="True">
+            <Node name="src" expanded="True">
+              <Node name="FarmlyCore.Api" expanded="True">
+                <Node name="ControllerEndpoints" expanded="True" />
+                <Node name="OperationFilters" expanded="True" />
+                <Node name="Properties" expanded="True" />
+              </Node>
+              <Node name="FarmlyCore.Application" expanded="True">
+                <Node name="ExtensionInstaller" expanded="True" />
+                <Node name="Requests" expanded="True">
+                  <Node name="Users" expanded="True">
+                    <Node name="UpdateUserRequest.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="FarmlyCore.Infrastructure" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="FarmlyCore" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.src.FarmlyCore.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.1F0076B3-9C5D-4E13-95FF-E0D4D6DF7F6F" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
