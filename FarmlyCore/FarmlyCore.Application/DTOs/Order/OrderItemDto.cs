@@ -23,6 +23,7 @@ namespace FarmlyCore.Application.DTOs.Order
         public DateTime PickupDate { get; set; }
         public DateTime PlacementDate { get; set; }
         public DateTime? ResponseDate { get; set; }
+        public int Packages { get; set; }
     }
 
     public enum OrderPriceTypeDto

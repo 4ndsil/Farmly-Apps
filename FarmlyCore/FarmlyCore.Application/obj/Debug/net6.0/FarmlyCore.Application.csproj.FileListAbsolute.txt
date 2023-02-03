@@ -1,18 +1,3 @@
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/bin/Debug/net6.0/FarmlyCore.Application.deps.json
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/bin/Debug/net6.0/FarmlyCore.Application.dll
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/bin/Debug/net6.0/FarmlyCore.Application.pdb
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/bin/Debug/net6.0/FarmlyCore.Infrastructure.dll
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/bin/Debug/net6.0/FarmlyCore.Infrastructure.pdb
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/FarmlyCore.Application.csproj.AssemblyReference.cache
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/FarmlyCore.Application.GeneratedMSBuildEditorConfig.editorconfig
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/FarmlyCore.Application.AssemblyInfoInputs.cache
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/FarmlyCore.Application.AssemblyInfo.cs
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/FarmlyCore.Application.csproj.CoreCompileInputs.cache
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/FarmlyCore.Application.csproj.CopyComplete
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/FarmlyCore.Application.dll
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/refint/FarmlyCore.Application.dll
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/FarmlyCore.Application.pdb
-C:/Development/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/ref/FarmlyCore.Application.dll
 C:/Development/Farmly-Apps/FarmlyCore - Copy/FarmlyCore.Application/bin/Debug/net6.0/FarmlyCore.Application.deps.json
 C:/Development/Farmly-Apps/FarmlyCore - Copy/FarmlyCore.Application/bin/Debug/net6.0/FarmlyCore.Application.dll
 C:/Development/Farmly-Apps/FarmlyCore - Copy/FarmlyCore.Application/bin/Debug/net6.0/FarmlyCore.Application.pdb
@@ -43,3 +28,18 @@ C:/Development/Farmly-Apps/FarmlyCore - Copy/FarmlyCore.Application/obj/Debug/ne
 /Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/refint/FarmlyCore.Application.dll
 /Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/FarmlyCore.Application.pdb
 /Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/Debug/net6.0/ref/FarmlyCore.Application.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\bin\Debug\net6.0\FarmlyCore.Application.deps.json
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\bin\Debug\net6.0\FarmlyCore.Application.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\bin\Debug\net6.0\FarmlyCore.Application.pdb
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\bin\Debug\net6.0\FarmlyCore.Infrastructure.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\bin\Debug\net6.0\FarmlyCore.Infrastructure.pdb
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.csproj.AssemblyReference.cache
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.AssemblyInfoInputs.cache
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.AssemblyInfo.cs
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.csproj.CoreCompileInputs.cache
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.csproj.CopyComplete
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\refint\FarmlyCore.Application.dll
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\FarmlyCore.Application.pdb
+C:\Development\Farmly-Apps\FarmlyCore\FarmlyCore.Application\obj\Debug\net6.0\ref\FarmlyCore.Application.dll

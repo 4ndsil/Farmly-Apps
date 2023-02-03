@@ -69,6 +69,9 @@ namespace FarmlyCore.Infrastructure.Configurations
             entity.Property(e => e.ResponseDate)
                 .HasColumnName("ResponseDate");
 
+            entity.Property(e => e.Packages)
+                .HasColumnName("Packages");
+
             entity.HasOne(e => e.AdvertItem)
                  .WithOne()
                  .HasForeignKey<OrderItem>(e => e.FkAdvertItemId)

@@ -1,7 +1,6 @@
 ﻿using FarmlyCore.Application.DTOs.Order;
 using FarmlyCore.Application.Queries.OrderItems;
 using FarmlyCore.Application.Requests.OrderItems;
-using FarmlyCore.Application.Requests.Orders;
 using FarmlyCore.Infrastructure.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;

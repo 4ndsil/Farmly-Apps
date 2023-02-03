@@ -1,40 +1,42 @@
 {
   "format": 1,
   "restore": {
-    "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Api/FarmlyCore.Api.csproj": {}
+    "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Api\\FarmlyCore.Api.csproj": {}
   },
   "projects": {
-    "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Api/FarmlyCore.Api.csproj": {
+    "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Api\\FarmlyCore.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Api/FarmlyCore.Api.csproj",
+        "projectUniqueName": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Api\\FarmlyCore.Api.csproj",
         "projectName": "FarmlyCore.Api",
-        "projectPath": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Api/FarmlyCore.Api.csproj",
-        "packagesPath": "/Users/fredrikbirgersson/.nuget/packages/",
-        "outputPath": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Api/obj/",
+        "projectPath": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Api\\FarmlyCore.Api.csproj",
+        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+        "outputPath": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "/Users/fredrikbirgersson/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.pkg.github.com/4ndsil/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Application/FarmlyCore.Application.csproj": {
-                "projectPath": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Application/FarmlyCore.Application.csproj"
+              "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Application\\FarmlyCore.Application.csproj": {
+                "projectPath": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Application\\FarmlyCore.Application.csproj"
               },
-              "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Infrastructure/FarmlyCore.Infrastructure.csproj": {
-                "projectPath": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Infrastructure/FarmlyCore.Infrastructure.csproj"
+              "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Infrastructure\\FarmlyCore.Infrastructure.csproj": {
+                "projectPath": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Infrastructure\\FarmlyCore.Infrastructure.csproj"
               }
             }
           }
@@ -88,8 +90,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -101,38 +102,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Application/FarmlyCore.Application.csproj": {
+    "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Application\\FarmlyCore.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Application/FarmlyCore.Application.csproj",
+        "projectUniqueName": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Application\\FarmlyCore.Application.csproj",
         "projectName": "FarmlyCore.Application",
-        "projectPath": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Application/FarmlyCore.Application.csproj",
-        "packagesPath": "/Users/fredrikbirgersson/.nuget/packages/",
-        "outputPath": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Application/obj/",
+        "projectPath": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Application\\FarmlyCore.Application.csproj",
+        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+        "outputPath": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "/Users/fredrikbirgersson/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.pkg.github.com/4ndsil/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Infrastructure/FarmlyCore.Infrastructure.csproj": {
-                "projectPath": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Infrastructure/FarmlyCore.Infrastructure.csproj"
+              "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Infrastructure\\FarmlyCore.Infrastructure.csproj": {
+                "projectPath": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Infrastructure\\FarmlyCore.Infrastructure.csproj"
               }
             }
           }
@@ -166,8 +169,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -176,31 +178,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Infrastructure/FarmlyCore.Infrastructure.csproj": {
+    "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Infrastructure\\FarmlyCore.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Infrastructure/FarmlyCore.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Infrastructure\\FarmlyCore.Infrastructure.csproj",
         "projectName": "FarmlyCore.Infrastructure",
-        "projectPath": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Infrastructure/FarmlyCore.Infrastructure.csproj",
-        "packagesPath": "/Users/fredrikbirgersson/.nuget/packages/",
-        "outputPath": "/Users/fredrikbirgersson/GitHub/Farmly-Apps/FarmlyCore/FarmlyCore.Infrastructure/obj/",
+        "projectPath": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Infrastructure\\FarmlyCore.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+        "outputPath": "C:\\Development\\Farmly-Apps\\FarmlyCore\\FarmlyCore.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "/Users/fredrikbirgersson/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.pkg.github.com/4ndsil/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -247,8 +251,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -257,7 +260,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

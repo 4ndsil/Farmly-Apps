@@ -31,6 +31,7 @@ namespace FarmlyCore.Infrastructure.Entities
         public CustomerAddress PickupPoint { get; set; }
         public Category Category { get; set; }
         public Customer Seller { get; set; }
+        public int Packages { get; set; }
     }
 
     public enum OrderPriceType
