@@ -12,6 +12,6 @@
 
         public DateTime? EstimatedDeliveryDate { get; set; }  
 
-        public string OrderNumber { get; set; }
+        public string? OrderNumber { get; set; }
     }
 }
