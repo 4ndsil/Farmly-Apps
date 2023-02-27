@@ -9,7 +9,7 @@ namespace FarmlyCore.Application.Queries.Users.QueryFilters
 
         public IQueryable<User> Filter(FindUsersRequest request, IQueryable<User> users)
         {
-            return users.Where(e => e.Email.Equals(e.Email));
+            return users.Where(e => e.Email.Equals(request.Email));
         }
     }
 }
