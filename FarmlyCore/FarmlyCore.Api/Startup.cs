@@ -1,6 +1,6 @@
 using AutoMapper;
 using FarmlyCore.Api.OperationFilters;
-using FarmlyCore.Application.Extensions;
+using FarmlyCore.Application.Extentions;
 using FarmlyCore.Application.MapperProfile;
 using FarmlyCore.Infrastructure.FarmlyDbContext;
 using Microsoft.AspNetCore.Builder;

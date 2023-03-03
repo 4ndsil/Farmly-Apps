@@ -23,7 +23,10 @@ namespace FarmlyCore.Application.Queries.Categories
 
             public async Task<AdvertDto[]> HandleAsync(CancellationToken cancellationToken = default)
             {
-                var baseRequest = _farmlyEntityDataContext.Adverts.AsNoTracking().AsQueryable();
+                var baseRequest = _farmlyEntityDataContext.Adverts
+                    .Where(e => e.Available == true)
+                    .AsNoTracking()
+                    .AsQueryable();
 
                 if (baseRequest == null)
                 {
